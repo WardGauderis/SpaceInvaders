@@ -10,8 +10,8 @@ StopWatch& StopWatch::instance() {
 	return stopWatch;
 }
 
-void StopWatch::setTimeOut(std::chrono::milliseconds timeOut) {
-	StopWatch::delta = timeOut;
+void StopWatch::setTimeOut(const std::chrono::milliseconds timeOut) {
+	delta = timeOut;
 	start = std::chrono::steady_clock::now();
 }
 

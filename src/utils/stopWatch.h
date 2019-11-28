@@ -23,7 +23,7 @@ public:
 
 	/**
 	 * Set the duration of one cycle
-	 * @param timeOut duration in milliseconds
+	 * @param timeOut in milliseconds
 	 */
 	void setTimeOut(std::chrono::milliseconds timeOut);
 
