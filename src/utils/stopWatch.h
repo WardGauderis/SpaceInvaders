@@ -9,37 +9,46 @@
 
 using namespace std::chrono_literals;
 
-class StopWatch {
-public:
-	/**
-	 * Meyer's singleton pattern constructor
-	 * @return the singleton stopwatch
-	 */
-	static StopWatch& instance();
+namespace utils {
 
-	StopWatch(const StopWatch&) = delete;
+	class StopWatch {
+	public:
+		/**
+		 * Meyer's singleton pattern constructor
+		 * @return the singleton stopwatch
+		 */
+		static StopWatch& get();
 
-	StopWatch& operator=(const StopWatch&) = delete;
+		StopWatch(const StopWatch&) = delete;
 
-	/**
-	 * Set the duration of one cycle
-	 * @param timeOut in milliseconds
-	 */
-	void setTimeOut(std::chrono::milliseconds timeOut);
+		StopWatch& operator=(const StopWatch&) = delete;
 
-	/**
-	 * Sleep until the next cycle is done
-	 */
-	void sleepUntilTime();
+		bool updateModel();
 
-private:
-	std::chrono::milliseconds delta{};
-	std::chrono::time_point<std::chrono::steady_clock> start{};
+		bool updateView();
 
-	StopWatch() = default;
+		void setFPS(unsigned int fps);
 
-	~StopWatch() = default;
+		void printFPS(bool print);
 
-};
+
+	private:
+		unsigned int fps = 0;
+		std::chrono::nanoseconds fpsTimeCounter = 0ns;
+		std::chrono::time_point<std::chrono::steady_clock, std::chrono::nanoseconds> lastTime = std::chrono::steady_clock::now();
+
+		std::chrono::duration<long double> updateTimer = 1.0s;
+		std::chrono::duration<long double> frameTime = 1.0s / 60.0;
+
+		bool shouldUpdateView = false;
+		bool showFPS = false;
+
+		StopWatch() = default;
+
+		~StopWatch() = default;
+
+	};
+
+}
 
 #endif //SPACEINVADERS_STOPWATCH_H
