@@ -5,18 +5,21 @@
 #ifndef SPACEINVADERS_SPACEINVADERS_H
 #define SPACEINVADERS_SPACEINVADERS_H
 
-#include <SFML/Graphics.hpp>
-#include <memory>
+#include "models/game.h"
+#include "controllers/game.h"
+#include "views/game.h"
 
 namespace SI {
 
 	class SpaceInvaders {
 	public:
-		SpaceInvaders();
+
+		void eventLoop();
 
 	private:
-		std::shared_ptr<sf::RenderWindow> window;
-
+		Game game;
+		GameController gameController;
+		GameView gameView;
 
 	};
 
