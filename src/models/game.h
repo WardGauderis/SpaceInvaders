@@ -2,8 +2,8 @@
 // Created by ward on 12/1/19.
 //
 
-#ifndef SPACEINVADERS_GAME_H
-#define SPACEINVADERS_GAME_H
+#ifndef SPACEINVADERS_GAMEMODEL_H
+#define SPACEINVADERS_GAMEMODEL_H
 
 namespace SI::model {
 
@@ -13,4 +13,4 @@ namespace SI::model {
 
 }
 
-#endif //SPACEINVADERS_GAME_H
+#endif //SPACEINVADERS_GAMEMODEL_H

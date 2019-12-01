@@ -2,8 +2,8 @@
 // Created by ward on 11/25/19.
 //
 
-#ifndef SPACEINVADERS_ENTITY_H
-#define SPACEINVADERS_ENTITY_H
+#ifndef SPACEINVADERS_ENTITYCONTROLLER_H
+#define SPACEINVADERS_ENTITYCONTROLLER_H
 
 namespace SI::controller {
 
@@ -13,4 +13,4 @@ namespace SI::controller {
 
 }
 
-#endif //SPACEINVADERS_ENTITY_H
+#endif //SPACEINVADERS_ENTITYCONTROLLER_H

@@ -17,10 +17,9 @@ namespace SI {
 		void eventLoop();
 
 	private:
-		Game game;
-		GameController gameController;
-		GameView gameView;
-
+		model::Game gameModel;
+		controller::Game gameController;
+		view::Game gameView;
 	};
 
 }

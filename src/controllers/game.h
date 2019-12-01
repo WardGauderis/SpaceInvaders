@@ -2,13 +2,15 @@
 // Created by ward on 12/1/19.
 //
 
-#ifndef SPACEINVADERS_GAME_H
-#define SPACEINVADERS_GAME_H
+#ifndef SPACEINVADERS_GAMECONTROLLER_H
+#define SPACEINVADERS_GAMECONTROLLER_H
 
 namespace SI::controller {
 
 	class Game {
 	public:
+		Game();
+
 		[[nodiscard]] bool isRunning() const;
 
 	private:
@@ -17,4 +19,4 @@ namespace SI::controller {
 
 }
 
-#endif //SPACEINVADERS_GAME_H
+#endif //SPACEINVADERS_GAMECONTROLLER_H

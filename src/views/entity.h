@@ -2,8 +2,8 @@
 // Created by ward on 11/25/19.
 //
 
-#ifndef SPACEINVADERS_ENTITY_H
-#define SPACEINVADERS_ENTITY_H
+#ifndef SPACEINVADERS_ENTITYVIEW_H
+#define SPACEINVADERS_ENTITYVIEW_H
 
 namespace SI::view {
 
@@ -14,4 +14,4 @@ namespace SI::view {
 }
 
 
-#endif //SPACEINVADERS_ENTITY_H
+#endif //SPACEINVADERS_ENTITYVIEW_H

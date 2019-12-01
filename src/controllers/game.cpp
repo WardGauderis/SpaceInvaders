@@ -7,3 +7,7 @@
 bool SI::controller::Game::isRunning() const {
 	return running;
 }
+
+SI::controller::Game::Game() {
+	running = true;
+}
