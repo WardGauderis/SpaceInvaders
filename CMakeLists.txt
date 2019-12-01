@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 file(GLOB_RECURSE HDRS ${spaceInvaders_SOURCE_DIR}/src/*.h)
 file(GLOB_RECURSE SRCS ${spaceInvaders_SOURCE_DIR}/src/*.cpp)
 
-add_executable(SI ${HDRS} ${SRCS} src/utils/transformation.cpp src/utils/transformation.h)
+add_executable(SI ${HDRS} ${SRCS} src/utils/transformation.cpp src/utils/transformation.h src/utils/observer.cpp src/utils/observer.h)
 
 target_link_libraries(SI "-lsfml-graphics -lsfml-window -lsfml-system")
 

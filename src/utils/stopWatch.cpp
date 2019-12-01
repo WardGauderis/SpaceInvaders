@@ -21,7 +21,7 @@ bool utils::StopWatch::updateModel() {
 	return update;
 }
 
-bool utils::StopWatch::updateView() {
+bool utils::StopWatch::renderView() {
 	auto currentTime = std::chrono::steady_clock::now();
 	auto passedTime = currentTime - lastTime;
 	lastTime = currentTime;
@@ -39,14 +39,15 @@ bool utils::StopWatch::updateView() {
 	}
 
 	if (shouldUpdateView) ++fps;
+	else std::this_thread::sleep_for(1ms);
 
 	bool update = shouldUpdateView;
 	shouldUpdateView = false;
 	return update;
 }
 
-void utils::StopWatch::setFPS(unsigned int fps) {
-	frameTime = 1.0s / fps;
+void utils::StopWatch::setFPS(unsigned int newFPS) {
+	frameTime = 1.0s / newFPS;
 }
 
 void utils::StopWatch::printFPS(bool print) {

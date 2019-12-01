@@ -23,12 +23,28 @@ namespace utils {
 
 		StopWatch& operator=(const StopWatch&) = delete;
 
+		/**
+		 * tries to be ran at the set fps at the cost of the frequency of updateView()
+		 * @return whether the model must be updated
+		 */
 		bool updateModel();
 
-		bool updateView();
+		/**
+		 * tries to be ran at the set fps but updateModel() has priority;
+		 * also prints the fps if requested
+		 * @return whether the view must be rendered
+		 */
+		bool renderView();
 
-		void setFPS(unsigned int fps);
-
+		/**
+		 * set fps
+		 * @param newFPS preferred fps
+		 */
+		void setFPS(unsigned int newFPS);
+		/**
+		 * set whether the fps must be printed
+		 * @param print bool
+		 */
 		void printFPS(bool print);
 
 
