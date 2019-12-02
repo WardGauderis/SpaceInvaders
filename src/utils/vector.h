@@ -10,6 +10,8 @@ namespace utils {
 	struct Vector {
 		float x;
 		float y;
+
+		Vector& operator+=(const Vector& vector);
 	};
 
 }

@@ -3,3 +3,9 @@
 //
 
 #include "entity.h"
+
+void SI::model::Entity::move() {
+	velocity += acceleration;
+	position += velocity;
+	notifyObservers();
+}

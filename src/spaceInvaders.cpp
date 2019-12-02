@@ -8,6 +8,7 @@
 void SI::SpaceInvaders::eventLoop() {
 	while (gameController.isRunning()) {
 		while (utils::StopWatch::get().updateModel()) {
+			gameController.handleInput();
 		}
 		if (utils::StopWatch::get().renderView()) {
 			gameView.render();

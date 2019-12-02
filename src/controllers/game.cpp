@@ -11,3 +11,16 @@ bool SI::controller::Game::isRunning() const {
 SI::controller::Game::Game() {
 	running = true;
 }
+
+void SI::controller::Game::handleInput() {
+	utils::Event event{};
+	while (view->pollEvent(event)) {
+		switch (event.type) {
+			case utils::Event::Closed:
+				running = false;
+				break;
+			case utils::Event::KeyPressed:
+				
+		}
+	}
+}

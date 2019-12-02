@@ -9,7 +9,7 @@
 
 namespace SI::model {
 
-	class Model: utils::Subject {
+	class Model : public utils::Subject {
 	public:
 
 	private:

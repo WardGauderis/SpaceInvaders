@@ -9,7 +9,7 @@
 
 namespace SI::model {
 
-	class Game: public Model {
+	class Game : public Model {
 
 	};
 

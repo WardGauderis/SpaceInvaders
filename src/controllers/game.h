@@ -6,17 +6,21 @@
 #define SPACEINVADERS_GAMECONTROLLER_H
 
 #include "controller.h"
+#include "../views/game.h"
 
 namespace SI::controller {
 
-	class Game: Controller {
+	class Game : public Controller {
 	public:
 		Game();
 
 		[[nodiscard]] bool isRunning() const;
 
+		void handleInput();
+
 	private:
 		bool running;
+		std::shared_ptr<view::Game> view;
 	};
 
 }

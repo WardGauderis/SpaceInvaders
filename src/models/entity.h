@@ -10,8 +10,10 @@
 
 namespace SI::model {
 
-	class Entity: public Model {
+	class Entity : public Model {
 	public:
+		void move();
+
 	private:
 		utils::Vector position;
 		utils::Vector velocity;

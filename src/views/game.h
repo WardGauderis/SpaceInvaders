@@ -8,6 +8,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "view.h"
+#include "../utils/event.h"
 
 namespace SI::view {
 
@@ -19,8 +20,12 @@ namespace SI::view {
 
 		void notify() final;
 
+		bool pollEvent(utils::Event& event);
+
 	private:
 		sf::RenderWindow window;
+
+		static bool determineKey(const sf::Keyboard::Key& sfKey, utils::Key& key);
 
 	};
 

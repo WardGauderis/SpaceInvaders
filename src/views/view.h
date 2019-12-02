@@ -5,6 +5,8 @@
 #ifndef SPACEINVADERS_VIEW_H
 #define SPACEINVADERS_VIEW_H
 
+#include <SFML/Graphics.hpp>
+
 #include "../utils/observer.h"
 
 namespace SI::view {
