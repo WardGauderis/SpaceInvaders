@@ -5,9 +5,11 @@
 #ifndef SPACEINVADERS_GAMEMODEL_H
 #define SPACEINVADERS_GAMEMODEL_H
 
+#include "model.h"
+
 namespace SI::model {
 
-	class Game {
+	class Game: public Model {
 
 	};
 

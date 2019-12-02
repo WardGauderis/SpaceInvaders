@@ -5,10 +5,17 @@
 #ifndef SPACEINVADERS_ENTITYMODEL_H
 #define SPACEINVADERS_ENTITYMODEL_H
 
+#include "model.h"
+#include "../utils/vector.h"
+
 namespace SI::model {
 
-	class Entity {
-
+	class Entity: public Model {
+	public:
+	private:
+		utils::Vector position;
+		utils::Vector velocity;
+		utils::Vector acceleration;
 	};
 
 }

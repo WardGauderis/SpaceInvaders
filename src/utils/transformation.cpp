@@ -3,6 +3,7 @@
 //
 
 #include <cmath>
+
 #include "transformation.h"
 
 utils::Transformation& utils::Transformation::get() {

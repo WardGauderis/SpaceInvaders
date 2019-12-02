@@ -5,9 +5,11 @@
 #ifndef SPACEINVADERS_GAMECONTROLLER_H
 #define SPACEINVADERS_GAMECONTROLLER_H
 
+#include "controller.h"
+
 namespace SI::controller {
 
-	class Game {
+	class Game: Controller {
 	public:
 		Game();
 

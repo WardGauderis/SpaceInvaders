@@ -10,6 +10,7 @@ void SI::SpaceInvaders::eventLoop() {
 		while (utils::StopWatch::get().updateModel()) {
 		}
 		if (utils::StopWatch::get().renderView()) {
+			gameView.render();
 		}
 	}
 }
