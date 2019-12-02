@@ -25,7 +25,7 @@ namespace SI::view {
 	private:
 		sf::RenderWindow window;
 
-		static bool determineKey(const sf::Keyboard::Key& sfKey, utils::Key& key);
+		static bool determineKey(sf::Keyboard::Key sfKey, utils::Key& key);
 
 	};
 

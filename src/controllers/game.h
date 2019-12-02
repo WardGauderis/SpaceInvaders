@@ -21,6 +21,8 @@ namespace SI::controller {
 	private:
 		bool running;
 		std::shared_ptr<view::Game> view;
+
+		void handleKey(utils::Key key);
 	};
 
 }

@@ -42,7 +42,7 @@ bool SI::view::Game::pollEvent(utils::Event& event) {
 	return moreEvents;
 }
 
-bool SI::view::Game::determineKey(const sf::Keyboard::Key& sfKey, utils::Key& key) {
+bool SI::view::Game::determineKey(const sf::Keyboard::Key sfKey, utils::Key& key) {
 	switch (sfKey) {
 		case sf::Keyboard::Key::Up:
 		case sf::Keyboard::Key::Z:
