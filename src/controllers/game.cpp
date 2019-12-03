@@ -19,18 +19,6 @@ void SI::controller::Game::handleInput() {
 			case utils::Event::Closed:
 				running = false;
 				break;
-			case utils::Event::KeyPressed:
-
 		}
-	}
-}
-
-void SI::controller::Game::handleKey(const utils::Key key) {
-	switch (key) {
-		case utils::Key::up:
-		case utils::Key::down:
-		case utils::Key::left:
-		case utils::Key::right:
-
 	}
 }

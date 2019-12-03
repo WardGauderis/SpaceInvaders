@@ -13,6 +13,9 @@ namespace SI::controller {
 
 	class Controller {
 	public:
+		virtual void handleInput() = 0;
+
+		virtual ~Controller() = default;
 
 	private:
 		std::shared_ptr<model::Model> model;

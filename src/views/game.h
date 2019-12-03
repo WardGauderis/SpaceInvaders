@@ -5,8 +5,6 @@
 #ifndef SPACEINVADERS_GAMEVIEW_H
 #define SPACEINVADERS_GAMEVIEW_H
 
-#include <SFML/Graphics.hpp>
-
 #include "view.h"
 #include "../utils/event.h"
 
@@ -20,12 +18,7 @@ namespace SI::view {
 
 		void notify() final;
 
-		bool pollEvent(utils::Event& event);
-
 	private:
-		sf::RenderWindow window;
-
-		static bool determineKey(sf::Keyboard::Key sfKey, utils::Key& key);
 
 	};
 

@@ -5,9 +5,11 @@
 #ifndef SPACEINVADERS_SPACESHIPCONTROLLER_H
 #define SPACEINVADERS_SPACESHIPCONTROLLER_H
 
+#include "entity.h"
+
 namespace SI::controller {
 
-	class SpaceShip {
+	class SpaceShip : public Entity {
 
 	};
 

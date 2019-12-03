@@ -6,8 +6,11 @@
 #define SPACEINVADERS_VIEW_H
 
 #include <SFML/Graphics.hpp>
+#include <memory>
 
 #include "../utils/observer.h"
+#include "../utils/key.h"
+#include "../utils/event.h"
 
 namespace SI::view {
 
@@ -15,8 +18,12 @@ namespace SI::view {
 	public:
 		virtual void render() = 0;
 
-	private:
+		static bool isKeyPressed(utils::Key key);
 
+		bool pollEvent(utils::Event& event);
+
+	private:
+		std::shared_ptr<sf::RenderWindow> window;
 	};
 
 }

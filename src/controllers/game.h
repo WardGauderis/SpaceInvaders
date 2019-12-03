@@ -7,6 +7,7 @@
 
 #include "controller.h"
 #include "../views/game.h"
+#include "world.h"
 
 namespace SI::controller {
 
@@ -16,13 +17,13 @@ namespace SI::controller {
 
 		[[nodiscard]] bool isRunning() const;
 
-		void handleInput();
+		void handleInput() final;
 
 	private:
 		bool running;
 		std::shared_ptr<view::Game> view;
+		World world;
 
-		void handleKey(utils::Key key);
 	};
 
 }

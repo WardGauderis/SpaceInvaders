@@ -5,9 +5,11 @@
 #ifndef SPACEINVADERS_SPACESHIPVIEW_H
 #define SPACEINVADERS_SPACESHIPVIEW_H
 
+#include "entity.h"
+
 namespace SI::view {
 
-	class SpaceShip {
+	class SpaceShip : public Entity {
 
 	};
 

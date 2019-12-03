@@ -7,29 +7,13 @@
 
 namespace utils {
 
-	enum class Key {
-		up,
-		down,
-		left,
-		right
-	};
-
 	struct Event {
 
-		struct KeyEvent {
-			Key code;
-		};
-
 		enum EventType {
-			Closed,
-			KeyPressed
+			Closed
 		};
 
 		EventType type;
-
-		union {
-			KeyEvent key;
-		};
 
 	};
 

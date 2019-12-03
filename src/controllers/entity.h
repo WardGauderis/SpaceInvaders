@@ -9,7 +9,7 @@
 
 namespace SI::controller {
 
-	class entity : public Controller {
+	class Entity : public Controller {
 
 	};
 
