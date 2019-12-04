@@ -8,7 +8,7 @@ bool SI::controller::Game::isRunning() const {
 	return running;
 }
 
-SI::controller::Game::Game() {
+SI::controller::Game::Game(const std::shared_ptr<view::View>& view): Controller(view) {
 	running = true;
 }
 

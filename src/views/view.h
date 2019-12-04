@@ -16,13 +16,15 @@ namespace SI::view {
 
 	class View : public utils::Observer {
 	public:
+		explicit View(std::shared_ptr<sf::RenderWindow>  window);
+
 		virtual void render() = 0;
 
 		static bool isKeyPressed(utils::Key key);
 
 		bool pollEvent(utils::Event& event);
 
-	private:
+	protected:
 		std::shared_ptr<sf::RenderWindow> window;
 	};
 

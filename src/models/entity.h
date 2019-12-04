@@ -14,6 +14,8 @@ namespace SI::model {
 	public:
 		void move();
 
+		void addAcceleration(const utils::Vector& acc);
+
 	private:
 		utils::Vector position;
 		utils::Vector velocity;

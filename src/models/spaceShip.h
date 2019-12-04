@@ -9,7 +9,7 @@
 
 namespace SI::model {
 
-	class SpaceShip : Entity {
+	class SpaceShip : public Entity {
 
 	};
 

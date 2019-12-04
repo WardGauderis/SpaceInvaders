@@ -12,10 +12,12 @@ namespace SI::controller {
 
 	class World : public Entity {
 	public:
-		virtual void handleInput() final;
+		World(const std::shared_ptr<view::View>& view, const std::shared_ptr<model::Entity>& model);
+
+		void handleInput() final;
 
 	private:
-		Player player;
+		std::shared_ptr<Player> player;
 
 	};
 

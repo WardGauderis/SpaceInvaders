@@ -8,18 +8,21 @@
 #include <memory>
 
 #include "../models/model.h"
+#include "../views/game.h"
 
 namespace SI::controller {
 
 	class Controller {
 	public:
+
+		explicit Controller(std::shared_ptr<view::View> view);
+
 		virtual void handleInput() = 0;
 
 		virtual ~Controller() = default;
 
-	private:
-		std::shared_ptr<model::Model> model;
-
+	protected:
+		std::shared_ptr<view::View> view;
 	};
 
 }

@@ -4,14 +4,11 @@
 
 #include "game.h"
 
-SI::view::Game::Game() {
-	sf::ContextSettings settings;
-	settings.antialiasingLevel = 8;
-	window.create(sf::VideoMode(800, 600), "SFML", sf::Style::Default, settings);
-}
+SI::view::Game::Game() : View(std::make_shared<sf::RenderWindow>(sf::VideoMode(800, 600), "SFML", sf::Style::Default,
+                                                                 sf::ContextSettings(0, 0, 8))) {}
 
 void SI::view::Game::render() {
-	window.display();
+	window->display();
 }
 
 void SI::view::Game::notify() {

@@ -11,9 +11,9 @@ namespace SI::controller {
 
 	class Player : public SpaceShip {
 	public:
-		void handleInput() final;
+		Player(const std::shared_ptr<view::View>& view, const std::shared_ptr<model::Entity>& model);
 
-	private:
+		void handleInput() final;
 
 	};
 

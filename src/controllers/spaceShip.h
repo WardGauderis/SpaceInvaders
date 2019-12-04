@@ -10,7 +10,10 @@
 namespace SI::controller {
 
 	class SpaceShip : public Entity {
+	public:
+		SpaceShip(const std::shared_ptr<view::View>& view, const std::shared_ptr<model::Entity>& model);
 
+		void handleInput() override;
 	};
 
 }

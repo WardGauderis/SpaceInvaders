@@ -13,13 +13,14 @@ namespace SI {
 
 	class SpaceInvaders {
 	public:
+		SpaceInvaders();
 
 		void eventLoop();
 
 	private:
-		model::Game gameModel;
-		controller::Game gameController;
-		view::Game gameView;
+		std::shared_ptr<model::Game> gameModel;
+		std::shared_ptr<view::Game> gameView;
+		std::shared_ptr<controller::Game> gameController;
 	};
 
 }

@@ -10,7 +10,8 @@ namespace utils {
 	enum class Key {
 		up,
 		down,
-		left, right
+		left,
+		right
 	};
 
 }

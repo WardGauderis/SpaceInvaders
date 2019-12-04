@@ -9,3 +9,7 @@ void SI::model::Entity::move() {
 	position += velocity;
 	notifyObservers();
 }
+
+void SI::model::Entity::addAcceleration(const utils::Vector& acc) {
+	acceleration += acc;
+}

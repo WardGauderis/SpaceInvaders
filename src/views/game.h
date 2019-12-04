@@ -18,8 +18,6 @@ namespace SI::view {
 
 		void notify() final;
 
-	private:
-
 	};
 
 }

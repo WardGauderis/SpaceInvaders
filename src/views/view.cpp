@@ -4,6 +4,10 @@
 
 #include "view.h"
 
+#include <utility>
+
+SI::view::View::View(std::shared_ptr<sf::RenderWindow> window) : window(std::move(window)) {}
+
 bool SI::view::View::isKeyPressed(const utils::Key key) {
 	switch (key) {
 		case utils::Key::up:
@@ -27,7 +31,7 @@ bool SI::view::View::pollEvent(utils::Event& event) {
 	bool goodEvent = true;
 
 	do {
-		moreEvents = window.pollEvent(sfEvent);
+		moreEvents = window->pollEvent(sfEvent);
 		if (!moreEvents) return moreEvents;
 		switch (sfEvent.type) {
 			case sf::Event::Closed:
@@ -41,3 +45,4 @@ bool SI::view::View::pollEvent(utils::Event& event) {
 	return moreEvents;
 
 }
+

@@ -3,3 +3,7 @@
 //
 
 #include "controller.h"
+
+#include <utility>
+
+SI::controller::Controller::Controller(std::shared_ptr<view::View>  view) : view(std::move(view)) {}

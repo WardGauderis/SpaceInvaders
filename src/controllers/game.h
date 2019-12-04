@@ -6,14 +6,13 @@
 #define SPACEINVADERS_GAMECONTROLLER_H
 
 #include "controller.h"
-#include "../views/game.h"
 #include "world.h"
 
 namespace SI::controller {
 
 	class Game : public Controller {
 	public:
-		Game();
+		explicit Game(const std::shared_ptr<view::View>& view);
 
 		[[nodiscard]] bool isRunning() const;
 
@@ -21,8 +20,7 @@ namespace SI::controller {
 
 	private:
 		bool running;
-		std::shared_ptr<view::Game> view;
-		World world;
+		std::shared_ptr<World> world;
 
 	};
 
