@@ -4,5 +4,7 @@
 
 #include "entity.h"
 
-SI::controller::Entity::Entity(const std::shared_ptr<view::View>& view, const std::shared_ptr<model::Entity>& model)
-		: Controller(view), model(model) {}
+#include <utility>
+
+SI::controller::Entity::Entity(const std::shared_ptr<view::Entity>& view, std::shared_ptr<model::Entity> model)
+		: Controller(model, view), model(std::move(model)) {}

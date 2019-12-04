@@ -17,5 +17,5 @@ void SI::controller::Player::handleInput() {
 		model->addAcceleration({0, -acc});
 }
 
-SI::controller::Player::Player(const std::shared_ptr<view::View>& view, const std::shared_ptr<model::Entity>& model)
+SI::controller::Player::Player(const std::shared_ptr<view::Player>& view, const std::shared_ptr<model::Player>& model)
 		: SpaceShip(view, model) {}

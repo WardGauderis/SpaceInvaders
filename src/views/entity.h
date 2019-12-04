@@ -9,7 +9,8 @@
 namespace SI::view {
 
 	class Entity : public View {
-
+	public:
+		Entity(const std::shared_ptr<sf::RenderWindow>& window, const std::shared_ptr<model::Model>& model);
 	};
 
 }

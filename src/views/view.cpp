@@ -6,7 +6,8 @@
 
 #include <utility>
 
-SI::view::View::View(std::shared_ptr<sf::RenderWindow> window) : window(std::move(window)) {}
+SI::view::View::View(std::shared_ptr<sf::RenderWindow>  window, std::shared_ptr<model::Model> model)
+		: window(std::move(window)), model(std::move(model)) {}
 
 bool SI::view::View::isKeyPressed(const utils::Key key) {
 	switch (key) {
@@ -46,3 +47,6 @@ bool SI::view::View::pollEvent(utils::Event& event) {
 
 }
 
+const std::shared_ptr<sf::RenderWindow>& SI::view::View::getWindow() const {
+	return window;
+}

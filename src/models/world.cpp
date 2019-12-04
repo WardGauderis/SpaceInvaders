@@ -3,3 +3,7 @@
 //
 
 #include "world.h"
+
+void SI::model::World::update() {
+
+}

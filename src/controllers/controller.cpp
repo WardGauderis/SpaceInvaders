@@ -6,4 +6,5 @@
 
 #include <utility>
 
-SI::controller::Controller::Controller(std::shared_ptr<view::View>  view) : view(std::move(view)) {}
+SI::controller::Controller::Controller(std::shared_ptr<model::Model> model, std::shared_ptr<view::View> view) : model(
+		std::move(model)), view(std::move(view)) {}

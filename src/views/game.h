@@ -6,17 +6,23 @@
 #define SPACEINVADERS_GAMEVIEW_H
 
 #include "view.h"
-#include "../utils/event.h"
+#include "world.h"
+#include "../models/game.h"
 
 namespace SI::view {
 
 	class Game : public View {
 	public:
-		Game();
+		Game(const std::shared_ptr<model::Game>& model);
 
-		void render() final;
+		void draw() final;
 
 		void notify() final;
+
+		const std::shared_ptr<World>& getWorld() const;
+
+	private:
+		std::shared_ptr<World> world;
 
 	};
 

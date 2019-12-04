@@ -12,7 +12,7 @@ namespace SI::controller {
 
 	class Entity : public Controller {
 	public:
-		Entity(const std::shared_ptr<view::View>& view, const std::shared_ptr<model::Entity>& model);
+		Entity(const std::shared_ptr<view::Entity>& view, std::shared_ptr<model::Entity>  model);
 
 	protected:
 		std::shared_ptr<model::Entity> model;

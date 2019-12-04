@@ -15,13 +15,14 @@ namespace SI::controller {
 	class Controller {
 	public:
 
-		explicit Controller(std::shared_ptr<view::View> view);
+		explicit Controller(std::shared_ptr<model::Model> model, std::shared_ptr<view::View> view);
 
 		virtual void handleInput() = 0;
 
 		virtual ~Controller() = default;
 
 	protected:
+		std::shared_ptr<model::Model> model;
 		std::shared_ptr<view::View> view;
 	};
 

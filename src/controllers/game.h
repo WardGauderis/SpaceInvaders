@@ -12,7 +12,7 @@ namespace SI::controller {
 
 	class Game : public Controller {
 	public:
-		explicit Game(const std::shared_ptr<view::View>& view);
+		explicit Game(const std::shared_ptr<model::Game>& model, const std::shared_ptr<view::Game>& view);
 
 		[[nodiscard]] bool isRunning() const;
 

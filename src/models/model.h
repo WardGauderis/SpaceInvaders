@@ -11,9 +11,9 @@ namespace SI::model {
 
 	class Model : public utils::Subject {
 	public:
+		Model() = default;
 
-	private:
-
+		virtual void update() = 0;
 	};
 
 }

@@ -6,12 +6,13 @@
 #define SPACEINVADERS_PLAYERCONTROLLER_H
 
 #include "spaceShip.h"
+#include "../views/player.h"
 
 namespace SI::controller {
 
 	class Player : public SpaceShip {
 	public:
-		Player(const std::shared_ptr<view::View>& view, const std::shared_ptr<model::Entity>& model);
+		Player(const std::shared_ptr<view::Player>& view, const std::shared_ptr<model::Player>& model);
 
 		void handleInput() final;
 

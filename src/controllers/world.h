@@ -12,7 +12,7 @@ namespace SI::controller {
 
 	class World : public Entity {
 	public:
-		World(const std::shared_ptr<view::View>& view, const std::shared_ptr<model::Entity>& model);
+		World(const std::shared_ptr<view::World>& view, const std::shared_ptr<model::World>& model);
 
 		void handleInput() final;
 

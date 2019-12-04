@@ -6,11 +6,20 @@
 #define SPACEINVADERS_GAMEMODEL_H
 
 #include "model.h"
+#include "world.h"
 
 namespace SI::model {
 
 	class Game : public Model {
+	public:
+		Game();
 
+		void update() final;
+
+		const std::shared_ptr<model::World>& getWorld() const;
+
+	private:
+		std::shared_ptr<model::World> world;
 	};
 
 }

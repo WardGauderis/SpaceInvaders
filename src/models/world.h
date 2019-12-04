@@ -6,11 +6,16 @@
 #define SPACEINVADERS_WORLDMODEL_H
 
 #include "entity.h"
+#include "player.h"
 
 namespace SI::model {
 
-	class World : public Entity{
+	class World : public Entity {
+	public:
+		void update() final;
 
+	private:
+		Player player;
 	};
 
 }

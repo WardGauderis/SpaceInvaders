@@ -11,21 +11,25 @@
 #include "../utils/observer.h"
 #include "../utils/key.h"
 #include "../utils/event.h"
+#include "../models/model.h"
 
 namespace SI::view {
 
 	class View : public utils::Observer {
 	public:
-		explicit View(std::shared_ptr<sf::RenderWindow>  window);
+		View(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<model::Model> model);
 
-		virtual void render() = 0;
+		virtual void draw() = 0;
 
 		static bool isKeyPressed(utils::Key key);
 
 		bool pollEvent(utils::Event& event);
 
+		[[nodiscard]] const std::shared_ptr<sf::RenderWindow>& getWindow() const;
+
 	protected:
 		std::shared_ptr<sf::RenderWindow> window;
+		std::shared_ptr<model::Model> model;
 	};
 
 }

@@ -10,7 +10,8 @@
 namespace SI::model {
 
 	class Player : public SpaceShip {
-
+	public:
+		void update() final;
 	};
 
 }

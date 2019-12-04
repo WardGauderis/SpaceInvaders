@@ -3,10 +3,11 @@
 //
 
 #include "spaceShip.h"
+#include "../views/spaceShip.h"
 
 void SI::controller::SpaceShip::handleInput() {
 
 }
 
-SI::controller::SpaceShip::SpaceShip(const std::shared_ptr<view::View>& view,
-                                     const std::shared_ptr<model::Entity>& model) : Entity(view, model) {}
+SI::controller::SpaceShip::SpaceShip(const std::shared_ptr<view::SpaceShip>& view,
+                                     const std::shared_ptr<model::SpaceShip>& model) : Entity(view, model) {}
