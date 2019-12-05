@@ -22,6 +22,7 @@ namespace SI::view {
 		const std::shared_ptr<World>& getWorld() const;
 
 	private:
+		std::shared_ptr<model::Game> model;
 		std::shared_ptr<World> world;
 
 	};

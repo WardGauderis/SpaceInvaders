@@ -5,7 +5,9 @@
 #include "world.h"
 
 void SI::controller::World::handleInput() {
-	player->handleInput();
+	for (const auto& entity: entities) {
+		entity->handleInput();
+	}
 }
 
 SI::controller::World::World(const std::shared_ptr<view::World>& view, const std::shared_ptr<model::World>& model)

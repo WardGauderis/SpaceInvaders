@@ -6,5 +6,5 @@
 
 #include <utility>
 
-SI::controller::Entity::Entity(const std::shared_ptr<view::Entity>& view, std::shared_ptr<model::Entity> model)
-		: Controller(model, view), model(std::move(model)) {}
+SI::controller::Entity::Entity(std::shared_ptr<view::Entity> view, std::shared_ptr<model::Entity> model) : model(
+		std::move(model)), view(std::move(view)) {}

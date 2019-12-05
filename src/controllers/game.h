@@ -22,6 +22,10 @@ namespace SI::controller {
 		bool running;
 		std::shared_ptr<World> world;
 
+		std::shared_ptr<model::Game> model;
+		std::shared_ptr<view::Game> view;
+
+
 	};
 
 }

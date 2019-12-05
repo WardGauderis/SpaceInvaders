@@ -17,8 +17,7 @@ namespace SI::controller {
 		void handleInput() final;
 
 	private:
-		std::shared_ptr<Player> player;
-
+		std::vector<std::shared_ptr<Entity>> entities;
 	};
 
 }

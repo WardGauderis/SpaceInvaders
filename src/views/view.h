@@ -17,7 +17,7 @@ namespace SI::view {
 
 	class View : public utils::Observer {
 	public:
-		View(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<model::Model> model);
+		View(std::shared_ptr<sf::RenderWindow> window);
 
 		virtual void draw() = 0;
 
@@ -29,7 +29,6 @@ namespace SI::view {
 
 	protected:
 		std::shared_ptr<sf::RenderWindow> window;
-		std::shared_ptr<model::Model> model;
 	};
 
 }

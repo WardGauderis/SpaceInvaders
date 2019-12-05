@@ -4,5 +4,7 @@
 
 #include "entity.h"
 
-SI::view::Entity::Entity(const std::shared_ptr<sf::RenderWindow>& window, const std::shared_ptr<model::Model>& model)
-		: View(window, model) {}
+#include <utility>
+
+SI::view::Entity::Entity(const std::shared_ptr<sf::RenderWindow>& window, std::shared_ptr<model::Entity>  model)
+		: View(window), model(std::move(model)) {}

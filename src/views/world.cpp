@@ -3,8 +3,9 @@
 //
 
 #include "world.h"
+#include "../models/world.h"
 
-SI::view::World::World(const std::shared_ptr<sf::RenderWindow>& window, const std::shared_ptr<model::Model>& model)
+SI::view::World::World(const std::shared_ptr<sf::RenderWindow>& window, const std::shared_ptr<model::World>& model)
 		: Entity(window, model) {}
 
 void SI::view::World::draw() {

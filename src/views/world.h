@@ -6,16 +6,20 @@
 #define SPACEINVADERS_WORLDVIEW_H
 
 #include "entity.h"
+#include "../models/world.h"
 
 namespace SI::view {
 
 	class World : public Entity {
 	public:
-		World(const std::shared_ptr<sf::RenderWindow>& window, const std::shared_ptr<model::Model>& model);
+		World(const std::shared_ptr<sf::RenderWindow>& window, const std::shared_ptr<model::World>& model);
 
 		void notify() override;
 
 		void draw() override;
+
+	private:
+		std::vector<std::shared_ptr<Entity>> entities;
 	};
 
 }

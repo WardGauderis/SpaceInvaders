@@ -15,7 +15,7 @@ namespace SI::model {
 		void update() final;
 
 	private:
-		Player player;
+		std::vector<std::shared_ptr<Entity>> models;
 	};
 
 }
