@@ -5,10 +5,7 @@
 #ifndef SPACEINVADERS_SPACEINVADERS_H
 #define SPACEINVADERS_SPACEINVADERS_H
 
-#include <memory>
 
-#include "models/world.h"
-#include "views/world.h"
 #include "controllers/world.h"
 
 

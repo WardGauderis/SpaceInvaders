@@ -8,9 +8,7 @@
 SI::SpaceInvaders::SpaceInvaders() : model(std::make_shared<model::World>()),
                                      view(std::make_shared<view::World>(model)),
                                      controller(std::make_shared<controller::World>(model, view)),
-                                     running(true) {
-
-}
+                                     running(true) {}
 
 void SI::SpaceInvaders::eventLoop() {
 	while (running) {
