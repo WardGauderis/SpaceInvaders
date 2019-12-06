@@ -3,7 +3,6 @@
 //
 
 #include "spaceShip.h"
-#include "../views/spaceShip.h"
 
 void SI::controller::SpaceShip::handleInput() {
 

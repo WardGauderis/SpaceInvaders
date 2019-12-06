@@ -5,7 +5,6 @@
 #ifndef SPACEINVADERS_WORLDCONTROLLER_H
 #define SPACEINVADERS_WORLDCONTROLLER_H
 
-#include "entity.h"
 #include "player.h"
 
 namespace SI::controller {
@@ -16,8 +15,12 @@ namespace SI::controller {
 
 		void handleInput() final;
 
+		void addEntity(const std::shared_ptr<Entity>& entity);
+
+		void removeEntity(const std::shared_ptr<Entity>& entity);
+
 	private:
-		std::vector<std::shared_ptr<Entity>> entities;
+		std::unordered_set<std::shared_ptr<Entity>> entities;
 	};
 
 }

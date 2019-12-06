@@ -9,8 +9,8 @@ bool SI::controller::Game::isRunning() const {
 }
 
 SI::controller::Game::Game(const std::shared_ptr<model::Game>& model, const std::shared_ptr<view::Game>& view)
-		: running(true), world(std::make_shared<World>(view->getWorld(), model->getWorld())), model(model),
-		  view(view) {}
+		: model(model), view(view), running(true),
+		  world(std::make_shared<World>(view->getWorld(), model->getWorld())) {}
 
 void SI::controller::Game::handleInput() {
 	utils::Event event{};
@@ -23,4 +23,8 @@ void SI::controller::Game::handleInput() {
 	}
 
 	world->handleInput();
+}
+
+std::shared_ptr<SI::model::Entity> SI::controller::Game::addEntity() {
+	return std::shared_ptr<model::Entity>();
 }

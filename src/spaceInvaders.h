@@ -5,9 +5,7 @@
 #ifndef SPACEINVADERS_SPACEINVADERS_H
 #define SPACEINVADERS_SPACEINVADERS_H
 
-#include "models/game.h"
 #include "controllers/game.h"
-#include "views/game.h"
 
 namespace SI {
 

@@ -5,7 +5,6 @@
 #ifndef SPACEINVADERS_GAMECONTROLLER_H
 #define SPACEINVADERS_GAMECONTROLLER_H
 
-#include "controller.h"
 #include "world.h"
 
 namespace SI::controller {
@@ -18,13 +17,14 @@ namespace SI::controller {
 
 		void handleInput() final;
 
-	private:
-		bool running;
-		std::shared_ptr<World> world;
+		std::shared_ptr<model::Entity> addEntity();
 
+	private:
 		std::shared_ptr<model::Game> model;
 		std::shared_ptr<view::Game> view;
 
+		bool running;
+		std::shared_ptr<World> world;
 
 	};
 

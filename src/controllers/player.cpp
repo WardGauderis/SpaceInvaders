@@ -3,7 +3,6 @@
 //
 
 #include "player.h"
-#include "../utils/key.h"
 
 void SI::controller::Player::handleInput() {
 	const float acc = 0.5;

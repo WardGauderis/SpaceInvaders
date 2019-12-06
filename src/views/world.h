@@ -18,8 +18,12 @@ namespace SI::view {
 
 		void draw() override;
 
+		void addEntity(const std::shared_ptr<Entity>& entity);
+
+		void removeEntity(const std::shared_ptr<Entity>& entity);
+
 	private:
-		std::vector<std::shared_ptr<Entity>> entities;
+		std::unordered_set<std::shared_ptr<Entity>> entities;
 	};
 
 }

@@ -6,9 +6,7 @@
 #define SPACEINVADERS_VIEW_H
 
 #include <SFML/Graphics.hpp>
-#include <memory>
 
-#include "../utils/observer.h"
 #include "../utils/key.h"
 #include "../utils/event.h"
 #include "../models/model.h"

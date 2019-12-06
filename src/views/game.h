@@ -5,7 +5,6 @@
 #ifndef SPACEINVADERS_GAMEVIEW_H
 #define SPACEINVADERS_GAMEVIEW_H
 
-#include "view.h"
 #include "world.h"
 #include "../models/game.h"
 

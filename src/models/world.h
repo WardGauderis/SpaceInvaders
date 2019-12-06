@@ -5,7 +5,8 @@
 #ifndef SPACEINVADERS_WORLDMODEL_H
 #define SPACEINVADERS_WORLDMODEL_H
 
-#include "entity.h"
+#include <unordered_set>
+
 #include "player.h"
 
 namespace SI::model {
@@ -14,8 +15,12 @@ namespace SI::model {
 	public:
 		void update() final;
 
+		void addEntity(const std::shared_ptr<Entity>& entity);
+
+		void removeEntity(const std::shared_ptr<Entity>& entity);
+
 	private:
-		std::vector<std::shared_ptr<Entity>> models;
+		std::unordered_set<std::shared_ptr<Entity>> entities;
 	};
 
 }

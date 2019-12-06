@@ -5,7 +5,6 @@
 #ifndef SPACEINVADERS_GAMEMODEL_H
 #define SPACEINVADERS_GAMEMODEL_H
 
-#include "model.h"
 #include "world.h"
 
 namespace SI::model {
