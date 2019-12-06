@@ -10,7 +10,14 @@
 namespace SI::view {
 
 	class Player : public SpaceShip {
+	public:
+		Player(const std::shared_ptr<model::Entity>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
+		void notify() override;
+
+		void update() override;
+
+		~Player() final = default;
 	};
 
 }

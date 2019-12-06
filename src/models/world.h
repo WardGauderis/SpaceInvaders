@@ -13,11 +13,15 @@ namespace SI::model {
 
 	class World : public Entity {
 	public:
+		World() = default;
+
 		void update() final;
 
 		void addEntity(const std::shared_ptr<Entity>& entity);
 
 		void removeEntity(const std::shared_ptr<Entity>& entity);
+
+		~World() final = default;
 
 	private:
 		std::unordered_set<std::shared_ptr<Entity>> entities;

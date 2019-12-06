@@ -5,14 +5,28 @@
 #ifndef SPACEINVADERS_ENTITYVIEW_H
 #define SPACEINVADERS_ENTITYVIEW_H
 
-#include "view.h"
+#include <SFML/Graphics.hpp>
+
 #include "../models/entity.h"
+#include "../utils/key.h"
+#include "../utils/event.h"
 
 namespace SI::view {
 
-	class Entity : public View {
+	class Entity : public utils::Observer {
 	public:
-		Entity(const std::shared_ptr<sf::RenderWindow>& window, std::shared_ptr<model::Entity>  model);
+		Entity(std::shared_ptr<model::Entity> model, std::shared_ptr<sf::RenderWindow> window);
+
+		Entity(std::shared_ptr<model::Entity> model);
+
+		virtual void update() = 0;
+
+		static bool isKeyPressed(utils::Key key);
+
+		bool pollEvent(utils::Event& event);
+
+	protected:
+		std::shared_ptr<sf::RenderWindow> window;
 
 	private:
 		std::shared_ptr<model::Entity> model;

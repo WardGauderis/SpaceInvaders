@@ -6,18 +6,21 @@
 #define SPACEINVADERS_WORLDCONTROLLER_H
 
 #include "player.h"
+#include "../views/world.h"
 
 namespace SI::controller {
 
 	class World : public Entity {
 	public:
-		World(const std::shared_ptr<view::World>& view, const std::shared_ptr<model::World>& model);
+		World(const std::shared_ptr<model::World>& model,const std::shared_ptr<view::World>& view);
 
-		void handleInput() final;
+		void update() final;
 
 		void addEntity(const std::shared_ptr<Entity>& entity);
 
 		void removeEntity(const std::shared_ptr<Entity>& entity);
+
+		~World() final = default;
 
 	private:
 		std::unordered_set<std::shared_ptr<Entity>> entities;

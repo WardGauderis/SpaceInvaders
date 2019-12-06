@@ -11,7 +11,11 @@ namespace SI::model {
 
 	class Player : public SpaceShip {
 	public:
+		Player() = default;
+
 		void update() final;
+
+		~Player() final = default;
 	};
 
 }

@@ -4,7 +4,10 @@
 
 #include "player.h"
 
-void SI::controller::Player::handleInput() {
+SI::controller::Player::Player(const std::shared_ptr<model::Player>& model, const std::shared_ptr<view::Player>& view)
+		: SpaceShip(model, view) {}
+
+void SI::controller::Player::update() {
 	const float acc = 0.5;
 	if (view->isKeyPressed(utils::Key::up))
 		model->addAcceleration({acc, 0});
@@ -15,6 +18,3 @@ void SI::controller::Player::handleInput() {
 	if (view->isKeyPressed(utils::Key::right))
 		model->addAcceleration({0, -acc});
 }
-
-SI::controller::Player::Player(const std::shared_ptr<view::Player>& view, const std::shared_ptr<model::Player>& model)
-		: SpaceShip(view, model) {}

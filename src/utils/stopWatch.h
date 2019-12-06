@@ -34,7 +34,7 @@ namespace utils {
 		 * also prints the fps if requested
 		 * @return whether the view must be rendered
 		 */
-		bool renderView();
+		bool updateView();
 
 		/**
 		 * set fps

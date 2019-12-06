@@ -10,7 +10,10 @@
 namespace SI::model {
 
 	class SpaceShip : public Entity {
+	public:
+		SpaceShip() = default;
 
+		~SpaceShip() override = default;
 	};
 
 }

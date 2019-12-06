@@ -21,7 +21,7 @@ bool utils::StopWatch::updateModel() {
 	return update;
 }
 
-bool utils::StopWatch::renderView() {
+bool utils::StopWatch::updateView() {
 	auto currentTime = std::chrono::steady_clock::now();
 	auto passedTime = currentTime - lastTime;
 	lastTime = currentTime;

@@ -10,7 +10,14 @@
 namespace SI::view {
 
 	class SpaceShip : public Entity {
+	public:
+		SpaceShip(const std::shared_ptr<model::Entity>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
+		void notify() override;
+
+		void update() override;
+
+		~SpaceShip() override = default;
 	};
 
 }

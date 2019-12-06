@@ -7,15 +7,17 @@
 
 #include "spaceShip.h"
 #include "../views/player.h"
+#include "../models/player.h"
 
 namespace SI::controller {
 
 	class Player : public SpaceShip {
 	public:
-		Player(const std::shared_ptr<view::Player>& view, const std::shared_ptr<model::Player>& model);
+		Player(const std::shared_ptr<model::Player>& model, const std::shared_ptr<view::Player>& view);
 
-		void handleInput() final;
+		void update() final;
 
+		~Player() final = default;
 	};
 
 }

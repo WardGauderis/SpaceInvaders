@@ -5,13 +5,18 @@
 #ifndef SPACEINVADERS_ENTITYCONTROLLER_H
 #define SPACEINVADERS_ENTITYCONTROLLER_H
 
-#include "controller.h"
+#include <memory>
+#include "../views/entity.h"
 
 namespace SI::controller {
 
-	class Entity : public Controller {
+	class Entity {
 	public:
-		Entity(std::shared_ptr<view::Entity>  view, std::shared_ptr<model::Entity>  model);
+		Entity(std::shared_ptr<model::Entity> model, std::shared_ptr<view::Entity> view);
+
+		virtual void update() = 0;
+
+		virtual ~Entity() = default;
 
 	protected:
 		std::shared_ptr<model::Entity> model;

@@ -12,15 +12,17 @@ namespace SI::view {
 
 	class World : public Entity {
 	public:
-		World(const std::shared_ptr<sf::RenderWindow>& window, const std::shared_ptr<model::World>& model);
+		World(const std::shared_ptr<model::World>& model);
 
 		void notify() override;
 
-		void draw() override;
+		void update() override;
 
 		void addEntity(const std::shared_ptr<Entity>& entity);
 
 		void removeEntity(const std::shared_ptr<Entity>& entity);
+
+		~World() final = default;
 
 	private:
 		std::unordered_set<std::shared_ptr<Entity>> entities;

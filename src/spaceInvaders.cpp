@@ -5,18 +5,47 @@
 #include "spaceInvaders.h"
 #include "utils/stopWatch.h"
 
-SI::SpaceInvaders::SpaceInvaders() : gameModel(std::make_shared<model::Game>()),
-                                     gameView(std::make_shared<view::Game>(gameModel)),
-                                     gameController(std::make_shared<controller::Game>(gameModel, gameView)) {}
+SI::SpaceInvaders::SpaceInvaders() : model(std::make_shared<model::World>()),
+                                     view(std::make_shared<view::World>(model)),
+                                     controller(std::make_shared<controller::World>(model, view)),
+                                     running(true) {
+
+}
 
 void SI::SpaceInvaders::eventLoop() {
-	while (gameController->isRunning()) {
+	while (running) {
 		while (utils::StopWatch::get().updateModel()) {
-			gameController->handleInput();
-			gameModel->update();
+			updateController();
+			updateModel();
 		}
-		if (utils::StopWatch::get().renderView()) {
-			gameView->draw();
+		if (utils::StopWatch::get().updateView()) {
+			updateView();
 		}
 	}
+}
+
+void SI::SpaceInvaders::updateController() {
+	utils::Event event{};
+	while (view->pollEvent(event)) {
+		switch (event.type) {
+			case utils::Event::Closed:
+				running = false;
+				break;
+		}
+	}
+
+	controller->update();
+}
+
+void SI::SpaceInvaders::updateModel() {
+	model->update();
+}
+
+void SI::SpaceInvaders::updateView() {
+	view->update();
+}
+
+template<class Entity>
+auto SI::SpaceInvaders::addEntity() -> std::shared_ptr<typename Entity::Model> {
+	return std::shared_ptr<typename Entity::Model>();
 }

@@ -5,7 +5,12 @@
 #ifndef SPACEINVADERS_SPACEINVADERS_H
 #define SPACEINVADERS_SPACEINVADERS_H
 
-#include "controllers/game.h"
+#include <memory>
+
+#include "models/world.h"
+#include "views/world.h"
+#include "controllers/world.h"
+
 
 namespace SI {
 
@@ -16,9 +21,20 @@ namespace SI {
 		void eventLoop();
 
 	private:
-		std::shared_ptr<model::Game> gameModel;
-		std::shared_ptr<view::Game> gameView;
-		std::shared_ptr<controller::Game> gameController;
+		std::shared_ptr<model::World> model;
+		std::shared_ptr<view::World> view;
+		std::shared_ptr<controller::World> controller;
+
+		bool running;
+
+		void updateController();
+
+		void updateModel();
+
+		void updateView();
+
+		template<class Entity>
+		auto addEntity() -> std::shared_ptr<typename Entity::Model>;
 	};
 
 }

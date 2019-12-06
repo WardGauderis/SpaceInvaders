@@ -5,16 +5,22 @@
 #ifndef SPACEINVADERS_ENTITYMODEL_H
 #define SPACEINVADERS_ENTITYMODEL_H
 
-#include "model.h"
 #include "../utils/vector.h"
+#include "../utils/observer.h"
 
 namespace SI::model {
 
-	class Entity : public Model {
+	class Entity : public utils::Subject {
 	public:
+		Entity() = default;
+
+		virtual void update() = 0;
+
 		void move();
 
 		void addAcceleration(const utils::Vector& acc);
+
+		~Entity() = default;
 
 	private:
 		utils::Vector position;
