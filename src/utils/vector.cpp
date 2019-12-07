@@ -9,3 +9,9 @@ utils::Vector& utils::Vector::operator+=(const Vector& vector) {
 	y += vector.y;
 	return *this;
 }
+
+utils::Vector& utils::Vector::operator*=(float amount) {
+	x *= amount;
+	y *= amount;
+	return *this;
+}

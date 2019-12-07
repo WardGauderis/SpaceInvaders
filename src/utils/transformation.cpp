@@ -21,7 +21,7 @@ int utils::Transformation::convertWidth(const float x) const {
 }
 
 int utils::Transformation::convertHeight(const float y) const {
-	return static_cast<int>(std::round((y / 6.0f + 0.5f) * static_cast<float>(height)));
+	return static_cast<int>(std::round((y / -6.0f + 0.5f) * static_cast<float>(height)));
 }
 
 float utils::Transformation::convertWidth(const int x) const {

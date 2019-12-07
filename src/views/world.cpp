@@ -19,6 +19,10 @@ void SI::view::World::notify() {
 }
 
 void SI::view::World::update() {
+	window->clear();
+	for (const auto& entity: entities) {
+		entity->update();
+	}
 	window->display();
 }
 
@@ -28,4 +32,8 @@ void SI::view::World::addEntity(const std::shared_ptr<Entity>& entity) {
 
 void SI::view::World::removeEntity(const std::shared_ptr<Entity>& entity) {
 	entities.erase(entity);
+}
+
+std::shared_ptr<sf::RenderWindow> SI::view::World::getWindow() const {
+	return window;
 }

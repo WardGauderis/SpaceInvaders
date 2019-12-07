@@ -5,5 +5,5 @@
 #include "player.h"
 
 void SI::model::Player::update() {
-
+	move();
 }

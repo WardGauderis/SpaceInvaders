@@ -4,11 +4,14 @@
 
 #include "spaceInvaders.h"
 #include "utils/stopWatch.h"
+#include "entities.h"
 
 SI::SpaceInvaders::SpaceInvaders() : model(std::make_shared<model::World>()),
                                      view(std::make_shared<view::World>(model)),
                                      controller(std::make_shared<controller::World>(model, view)),
-                                     running(true) {}
+                                     running(true) {
+	addEntity<Player>();
+}
 
 void SI::SpaceInvaders::eventLoop() {
 	while (running) {
@@ -45,5 +48,15 @@ void SI::SpaceInvaders::updateView() {
 
 template<class Entity>
 auto SI::SpaceInvaders::addEntity() -> std::shared_ptr<typename Entity::Model> {
-	return std::shared_ptr<typename Entity::Model>();
+	auto entityModel = std::make_shared<typename Entity::Model>();
+	auto entityView = std::make_shared<typename Entity::View>(entityModel, view->getWindow());
+	auto entityController = std::make_shared<typename Entity::Controller>(entityModel, entityView);
+
+	entityModel->registerObserver(entityView);
+
+	model->addEntity(entityModel);
+	view->addEntity(entityView);
+	controller->addEntity(entityController);
+
+	return entityModel;
 }

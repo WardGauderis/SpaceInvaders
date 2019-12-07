@@ -18,6 +18,9 @@ namespace SI::view {
 		void update() override;
 
 		~Player() final = default;
+
+	private:
+		sf::RectangleShape sprite;
 	};
 
 }

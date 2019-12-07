@@ -18,7 +18,9 @@ namespace SI::model {
 
 		void move();
 
-		void addAcceleration(const utils::Vector& acc);
+		void addVelocity(const utils::Vector& vel);
+
+		const utils::Vector& getPosition() const;
 
 		~Entity() = default;
 

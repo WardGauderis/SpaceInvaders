@@ -27,9 +27,8 @@ namespace SI::view {
 
 	protected:
 		std::shared_ptr<sf::RenderWindow> window;
-
-	private:
 		std::shared_ptr<model::Entity> model;
+
 	};
 
 }

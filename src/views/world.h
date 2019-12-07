@@ -14,13 +14,15 @@ namespace SI::view {
 	public:
 		World(const std::shared_ptr<model::World>& model);
 
-		void notify() override;
+		void notify() final;
 
-		void update() override;
+		void update() final;
 
 		void addEntity(const std::shared_ptr<Entity>& entity);
 
 		void removeEntity(const std::shared_ptr<Entity>& entity);
+
+		std::shared_ptr<sf::RenderWindow> getWindow() const;
 
 		~World() final = default;
 

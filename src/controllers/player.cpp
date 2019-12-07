@@ -8,13 +8,13 @@ SI::controller::Player::Player(const std::shared_ptr<model::Player>& model, cons
 		: SpaceShip(model, view) {}
 
 void SI::controller::Player::update() {
-	const float acc = 0.5;
+	const float acc = 0.002f;
 	if (view->isKeyPressed(utils::Key::up))
-		model->addAcceleration({acc, 0});
+		model->addVelocity({0, acc});
 	if (view->isKeyPressed(utils::Key::down))
-		model->addAcceleration({-acc, 0});
+		model->addVelocity({0, -acc});
 	if (view->isKeyPressed(utils::Key::left))
-		model->addAcceleration({0, acc});
+		model->addVelocity({-acc, 0});
 	if (view->isKeyPressed(utils::Key::right))
-		model->addAcceleration({0, -acc});
+		model->addVelocity({acc, 0});
 }

@@ -5,7 +5,9 @@
 #include "world.h"
 
 void SI::model::World::update() {
-
+	for (const auto& entity: entities) {
+		entity->update();
+	}
 }
 
 void SI::model::World::addEntity(const std::shared_ptr<Entity>& entity) {

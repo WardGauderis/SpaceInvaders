@@ -12,6 +12,8 @@ namespace utils {
 		float y;
 
 		Vector& operator+=(const Vector& vector);
+
+		Vector& operator*=(float amount);
 	};
 
 }

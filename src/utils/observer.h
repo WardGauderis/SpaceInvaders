@@ -34,15 +34,17 @@ namespace utils {
 		 */
 		virtual void removeObserver(const std::shared_ptr<Observer>& observer);
 
+		virtual ~Subject() = default;
+
+	protected:
 		/**
 		 * notify all observers
-		 */
+ 		 */
 		virtual void notifyObservers();
-
-		virtual ~Subject() = default;
 
 	private:
 		std::vector<std::shared_ptr<Observer>> observers;
+
 	};
 
 }
