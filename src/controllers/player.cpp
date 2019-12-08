@@ -21,7 +21,7 @@ void SI::controller::Player::update(SpaceInvaders& game) {
 		model->addVelocity({acc, 0});
 	if (view->isKeyPressed(utils::Key::space))
 		if (cooldown == 0) {
-			cooldown = 60;
+			cooldown = 15;
 			model->action(game);
 		}
 }

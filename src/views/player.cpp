@@ -10,10 +10,6 @@ SI::view::Player::Player(const std::shared_ptr<model::PhysicalEntity>& model, co
 	sprite.setFillColor(sf::Color::White);
 }
 
-void SI::view::Player::notify() {
-	SpaceShip::notify();
-}
-
-void SI::view::Player::update() {
-	SpaceShip::update();
+int SI::view::Player::drawOrder() {
+	return 1;
 }

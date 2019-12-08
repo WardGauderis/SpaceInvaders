@@ -4,6 +4,8 @@
 
 #include "entity.h"
 
+SI::view::Entity::Entity(): Entity(nullptr) {}
+
 SI::view::Entity::Entity(std::shared_ptr<sf::RenderWindow> window) : window(std::move(window)) {}
 
 bool SI::view::Entity::isKeyPressed(utils::Key key) {
@@ -44,4 +46,8 @@ bool SI::view::Entity::pollEvent(utils::Event& event) {
 	} while (!goodEvent);
 
 	return moreEvents;
+}
+
+int SI::view::Entity::drawOrder() {
+	return 0;
 }

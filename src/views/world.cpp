@@ -5,7 +5,16 @@
 #include "world.h"
 #include "../utils/transformation.h"
 
-SI::view::World::World(std::shared_ptr<model::World> model) : Entity(), model(std::move(model)) {
+#include <functional>
+
+std::function<bool(const std::shared_ptr<SI::view::Entity>&,
+                   const std::shared_ptr<SI::view::Entity>&)> cmpEntities = [](
+		const std::shared_ptr<SI::view::Entity>& entity0, const std::shared_ptr<SI::view::Entity>& entity1) {
+	if (entity0->drawOrder() == entity1->drawOrder()) return entity0 < entity1;
+	else return entity0->drawOrder() < entity1->drawOrder();
+};
+
+SI::view::World::World(std::shared_ptr<model::World> model) : Entity(), model(std::move(model)), entities(cmpEntities) {
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 8;
 

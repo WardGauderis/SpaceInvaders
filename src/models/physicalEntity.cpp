@@ -9,7 +9,6 @@ void SI::model::PhysicalEntity::update() {
 }
 
 void SI::model::PhysicalEntity::move() {
-	const float slow = 0.99f;
 	auto backup = position;
 	position += velocity;
 	if (std::abs(position.x) + size.x / 2 > 4) {
@@ -20,7 +19,7 @@ void SI::model::PhysicalEntity::move() {
 		velocity.y = -velocity.y * 0.5f;
 		position.y = backup.y;
 	}
-	velocity *= slow;
+	velocity *= drag;
 	notifyObservers();
 }
 
@@ -62,8 +61,12 @@ void SI::model::PhysicalEntity::setSize(const utils::Vector& size) {
 
 bool SI::model::PhysicalEntity::collides(const std::shared_ptr<PhysicalEntity>& entity0,
                                          const std::shared_ptr<PhysicalEntity>& entity1) {
-	return entity0->position.x < entity1->position.x + entity1->size.x &&
-	       entity0->position.x + entity0->size.x > entity1->position.x &&
-	       entity0->position.y < entity1->position.y + entity1->position.y &&
-	       entity0->position.y + entity0->size.y > entity1->position.y;
+	return entity0->position.x - entity0->size.x / 2 < entity1->position.x + entity1->size.x / 2 &&
+	       entity0->position.x + entity0->size.x / 2 > entity1->position.x - entity1->size.x / 2 &&
+	       entity0->position.y - entity0->size.y / 2 < entity1->position.y + entity1->size.y / 2 &&
+	       entity0->position.y + entity0->size.y / 2 > entity1->position.y - entity1->size.y / 2;
+}
+
+void SI::model::PhysicalEntity::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
+
 }

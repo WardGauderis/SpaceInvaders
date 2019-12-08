@@ -13,8 +13,6 @@ namespace SI::model {
 	public:
 		Player();
 
-		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) final;
-
 		void action(SpaceInvaders& game);
 
 		~Player() final = default;

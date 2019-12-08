@@ -14,10 +14,6 @@ namespace SI::view {
 	public:
 		Bullet(const std::shared_ptr<model::Bullet>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
-		void notify() final;
-
-		void update() final;
-
 		~Bullet() final = default;
 	};
 

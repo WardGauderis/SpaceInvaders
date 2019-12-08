@@ -11,7 +11,7 @@ namespace SI::model {
 
 	class Bullet : public PhysicalEntity {
 	public:
-		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) final;
+		Bullet();
 
 		~Bullet() final = default;
 	};

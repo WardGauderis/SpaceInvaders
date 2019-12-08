@@ -7,16 +7,12 @@
 #include "../entities.h"
 
 SI::model::Player::Player() {
-	size = {1, 1};
-}
-
-void SI::model::Player::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
-
+	size = {0.5, 0.5};
+	drag = 0.99f;
 }
 
 void SI::model::Player::action(SI::SpaceInvaders& game) {
 	auto bullet = game.addEntity<SI::Bullet>();
-	bullet->setSize({0.2f, 0.5f});
 	bullet->setPosition(position);
-	bullet->setVelocity(velocity);
+	bullet->setVelocity(velocity + utils::Vector::normalize(velocity) / 10);
 }

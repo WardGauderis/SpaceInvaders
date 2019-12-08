@@ -17,7 +17,7 @@ namespace SI::view {
 	class Entity : public utils::Observer {
 	public:
 
-		Entity() = default;
+		Entity();
 
 		Entity(std::shared_ptr<sf::RenderWindow> window);
 
@@ -27,12 +27,13 @@ namespace SI::view {
 
 		bool pollEvent(utils::Event& event);
 
+		virtual int drawOrder();
+
 		virtual ~Entity() = default;
 
 	protected:
 		std::shared_ptr<sf::RenderWindow> window;
 		sf::RectangleShape sprite;
-
 	};
 
 }

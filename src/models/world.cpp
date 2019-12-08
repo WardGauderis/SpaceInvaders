@@ -9,10 +9,14 @@ void SI::model::World::update() {
 		entity->update();
 	}
 	for (auto it0 = physicalEntities.begin(); it0 != physicalEntities.end(); ++it0) {
-		for (auto it1 = it0; it1 != physicalEntities.end(); ++it1) {
-			if (model::PhysicalEntity::collides(*it0, *it1)) {
-				(*it0)->onCollision(*it1);
-				(*it1)->onCollision(*it0);
+		auto& entity0 = (*it0);
+		auto it1 = it0;
+		++it1;
+		for (; it1 != physicalEntities.end(); ++it1) {
+			auto& entity1 = (*it1);
+			if (model::PhysicalEntity::collides(entity0, entity1)) {
+				entity0->onCollision(entity1);
+				entity1->onCollision(entity0);
 			}
 		}
 	}

@@ -34,7 +34,7 @@ namespace SI::model {
 
 		void setSize(const utils::Vector& size);
 
-		virtual void onCollision(const std::shared_ptr<PhysicalEntity>& entity) = 0;
+		virtual void onCollision(const std::shared_ptr<PhysicalEntity>& entity);
 
 		~PhysicalEntity() override = default;
 
@@ -42,6 +42,7 @@ namespace SI::model {
 		collides(const std::shared_ptr<PhysicalEntity>& entity0, const std::shared_ptr<PhysicalEntity>& entity1);
 
 	protected:
+		float drag;
 		utils::Vector size;
 		utils::Vector position;
 		utils::Vector velocity;

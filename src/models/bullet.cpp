@@ -4,6 +4,7 @@
 
 #include "bullet.h"
 
-void SI::model::Bullet::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
-
+SI::model::Bullet::Bullet() {
+	size = {0.2f, 0.3f};
+	drag = 1.0f;
 }

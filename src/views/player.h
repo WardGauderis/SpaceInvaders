@@ -13,9 +13,7 @@ namespace SI::view {
 	public:
 		Player(const std::shared_ptr<model::PhysicalEntity>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
-		void notify() override;
-
-		void update() override;
+		int drawOrder() override;
 
 		~Player() final = default;
 

@@ -11,15 +11,27 @@ namespace utils {
 		float x;
 		float y;
 
+		Vector();
+
+		Vector(float x, float y);
+
 		[[nodiscard]] float length() const;
 
+		static Vector normalize(Vector vector);
+
+		Vector operator-() const;
+
 		Vector& operator+=(Vector vector);
+
+		Vector& operator-=(Vector vector);
 
 		Vector& operator*=(float amount);
 
 		Vector operator+(Vector vector) const;
 
 		Vector operator-(Vector vector) const;
+
+		Vector operator*(float amount) const;
 
 		Vector operator/(float amount) const;
 	};

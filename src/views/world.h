@@ -5,6 +5,8 @@
 #ifndef SPACEINVADERS_WORLDVIEW_H
 #define SPACEINVADERS_WORLDVIEW_H
 
+#include <set>
+
 #include "entity.h"
 #include "../models/world.h"
 
@@ -28,7 +30,8 @@ namespace SI::view {
 
 	private:
 		std::shared_ptr<model::World> model;
-		std::unordered_set<std::shared_ptr<Entity>> entities;
+		std::set<std::shared_ptr<Entity>, std::function<bool(const std::shared_ptr<SI::view::Entity>&,
+		                                                     const std::shared_ptr<SI::view::Entity>&)>> entities;
 	};
 
 }
