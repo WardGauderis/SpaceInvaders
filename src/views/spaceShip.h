@@ -5,13 +5,13 @@
 #ifndef SPACEINVADERS_SPACESHIPVIEW_H
 #define SPACEINVADERS_SPACESHIPVIEW_H
 
-#include "entity.h"
+#include "physicalEntity.h"
 
 namespace SI::view {
 
-	class SpaceShip : public Entity {
+	class SpaceShip : public PhysicalEntity {
 	public:
-		SpaceShip(const std::shared_ptr<model::Entity>& model, const std::shared_ptr<sf::RenderWindow>& window);
+		SpaceShip(const std::shared_ptr<model::PhysicalEntity>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
 		void notify() override;
 

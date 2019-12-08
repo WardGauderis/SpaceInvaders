@@ -17,6 +17,9 @@ namespace SI {
 
 		void eventLoop();
 
+		template<class Entity>
+		auto addEntity() -> std::shared_ptr<typename Entity::Model>;
+
 	private:
 		std::shared_ptr<model::World> model;
 		std::shared_ptr<view::World> view;
@@ -29,9 +32,6 @@ namespace SI {
 		void updateModel();
 
 		void updateView();
-
-		template<class Entity>
-		auto addEntity() -> std::shared_ptr<typename Entity::Model>;
 	};
 
 }

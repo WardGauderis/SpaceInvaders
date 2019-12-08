@@ -11,9 +11,17 @@ namespace utils {
 		float x;
 		float y;
 
-		Vector& operator+=(const Vector& vector);
+		[[nodiscard]] float length() const;
+
+		Vector& operator+=(Vector vector);
 
 		Vector& operator*=(float amount);
+
+		Vector operator+(Vector vector) const;
+
+		Vector operator-(Vector vector) const;
+
+		Vector operator/(float amount) const;
 	};
 
 }

@@ -29,46 +29,32 @@ namespace utils {
 		 */
 		void setDimensions(unsigned int x, unsigned int y);
 
-		/**
-		 * convert from range [-4, 4] to [0, width]
-		 * @param x width
-		 * @return width
-		 */
-		[[nodiscard]] int convertWidth(float x) const;
+		[[nodiscard]] unsigned int getWidth() const;
+
+		[[nodiscard]] unsigned int getHeight() const;
 
 		/**
-		 * convert from range [-3, 3] to [0, height]
-		 * @param y height
-		 * @return height
-		 */
-		[[nodiscard]] int convertHeight(float y) const;
-
-		/**
-		 * convert from range [0, width] to [-4, 4]
-		 * @param x width
-		 * @return width
-		 */
-		[[nodiscard]] float convertWidth(int x) const;
-
-		/**
-		 * convert from range [0, height] to [-3, 3]
-		 * @param y height
-		 * @return height
-		 */
-		[[nodiscard]] float convertHeight(int y) const;
-
-		/**
-		 * convert from range [-4, 4], [-3, 3] to [0, width], [0, height]
+		 * convert point from range [-4, 4], [-3, 3] to [0, width], [0, height]
 		 * @param vector vector from model
 		 * @return vector from view
 		 */
-		[[nodiscard]] sf::Vector2i convert(Vector vector) const;
+		template<typename T>
+		[[nodiscard]] sf::Vector2<T> convertPoint(Vector vector) const;
+
+		/**
+		 * convert distance from range [-4, 4], [-3, 3] to [0, width], [0, height]
+		 * @param vector vector from model
+		 * @return vector from view
+		 */
+		template<typename T>
+		[[nodiscard]] sf::Vector2<T> convertDistance(Vector vector) const;
+
 		/**
 		 * convert from range [0, width], [0, height] to [-4, 4], [-3, 3]
 		 * @param vector vector from view
 		 * @return vector from model
 		 */
-		Vector convert(sf::Vector2i vector) const;
+//		[[nodiscard]] Vector convert(sf::Vector2i vector) const;
 
 	private:
 		unsigned int width;
@@ -77,6 +63,36 @@ namespace utils {
 		Transformation() = default;
 
 		~Transformation() = default;
+
+		/**
+ 		* convert from range [-4, 4] to [0, width]
+ 		* @param x width
+ 		* @return width
+ 		*/
+		template<typename T>
+		[[nodiscard]] T convertWidth(float x) const;
+
+		/**
+		 * convert from range [-3, 3] to [0, height]
+		 * @param y height
+		 * @return height
+		 */
+		template<typename T>
+		[[nodiscard]] T convertHeight(float y) const;
+
+		/**
+		 * convert from range [0, width] to [-4, 4]
+		 * @param x width
+		 * @return width
+		 */
+//		[[nodiscard]] float convertWidth(int x) const;
+
+		/**
+		 * convert from range [0, height] to [-3, 3]
+		 * @param y height
+		 * @return height
+		 */
+//		[[nodiscard]] float convertHeight(int y) const;
 	};
 
 }

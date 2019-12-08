@@ -15,9 +15,12 @@ namespace SI::controller {
 	public:
 		Player(const std::shared_ptr<model::Player>& model, const std::shared_ptr<view::Player>& view);
 
-		void update() final;
+		void update(SpaceInvaders& game) final;
 
 		~Player() final = default;
+
+	private:
+		unsigned int cooldown;
 	};
 
 }

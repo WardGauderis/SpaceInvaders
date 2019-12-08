@@ -5,11 +5,11 @@
 #ifndef SPACEINVADERS_SPACESHIPMODEL_H
 #define SPACEINVADERS_SPACESHIPMODEL_H
 
-#include "entity.h"
+#include "physicalEntity.h"
 
 namespace SI::model {
 
-	class SpaceShip : public Entity {
+	class SpaceShip : public PhysicalEntity {
 	public:
 		SpaceShip() = default;
 

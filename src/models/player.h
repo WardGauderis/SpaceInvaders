@@ -11,9 +11,11 @@ namespace SI::model {
 
 	class Player : public SpaceShip {
 	public:
-		Player() = default;
+		Player();
 
-		void update() final;
+		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) final;
+
+		void action(SpaceInvaders& game);
 
 		~Player() final = default;
 	};

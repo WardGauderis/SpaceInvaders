@@ -26,21 +26,19 @@ namespace utils {
 		 * add an observer to the subject
 		 * @param observer new observer
 		 */
-		virtual void registerObserver(const std::shared_ptr<Observer>& observer);
+		void registerObserver(const std::shared_ptr<Observer>& observer);
 
 		/**
 		 * remove a certain observer from the subject;
 		 * @param observer observer to remove
 		 */
-		virtual void removeObserver(const std::shared_ptr<Observer>& observer);
-
-		virtual ~Subject() = default;
+		void removeObserver(const std::shared_ptr<Observer>& observer);
 
 	protected:
 		/**
 		 * notify all observers
  		 */
-		virtual void notifyObservers();
+		void notifyObservers();
 
 	private:
 		std::vector<std::shared_ptr<Observer>> observers;

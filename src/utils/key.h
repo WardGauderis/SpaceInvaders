@@ -11,7 +11,8 @@ namespace utils {
 		up,
 		down,
 		left,
-		right
+		right,
+		space
 	};
 
 }

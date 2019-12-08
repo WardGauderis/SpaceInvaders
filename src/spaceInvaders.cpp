@@ -35,7 +35,7 @@ void SI::SpaceInvaders::updateController() {
 		}
 	}
 
-	controller->update();
+	controller->update(*this);
 }
 
 void SI::SpaceInvaders::updateModel() {
@@ -60,3 +60,6 @@ auto SI::SpaceInvaders::addEntity() -> std::shared_ptr<typename Entity::Model> {
 
 	return entityModel;
 }
+
+template std::shared_ptr<SI::Player::Model> SI::SpaceInvaders::addEntity<SI::Player>();
+template std::shared_ptr<SI::Bullet::Model> SI::SpaceInvaders::addEntity<SI::Bullet>();

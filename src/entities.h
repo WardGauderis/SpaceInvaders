@@ -8,6 +8,7 @@
 #endif //SPACEINVADERS_ENTITIES_H
 
 #include "controllers/player.h"
+#include "controllers/bullet.h"
 
 namespace SI {
 
@@ -15,6 +16,12 @@ namespace SI {
 		using Model = model::Player;
 		using View = view::Player;
 		using Controller = controller::Player;
+	};
+
+	struct Bullet {
+		using Model = model::Bullet;
+		using View = view::Bullet;
+		using Controller = controller::Bullet;
 	};
 
 }

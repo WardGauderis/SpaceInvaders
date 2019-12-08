@@ -4,12 +4,14 @@
 
 #include "world.h"
 
-SI::controller::World::World(const std::shared_ptr<model::World>& model, const std::shared_ptr<view::World>& view)
-		: Entity(model, view) {}
+#include <utility>
 
-void SI::controller::World::update() {
+SI::controller::World::World(std::shared_ptr<model::World>  model, std::shared_ptr<view::World>  view)
+		: model(std::move(model)), view(std::move(view)) {}
+
+void SI::controller::World::update(SpaceInvaders& game) {
 	for (const auto& entity: entities) {
-		entity->update();
+		entity->update(game);
 	}
 }
 

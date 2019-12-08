@@ -11,7 +11,7 @@ namespace SI::view {
 
 	class Player : public SpaceShip {
 	public:
-		Player(const std::shared_ptr<model::Entity>& model, const std::shared_ptr<sf::RenderWindow>& window);
+		Player(const std::shared_ptr<model::PhysicalEntity>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
 		void notify() override;
 
@@ -19,8 +19,6 @@ namespace SI::view {
 
 		~Player() final = default;
 
-	private:
-		sf::RectangleShape sprite;
 	};
 
 }

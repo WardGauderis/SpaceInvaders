@@ -5,8 +5,11 @@
 #ifndef SPACEINVADERS_ENTITYMODEL_H
 #define SPACEINVADERS_ENTITYMODEL_H
 
-#include "../utils/vector.h"
 #include "../utils/observer.h"
+
+namespace SI {
+	class SpaceInvaders;
+}
 
 namespace SI::model {
 
@@ -16,18 +19,7 @@ namespace SI::model {
 
 		virtual void update() = 0;
 
-		void move();
-
-		void addVelocity(const utils::Vector& vel);
-
-		const utils::Vector& getPosition() const;
-
-		~Entity() = default;
-
-	private:
-		utils::Vector position;
-		utils::Vector velocity;
-		utils::Vector acceleration;
+		virtual ~Entity() = default;
 	};
 
 }

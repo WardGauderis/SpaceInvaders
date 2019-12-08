@@ -6,8 +6,9 @@
 #define SPACEINVADERS_ENTITYVIEW_H
 
 #include <SFML/Graphics.hpp>
+#include <memory>
 
-#include "../models/entity.h"
+#include "../utils/observer.h"
 #include "../utils/key.h"
 #include "../utils/event.h"
 
@@ -15,9 +16,10 @@ namespace SI::view {
 
 	class Entity : public utils::Observer {
 	public:
-		Entity(std::shared_ptr<model::Entity> model, std::shared_ptr<sf::RenderWindow> window);
 
-		Entity(std::shared_ptr<model::Entity> model);
+		Entity() = default;
+
+		Entity(std::shared_ptr<sf::RenderWindow> window);
 
 		virtual void update() = 0;
 
@@ -25,9 +27,11 @@ namespace SI::view {
 
 		bool pollEvent(utils::Event& event);
 
+		virtual ~Entity() = default;
+
 	protected:
 		std::shared_ptr<sf::RenderWindow> window;
-		std::shared_ptr<model::Entity> model;
+		sf::RectangleShape sprite;
 
 	};
 

@@ -12,7 +12,7 @@ namespace SI::view {
 
 	class World : public Entity {
 	public:
-		World(const std::shared_ptr<model::World>& model);
+		World(std::shared_ptr<model::World> model);
 
 		void notify() final;
 
@@ -27,6 +27,7 @@ namespace SI::view {
 		~World() final = default;
 
 	private:
+		std::shared_ptr<model::World> model;
 		std::unordered_set<std::shared_ptr<Entity>> entities;
 	};
 
