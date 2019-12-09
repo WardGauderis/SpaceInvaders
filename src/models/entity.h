@@ -15,11 +15,14 @@ namespace SI::model {
 
 	class Entity : public utils::Subject {
 	public:
-		Entity() = default;
+		Entity();
 
 		virtual void update() = 0;
 
 		virtual ~Entity() = default;
+
+	private:
+		bool alive;
 	};
 
 }

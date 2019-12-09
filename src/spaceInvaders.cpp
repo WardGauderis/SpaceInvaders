@@ -4,7 +4,6 @@
 
 #include "spaceInvaders.h"
 #include "utils/stopWatch.h"
-#include "entities.h"
 
 SI::SpaceInvaders::SpaceInvaders() : model(std::make_shared<model::World>()),
                                      view(std::make_shared<view::World>(model)),

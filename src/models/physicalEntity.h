@@ -16,8 +16,6 @@ namespace SI::model {
 
 		void update() override;
 
-		void move();
-
 		virtual void action(SpaceInvaders& game);
 
 		void addVelocity(const utils::Vector& vel);
@@ -46,6 +44,12 @@ namespace SI::model {
 		utils::Vector size;
 		utils::Vector position;
 		utils::Vector velocity;
+
+		void move();
+
+		utils::Vector detectWallCollision();
+
+		virtual void onWallCollision(utils::Vector wall);
 
 	};
 

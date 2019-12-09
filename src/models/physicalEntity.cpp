@@ -6,20 +6,8 @@
 
 void SI::model::PhysicalEntity::update() {
 	move();
-}
-
-void SI::model::PhysicalEntity::move() {
-	auto backup = position;
-	position += velocity;
-	if (std::abs(position.x) + size.x / 2 > 4) {
-		velocity.x = -velocity.x * 0.5f;
-		position.x = backup.x;
-	}
-	if (std::abs(position.y) + size.y / 2 > 3) {
-		velocity.y = -velocity.y * 0.5f;
-		position.y = backup.y;
-	}
-	velocity *= drag;
+	if (auto vector = detectWallCollision())
+		onWallCollision(vector);
 	notifyObservers();
 }
 
@@ -37,7 +25,6 @@ const utils::Vector& SI::model::PhysicalEntity::getPosition() const {
 
 void SI::model::PhysicalEntity::setPosition(const utils::Vector& position) {
 	PhysicalEntity::position = position;
-	notifyObservers();
 }
 
 const utils::Vector& SI::model::PhysicalEntity::getVelocity() const {
@@ -47,7 +34,6 @@ const utils::Vector& SI::model::PhysicalEntity::getVelocity() const {
 
 void SI::model::PhysicalEntity::setVelocity(const utils::Vector& velocity) {
 	PhysicalEntity::velocity = velocity;
-	notifyObservers();
 }
 
 const utils::Vector& SI::model::PhysicalEntity::getSize() const {
@@ -56,7 +42,6 @@ const utils::Vector& SI::model::PhysicalEntity::getSize() const {
 
 void SI::model::PhysicalEntity::setSize(const utils::Vector& size) {
 	PhysicalEntity::size = size;
-	notifyObservers();
 }
 
 bool SI::model::PhysicalEntity::collides(const std::shared_ptr<PhysicalEntity>& entity0,
@@ -70,3 +55,31 @@ bool SI::model::PhysicalEntity::collides(const std::shared_ptr<PhysicalEntity>& 
 void SI::model::PhysicalEntity::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
 
 }
+
+void SI::model::PhysicalEntity::move() {
+	position += velocity;
+	velocity *= drag;
+}
+
+utils::Vector SI::model::PhysicalEntity::detectWallCollision() {
+	utils::Vector wall;
+	if (position.x + size.x / 2 > 4) wall.x = 4;
+	else if (position.x - size.x / 2 < -4) wall.x = -4;
+	if (position.y + size.y / 2 > 3) wall.y = 3;
+	else if (position.y - size.y / 2 < -3) wall.y = -3;
+	return wall;
+}
+
+void SI::model::PhysicalEntity::onWallCollision(utils::Vector wall) {
+	if (static_cast<bool>(wall.x)) {
+		velocity.x = -velocity.x;
+		auto delta = position.x +  size.x / 2 * utils::getSign(wall.x)- wall.x;
+		position.x -= 2 * delta;
+	}
+	if (static_cast<bool>(wall.y)) {
+		velocity.y = -velocity.y;
+		auto delta = position.y +  size.y / 2 * utils::getSign(wall.y)- wall.y;
+		position.y -= 2 * delta;
+	}
+}
+

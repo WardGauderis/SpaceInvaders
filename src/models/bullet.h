@@ -14,6 +14,9 @@ namespace SI::model {
 		Bullet();
 
 		~Bullet() final = default;
+
+	private:
+		void onWallCollision(utils::Vector wall) override;
 	};
 
 }

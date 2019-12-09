@@ -13,8 +13,6 @@ namespace SI::model {
 	public:
 		Player();
 
-		void action(SpaceInvaders& game);
-
 		~Player() final = default;
 	};
 

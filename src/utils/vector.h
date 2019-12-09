@@ -15,9 +15,13 @@ namespace utils {
 
 		Vector(float x, float y);
 
+		explicit operator bool();
+
 		[[nodiscard]] float length() const;
 
 		static Vector normalize(Vector vector);
+
+		[[nodiscard]] float dot(Vector vector) const;
 
 		Vector operator-() const;
 
@@ -34,7 +38,11 @@ namespace utils {
 		Vector operator*(float amount) const;
 
 		Vector operator/(float amount) const;
+
+		Vector operator+(float amount) const;
 	};
+
+	float getSign(float);
 
 }
 

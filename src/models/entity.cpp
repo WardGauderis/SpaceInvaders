@@ -4,3 +4,4 @@
 
 #include "entity.h"
 
+SI::model::Entity::Entity(): alive(true) {}

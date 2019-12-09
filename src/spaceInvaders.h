@@ -5,9 +5,8 @@
 #ifndef SPACEINVADERS_SPACEINVADERS_H
 #define SPACEINVADERS_SPACEINVADERS_H
 
-
 #include "controllers/world.h"
-
+#include "entities.h"
 
 namespace SI {
 

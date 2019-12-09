@@ -2,6 +2,7 @@
 // Created by ward on 12/3/19.
 //
 
+#include <iostream>
 #include "world.h"
 
 void SI::model::World::update() {
@@ -15,8 +16,9 @@ void SI::model::World::update() {
 		for (; it1 != physicalEntities.end(); ++it1) {
 			auto& entity1 = (*it1);
 			if (model::PhysicalEntity::collides(entity0, entity1)) {
+				const auto copy = std::make_shared<PhysicalEntity>(*entity0);
 				entity0->onCollision(entity1);
-				entity1->onCollision(entity0);
+				entity1->onCollision(copy);
 			}
 		}
 	}
