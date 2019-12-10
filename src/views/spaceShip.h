@@ -6,12 +6,13 @@
 #define SPACEINVADERS_SPACESHIPVIEW_H
 
 #include "physicalEntity.h"
+#include "../models/spaceShip.h"
 
 namespace SI::view {
 
 	class SpaceShip : public PhysicalEntity {
 	public:
-		SpaceShip(const std::shared_ptr<model::PhysicalEntity>& model, const std::shared_ptr<sf::RenderWindow>& window);
+		SpaceShip(const std::weak_ptr<model::SpaceShip>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
 		~SpaceShip() override = default;
 	};

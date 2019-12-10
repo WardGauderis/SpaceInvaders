@@ -19,10 +19,15 @@ namespace SI::model {
 
 		virtual void update() = 0;
 
+		[[nodiscard]] bool mayDeleteThis() const;
+
 		virtual ~Entity() = default;
 
+	protected:
+		void deleteThis();
+
 	private:
-		bool alive;
+		bool mustDelete;
 	};
 
 }

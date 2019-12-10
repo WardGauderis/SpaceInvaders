@@ -6,7 +6,11 @@
 
 SI::view::Entity::Entity(): Entity(nullptr) {}
 
-SI::view::Entity::Entity(std::shared_ptr<sf::RenderWindow> window) : window(std::move(window)) {}
+SI::view::Entity::Entity(std::shared_ptr<sf::RenderWindow> window) : window(std::move(window)), mustDelete(false) {}
+
+bool SI::view::Entity::mayDeleteThis() const {
+	return mustDelete;
+}
 
 bool SI::view::Entity::isKeyPressed(utils::Key key) {
 	switch (key) {
@@ -50,4 +54,8 @@ bool SI::view::Entity::pollEvent(utils::Event& event) {
 
 int SI::view::Entity::drawOrder() {
 	return 0;
+}
+
+void SI::view::Entity::deleteThis() {
+	mustDelete = true;
 }

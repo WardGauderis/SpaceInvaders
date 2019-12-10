@@ -2,7 +2,6 @@
 // Created by ward on 12/3/19.
 //
 
-#include <iostream>
 #include "world.h"
 
 void SI::model::World::update() {
@@ -30,8 +29,14 @@ void SI::model::World::addEntity(const std::shared_ptr<Entity>& entity) {
 	entities.emplace(entity);
 }
 
-void SI::model::World::removeEntity(const std::shared_ptr<Entity>& entity) {
-	if (auto physicalEntity = std::dynamic_pointer_cast<PhysicalEntity>(entity))
-		physicalEntities.erase(physicalEntity);
-	entities.erase(entity);
+void SI::model::World::removeEntities() {
+	for (auto it = entities.begin(); it != entities.end();) {
+		if((*it)->mayDeleteThis())
+			it = entities.erase(it);
+		else ++it;
+	}
+	for (auto it = physicalEntities.begin(); it != physicalEntities.end();) {
+		if((*it)->mayDeleteThis()) it = physicalEntities.erase(it);
+		else ++it;
+	}
 }

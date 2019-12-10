@@ -13,9 +13,7 @@ namespace SI::controller {
 
 	class SpaceShip : public PhysicalEntity {
 	public:
-		SpaceShip(const std::shared_ptr<model::SpaceShip>& model, const std::shared_ptr<view::SpaceShip>& view);
-
-		void update(SpaceInvaders& game) override;
+		SpaceShip(const std::weak_ptr<model::SpaceShip>& model, const std::weak_ptr<view::SpaceShip>& view);
 
 		~SpaceShip() override = default;
 	};

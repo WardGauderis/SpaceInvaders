@@ -12,9 +12,7 @@ namespace SI::controller {
 
 	class Bullet: public PhysicalEntity {
 	public:
-		Bullet(const std::shared_ptr<model::Bullet>& model, const std::shared_ptr<view::Bullet>& view);
-
-		void update(SpaceInvaders& game) override;
+		Bullet(const std::weak_ptr<model::Bullet>& model, const std::weak_ptr<view::Bullet>& view);
 
 		~Bullet() final = default;
 	};

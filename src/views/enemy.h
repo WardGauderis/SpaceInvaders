@@ -7,12 +7,13 @@
 
 #include <unordered_set>
 #include "spaceShip.h"
+#include "../models/enemy.h"
 
 namespace SI::view {
 
 	class Enemy : public SpaceShip {
 	public:
-		Enemy(const std::shared_ptr<model::PhysicalEntity>& model, const std::shared_ptr<sf::RenderWindow>& window);
+		Enemy(const std::weak_ptr<model::Enemy>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
 		~Enemy() override = default;
 

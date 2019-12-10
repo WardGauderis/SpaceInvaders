@@ -35,14 +35,17 @@ void SI::SpaceInvaders::updateController() {
 	}
 
 	controller->update(*this);
+	controller->removeEntities();
 }
 
 void SI::SpaceInvaders::updateModel() {
 	model->update();
+	model->removeEntities();
 }
 
 void SI::SpaceInvaders::updateView() {
 	view->update();
+	view->removeEntities();
 }
 
 template<class Entity>

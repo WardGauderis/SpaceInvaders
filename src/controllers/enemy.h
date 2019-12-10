@@ -6,12 +6,13 @@
 #define SPACEINVADERS_ENEMYCONTROLLER_H
 
 #include "spaceShip.h"
+#include "../views/enemy.h"
 
 namespace SI::controller {
 
 	class Enemy : public SpaceShip {
 	public:
-		Enemy(const std::shared_ptr<model::SpaceShip>& model, const std::shared_ptr<view::SpaceShip>& view);
+		Enemy(const std::weak_ptr<model::Enemy>& model, const std::weak_ptr<view::Enemy>& view);
 
 		~Enemy() override = default;
 	};

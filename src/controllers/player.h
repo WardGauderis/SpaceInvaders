@@ -13,7 +13,7 @@ namespace SI::controller {
 
 	class Player : public SpaceShip {
 	public:
-		Player(const std::shared_ptr<model::Player>& model, const std::shared_ptr<view::Player>& view);
+		Player(const std::weak_ptr<model::Player>& model, const std::weak_ptr<view::Player>& view);
 
 		void update(SpaceInvaders& game) final;
 

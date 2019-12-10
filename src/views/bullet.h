@@ -12,7 +12,7 @@ namespace SI::view {
 
 	class Bullet : public PhysicalEntity {
 	public:
-		Bullet(const std::shared_ptr<model::Bullet>& model, const std::shared_ptr<sf::RenderWindow>& window);
+		Bullet(const std::weak_ptr<model::Bullet>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
 		~Bullet() final = default;
 	};

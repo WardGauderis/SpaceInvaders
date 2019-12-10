@@ -4,9 +4,5 @@
 
 #include "bullet.h"
 
-SI::controller::Bullet::Bullet(const std::shared_ptr<model::Bullet>& model,
-                               const std::shared_ptr<view::Bullet>& view) : PhysicalEntity(model, view) {}
-
-void SI::controller::Bullet::update(SpaceInvaders& game) {
-
-}
+SI::controller::Bullet::Bullet(const std::weak_ptr<model::Bullet>& model,
+                               const std::weak_ptr<view::Bullet>& view) : PhysicalEntity(model, view) {}

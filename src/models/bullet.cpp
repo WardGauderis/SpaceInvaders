@@ -10,6 +10,9 @@ SI::model::Bullet::Bullet() {
 }
 
 void SI::model::Bullet::onWallCollision(utils::Vector wall) {
-	if(wall.x == 4)
+	if(wall.y == 3){
+		deleteThis();
+		return;
+	}
 	PhysicalEntity::onWallCollision(wall);
 }

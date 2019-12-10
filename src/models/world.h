@@ -19,7 +19,7 @@ namespace SI::model {
 
 		void addEntity(const std::shared_ptr<Entity>& entity);
 
-		void removeEntity(const std::shared_ptr<Entity>& entity);
+		void removeEntities();
 
 		~World() final = default;
 

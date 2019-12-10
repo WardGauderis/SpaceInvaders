@@ -22,7 +22,7 @@ namespace SI::view {
 
 		void addEntity(const std::shared_ptr<Entity>& entity);
 
-		void removeEntity(const std::shared_ptr<Entity>& entity);
+		void removeEntities();
 
 		std::shared_ptr<sf::RenderWindow> getWindow() const;
 

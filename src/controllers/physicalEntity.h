@@ -12,14 +12,18 @@ namespace SI::controller {
 
 	class PhysicalEntity : public Entity {
 	public:
-		PhysicalEntity(std::shared_ptr<model::PhysicalEntity> model,
-		               std::shared_ptr<view::PhysicalEntity> view);
+		PhysicalEntity(std::weak_ptr<model::PhysicalEntity> model,
+		               std::weak_ptr<view::PhysicalEntity> view);
+
+		void update(SpaceInvaders& game) override;
+
+		std::pair<std::shared_ptr<model::PhysicalEntity>, std::shared_ptr<view::PhysicalEntity>> lock();
 
 		~PhysicalEntity() override = default;
 
 	protected:
-		std::shared_ptr<model::PhysicalEntity> model;
-		std::shared_ptr<view::PhysicalEntity> view;
+		std::weak_ptr<model::PhysicalEntity> model;
+		std::weak_ptr<view::PhysicalEntity> view;
 	};
 
 }

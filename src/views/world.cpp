@@ -2,10 +2,10 @@
 // Created by ward on 12/3/19.
 //
 
+#include <functional>
+
 #include "world.h"
 #include "../utils/transformation.h"
-
-#include <functional>
 
 std::function<bool(const std::shared_ptr<SI::view::Entity>&,
                    const std::shared_ptr<SI::view::Entity>&)> cmpEntities = [](
@@ -39,8 +39,11 @@ void SI::view::World::addEntity(const std::shared_ptr<Entity>& entity) {
 	entities.emplace(entity);
 }
 
-void SI::view::World::removeEntity(const std::shared_ptr<Entity>& entity) {
-	entities.erase(entity);
+void SI::view::World::removeEntities() {
+	for (auto it = entities.begin(); it != entities.end();) {
+		if((*it)->mayDeleteThis()) it = entities.erase(it);
+		else ++it;
+	}
 }
 
 std::shared_ptr<sf::RenderWindow> SI::view::World::getWindow() const {

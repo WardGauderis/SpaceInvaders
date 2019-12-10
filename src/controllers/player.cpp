@@ -4,10 +4,13 @@
 
 #include "player.h"
 
-SI::controller::Player::Player(const std::shared_ptr<model::Player>& model, const std::shared_ptr<view::Player>& view)
+SI::controller::Player::Player(const std::weak_ptr<model::Player>& model, const std::weak_ptr<view::Player>& view)
 		: SpaceShip(model, view), cooldown(0) {}
 
 void SI::controller::Player::update(SpaceInvaders& game) {
+	auto [model, view] = lock();
+	if(mayDeleteThis()) return;
+
 	if (cooldown != 0) --cooldown;
 
 	const float acc = 0.002f;

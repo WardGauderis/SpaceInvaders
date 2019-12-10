@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "../models/entity.h"
 #include "../utils/observer.h"
 #include "../utils/key.h"
 #include "../utils/event.h"
@@ -18,9 +19,11 @@ namespace SI::view {
 
 		Entity();
 
-		Entity(std::shared_ptr<sf::RenderWindow> window);
+		explicit Entity(std::shared_ptr<sf::RenderWindow> window);
 
 		virtual void update() = 0;
+
+		[[nodiscard]] bool mayDeleteThis() const;
 
 		static bool isKeyPressed(utils::Key key);
 
@@ -33,6 +36,11 @@ namespace SI::view {
 	protected:
 		std::shared_ptr<sf::RenderWindow> window;
 		sf::RectangleShape sprite;
+
+		void deleteThis();
+
+	private:
+		bool mustDelete;
 	};
 
 }

@@ -6,12 +6,13 @@
 #define SPACEINVADERS_PLAYERVIEW_H
 
 #include "spaceShip.h"
+#include "../models/player.h"
 
 namespace SI::view {
 
 	class Player : public SpaceShip {
 	public:
-		Player(const std::shared_ptr<model::PhysicalEntity>& model, const std::shared_ptr<sf::RenderWindow>& window);
+		Player(const std::weak_ptr<model::Player>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
 		int drawOrder() override;
 

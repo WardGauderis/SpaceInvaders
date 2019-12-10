@@ -4,5 +4,5 @@
 
 #include "enemy.h"
 
-SI::view::Enemy::Enemy(const std::shared_ptr<model::PhysicalEntity>& model,
+SI::view::Enemy::Enemy(const std::weak_ptr<model::Enemy>& model,
                        const std::shared_ptr<sf::RenderWindow>& window) : SpaceShip(model, window) {}
