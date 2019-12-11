@@ -8,7 +8,7 @@ SI::controller::PhysicalEntity::PhysicalEntity(std::weak_ptr<model::PhysicalEnti
                                                std::weak_ptr<view::PhysicalEntity> view) : model(std::move(model)),
                                                                                            view(std::move(view)) {}
 
-void SI::controller::PhysicalEntity::update(SI::SpaceInvaders& game) {
+void SI::controller::PhysicalEntity::update() {
 	lock();
 }
 

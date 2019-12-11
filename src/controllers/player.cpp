@@ -7,7 +7,7 @@
 SI::controller::Player::Player(const std::weak_ptr<model::Player>& model, const std::weak_ptr<view::Player>& view)
 		: SpaceShip(model, view), cooldown(0) {}
 
-void SI::controller::Player::update(SpaceInvaders& game) {
+void SI::controller::Player::update() {
 	auto [model, view] = lock();
 	if(mayDeleteThis()) return;
 
@@ -25,6 +25,6 @@ void SI::controller::Player::update(SpaceInvaders& game) {
 	if (view->isKeyPressed(utils::Key::space))
 		if (cooldown == 0) {
 			cooldown = 15;
-			model->action(game);
+			model->action();
 		}
 }

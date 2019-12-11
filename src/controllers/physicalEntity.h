@@ -15,7 +15,7 @@ namespace SI::controller {
 		PhysicalEntity(std::weak_ptr<model::PhysicalEntity> model,
 		               std::weak_ptr<view::PhysicalEntity> view);
 
-		void update(SpaceInvaders& game) override;
+		void update() override;
 
 		std::pair<std::shared_ptr<model::PhysicalEntity>, std::shared_ptr<view::PhysicalEntity>> lock();
 

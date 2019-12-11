@@ -7,9 +7,9 @@
 SI::controller::World::World(std::shared_ptr<model::World>  model, std::shared_ptr<view::World>  view)
 		: model(std::move(model)), view(std::move(view)) {}
 
-void SI::controller::World::update(SpaceInvaders& game) {
+void SI::controller::World::update() {
 	for (const auto& entity: entities) {
-		entity->update(game);
+		entity->update();
 	}
 }
 

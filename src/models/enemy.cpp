@@ -4,4 +4,7 @@
 
 #include "enemy.h"
 
-SI::model::Enemy::Enemy() {}
+SI::model::Enemy::Enemy() {
+	size = {0.5, 0.5};
+	drag = 0.99f;
+}

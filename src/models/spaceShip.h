@@ -13,7 +13,7 @@ namespace SI::model {
 	public:
 		SpaceShip() = default;
 
-		void action(SI::SpaceInvaders& game) override;
+		void action() override;
 
 		~SpaceShip() override = default;
 	};

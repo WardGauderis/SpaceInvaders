@@ -14,7 +14,7 @@ namespace SI::controller {
 	public:
 		World(std::shared_ptr<model::World>  model, std::shared_ptr<view::World>  view);
 
-		void update(SpaceInvaders& game) final;
+		void update() final;
 
 		void addEntity(const std::shared_ptr<Entity>& entity);
 

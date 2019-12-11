@@ -19,14 +19,21 @@ namespace SI::model {
 
 		virtual void update() = 0;
 
+		virtual std::vector<std::shared_ptr<Entity>> getNewModels();
+
 		[[nodiscard]] bool mayDeleteThis() const;
 
 		virtual ~Entity() = default;
 
 	protected:
+		void addModel(const std::shared_ptr<Entity>& model);
+
+		void addModels(const std::vector<std::shared_ptr<Entity>>& models);
+
 		void deleteThis();
 
 	private:
+		std::vector<std::shared_ptr<Entity>> newModels;
 		bool mustDelete;
 	};
 

@@ -18,7 +18,7 @@ namespace SI::controller {
 	public:
 		Entity();
 
-		virtual void update(SpaceInvaders& game) = 0;
+		virtual void update() = 0;
 
 		[[nodiscard]] bool mayDeleteThis() const;
 

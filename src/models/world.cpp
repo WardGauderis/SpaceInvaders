@@ -29,6 +29,14 @@ void SI::model::World::addEntity(const std::shared_ptr<Entity>& entity) {
 	entities.emplace(entity);
 }
 
+
+std::vector<std::shared_ptr<SI::model::Entity>> SI::model::World::getNewModels() {
+	for (const auto& entity: entities) {
+		addModels(entity->getNewModels());
+	}
+	return Entity::getNewModels();
+}
+
 void SI::model::World::removeEntities() {
 	for (auto it = entities.begin(); it != entities.end();) {
 		if((*it)->mayDeleteThis())

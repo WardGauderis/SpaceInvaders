@@ -16,7 +16,7 @@ namespace SI::model {
 
 		void update() override;
 
-		virtual void action(SpaceInvaders& game);
+		virtual void action();
 
 		void addVelocity(const utils::Vector& vel);
 

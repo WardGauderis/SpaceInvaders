@@ -11,7 +11,7 @@ void SI::model::PhysicalEntity::update() {
 	notifyObservers();
 }
 
-void SI::model::PhysicalEntity::action(SpaceInvaders& game) {
+void SI::model::PhysicalEntity::action() {
 
 }
 

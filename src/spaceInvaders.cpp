@@ -9,7 +9,8 @@ SI::SpaceInvaders::SpaceInvaders() : model(std::make_shared<model::World>()),
                                      view(std::make_shared<view::World>(model)),
                                      controller(std::make_shared<controller::World>(model, view)),
                                      running(true) {
-	addEntity<Player>();
+	addEntity(std::make_shared<model::Player>());
+	addEntity(std::make_shared<model::Wave>());
 }
 
 void SI::SpaceInvaders::eventLoop() {
@@ -34,12 +35,16 @@ void SI::SpaceInvaders::updateController() {
 		}
 	}
 
-	controller->update(*this);
+	controller->update();
 	controller->removeEntities();
 }
 
 void SI::SpaceInvaders::updateModel() {
 	model->update();
+	auto entities = model->getNewModels();
+	for (const auto& entity: entities) {
+		addEntity(entity);
+	}
 	model->removeEntities();
 }
 
@@ -48,20 +53,31 @@ void SI::SpaceInvaders::updateView() {
 	view->removeEntities();
 }
 
-template<class Entity>
-auto SI::SpaceInvaders::addEntity() -> std::shared_ptr<typename Entity::Model> {
-	auto entityModel = std::make_shared<typename Entity::Model>();
-	auto entityView = std::make_shared<typename Entity::View>(entityModel, view->getWindow());
-	auto entityController = std::make_shared<typename Entity::Controller>(entityModel, entityView);
+void SI::SpaceInvaders::addEntity(const std::shared_ptr<model::Entity>& entityModel) {
+	std::shared_ptr<view::Entity> entityView;
+	std::shared_ptr<controller::Entity> entityController;
+
+	if (auto bullet = std::dynamic_pointer_cast<model::Bullet>(entityModel)) {
+		auto castedView = std::make_shared<view::Bullet>(bullet, view->getWindow());
+		entityView = castedView;
+		entityController = std::make_shared<controller::Bullet>(bullet, castedView);
+	} else if (auto enemy = std::dynamic_pointer_cast<model::Enemy>(entityModel)) {
+		auto castedView = std::make_shared<view::Enemy>(enemy, view->getWindow());
+		entityView = castedView;
+		entityController = std::make_shared<controller::Enemy>(enemy, castedView);
+	} else if (auto wave = std::dynamic_pointer_cast<model::Wave>(entityModel)) {
+		auto castedView = std::make_shared<view::Wave>(wave, view->getWindow());
+		entityView = castedView;
+		entityController = std::make_shared<controller::Wave>(wave, castedView);
+	}else if (auto player = std::dynamic_pointer_cast<model::Player>(entityModel)) {
+		auto castedView = std::make_shared<view::Player>(player, view->getWindow());
+		entityView = castedView;
+		entityController = std::make_shared<controller::Player>(player, castedView);
+	}
 
 	entityModel->registerObserver(entityView);
 
 	model->addEntity(entityModel);
 	view->addEntity(entityView);
 	controller->addEntity(entityController);
-
-	return entityModel;
 }
-
-template std::shared_ptr<SI::Player::Model> SI::SpaceInvaders::addEntity<SI::Player>();
-template std::shared_ptr<SI::Bullet::Model> SI::SpaceInvaders::addEntity<SI::Bullet>();

@@ -15,7 +15,7 @@ namespace SI::controller {
 	public:
 		Player(const std::weak_ptr<model::Player>& model, const std::weak_ptr<view::Player>& view);
 
-		void update(SpaceInvaders& game) final;
+		void update() final;
 
 		~Player() final = default;
 

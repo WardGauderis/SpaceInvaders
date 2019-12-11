@@ -12,7 +12,7 @@ namespace SI::view {
 
 	class PhysicalEntity : public Entity {
 	public:
-		PhysicalEntity(std::weak_ptr<model::PhysicalEntity>  model, const std::shared_ptr<sf::RenderWindow>& window);
+		PhysicalEntity(std::weak_ptr<model::PhysicalEntity> model, const std::shared_ptr<sf::RenderWindow>& window);
 
 		void notify() override;
 

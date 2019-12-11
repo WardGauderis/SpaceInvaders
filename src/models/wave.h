@@ -12,13 +12,20 @@ namespace SI::model {
 
 	class Wave : public Entity {
 	public:
+		Wave();
+
+		Wave(size_t waveNumber);
+
 		void update() override;
 
 		~Wave() override = default;
 
 	private:
 		std::unordered_set<std::shared_ptr<Enemy>> enemies;
-		static unsigned int number;
+
+		void readFromFile(size_t waveNumber);
+
+		static std::shared_ptr<Enemy> enemyFactory(const std::string& enemyType);
 	};
 
 }

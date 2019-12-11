@@ -7,16 +7,21 @@
 
 #include <unordered_set>
 #include "enemy.h"
+#include "../views/wave.h"
 
 namespace SI::controller {
 
 	class Wave : public Entity {
 	public:
-		Wave() = default;
+		Wave(std::weak_ptr<model::Wave> model, std::weak_ptr<view::Wave> view);
+
+		void update() override;
 
 		~Wave() override = default;
 
 	private:
+		std::weak_ptr<model::Wave> model;
+		std::weak_ptr<view::Wave> view;
 		std::unordered_set<std::shared_ptr<Enemy>> enemies;
 	};
 
