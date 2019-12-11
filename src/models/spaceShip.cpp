@@ -2,7 +2,8 @@
 // Created by ward on 12/3/19.
 //
 
-#include "../spaceInvaders.h"
+#include "spaceShip.h"
+#include "bullet.h"
 
 void SI::model::SpaceShip::action() {
 	auto bullet = std::make_shared<Bullet>();

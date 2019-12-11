@@ -5,7 +5,6 @@
 #ifndef SPACEINVADERS_WAVEMODEL_H
 #define SPACEINVADERS_WAVEMODEL_H
 
-#include <unordered_set>
 #include "enemy.h"
 
 namespace SI::model {
@@ -16,16 +15,18 @@ namespace SI::model {
 
 		Wave(size_t waveNumber);
 
-		void update() override;
+		void update() final;
 
-		~Wave() override = default;
+		~Wave() final = default;
 
 	private:
-		std::unordered_set<std::shared_ptr<Enemy>> enemies;
+		std::vector<std::weak_ptr<Enemy>> enemies;
 
 		void readFromFile(size_t waveNumber);
 
 		static std::shared_ptr<Enemy> enemyFactory(const std::string& enemyType);
+
+		static void positionRow(const std::vector<std::shared_ptr<Enemy>>& row, float& y);
 	};
 
 }

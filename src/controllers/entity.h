@@ -8,10 +8,6 @@
 #include <memory>
 #include "../views/entity.h"
 
-namespace SI {
-	class SpaceInvaders;
-}
-
 namespace SI::controller {
 
 	class Entity {

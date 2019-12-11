@@ -5,7 +5,6 @@
 #ifndef SPACEINVADERS_WAVECONTROLLER_H
 #define SPACEINVADERS_WAVECONTROLLER_H
 
-#include <unordered_set>
 #include "enemy.h"
 #include "../views/wave.h"
 
@@ -22,7 +21,6 @@ namespace SI::controller {
 	private:
 		std::weak_ptr<model::Wave> model;
 		std::weak_ptr<view::Wave> view;
-		std::unordered_set<std::shared_ptr<Enemy>> enemies;
 	};
 
 }

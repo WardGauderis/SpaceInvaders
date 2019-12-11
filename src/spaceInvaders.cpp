@@ -4,12 +4,14 @@
 
 #include "spaceInvaders.h"
 #include "utils/stopWatch.h"
+#include "controllers/wave.h"
+#include "controllers/bullet.h"
 
 SI::SpaceInvaders::SpaceInvaders() : model(std::make_shared<model::World>()),
                                      view(std::make_shared<view::World>(model)),
                                      controller(std::make_shared<controller::World>(model, view)),
                                      running(true) {
-	addEntity(std::make_shared<model::Player>());
+//	addEntity(std::make_shared<model::Player>());
 	addEntity(std::make_shared<model::Wave>());
 }
 
@@ -69,7 +71,7 @@ void SI::SpaceInvaders::addEntity(const std::shared_ptr<model::Entity>& entityMo
 		auto castedView = std::make_shared<view::Wave>(wave, view->getWindow());
 		entityView = castedView;
 		entityController = std::make_shared<controller::Wave>(wave, castedView);
-	}else if (auto player = std::dynamic_pointer_cast<model::Player>(entityModel)) {
+	} else if (auto player = std::dynamic_pointer_cast<model::Player>(entityModel)) {
 		auto castedView = std::make_shared<view::Player>(player, view->getWindow());
 		entityView = castedView;
 		entityController = std::make_shared<controller::Player>(player, castedView);

@@ -7,10 +7,6 @@
 
 #include "../utils/observer.h"
 
-namespace SI {
-	class SpaceInvaders;
-}
-
 namespace SI::model {
 
 	class Entity : public utils::Subject {

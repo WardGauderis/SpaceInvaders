@@ -2,8 +2,13 @@
   "speed": 1,
   "wave": [
     [
+      "default"
+    ],
+    [
       "default",
-      "default",
+      "default"
+    ],
+    [
       "default",
       "default",
       "default"
@@ -17,13 +22,8 @@
     [
       "default",
       "default",
-      "default"
-    ],
-    [
       "default",
-      "default"
-    ],
-    [
+      "default",
       "default"
     ]
   ]

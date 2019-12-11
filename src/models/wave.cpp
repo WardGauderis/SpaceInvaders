@@ -12,7 +12,7 @@ SI::model::Wave::Wave(const size_t waveNumber) {
 	try {
 		readFromFile(waveNumber);
 	} catch (const std::exception& exception) {
-		throw std::runtime_error(std::string(exception.what()) + " in wave " + std::to_string(waveNumber));
+		throw std::runtime_error("Failed to load 'wave" + std::to_string(waveNumber) + ".json': " + exception.what());
 	}
 }
 
@@ -27,6 +27,7 @@ void SI::model::Wave::readFromFile(const size_t waveNumber) {
 	bool waveExists = rFile.is_open();
 
 	if (!waveExists) {
+		if (waveNumber == 0) throw std::runtime_error("at least one wave must be present");
 		deleteThis();
 		return;
 	}
@@ -36,35 +37,59 @@ void SI::model::Wave::readFromFile(const size_t waveNumber) {
 	auto speed = parser["speed"].get<unsigned int>();
 	auto wave = parser["wave"].get<std::vector<std::vector<std::string>>>();
 
-	if (wave.size() > 5) throw std::runtime_error("Too many rows");
+	float y = 3;
+	for (const auto& row : wave) {
+		std::vector<std::shared_ptr<Enemy>> rowEnemies;
 
-	for (size_t rowNumber = wave.size() - 1; rowNumber >= 0; --rowNumber) {
-		try {
-			const auto& row = wave[rowNumber];
-
-			if (row.size() > 5) throw std::runtime_error("Too many enemies");
-
-			for (size_t enemyNumber = 0; enemyNumber < row.size(); ++enemyNumber) {
-				const auto& enemy = row[enemyNumber];
-
-				try {
-					enemies.emplace(enemyFactory(enemy));
-				} catch (const std::exception& exception) {
-					throw std::runtime_error(std::string(exception.what()) + " in enemy " + std::to_string(enemyNumber));
-				}
-			}
-		} catch (const std::exception& exception) {
-			throw std::runtime_error(std::string(exception.what()) + " in row " + std::to_string(rowNumber));
+		for (const auto& enemyType : row) {
+			auto enemy = enemyFactory(enemyType);
+			enemy->setVelocity({0.01f, -0.005f * speed});
+			rowEnemies.emplace_back(enemy);
 		}
+
+		positionRow(rowEnemies, y);
+
+		enemies.insert(enemies.end(), rowEnemies.begin(), rowEnemies.end());
+		addModels(std::vector<std::shared_ptr<Entity>>(rowEnemies.begin(), rowEnemies.end()));
 	}
 
 }
 
 std::shared_ptr<SI::model::Enemy>
 SI::model::Wave::enemyFactory(const std::string& enemyType) {
+	std::shared_ptr<Enemy> enemy;
+
 	if (enemyType == "default") {
-		return std::make_shared<Enemy>();
+		enemy = std::make_shared<Enemy>();
 	} else {
 		throw std::runtime_error("Enemy type '" + enemyType + "' is not supported");
 	}
+
+	return enemy;
+}
+
+void SI::model::Wave::positionRow(const std::vector<std::shared_ptr<Enemy>>& row, float& y) {
+	float fullWidth = 0;
+	float maxHeight = 0;
+
+	for (const auto& enemy: row) {
+		fullWidth += enemy->getSize().x;
+		maxHeight = std::max(maxHeight, enemy->getSize().y);
+	}
+
+	const float dy = 0.125;
+	y += dy + maxHeight / 2;
+
+	float remainingWidth = 8 - fullWidth;
+	if (remainingWidth < 0)throw std::runtime_error("Not enough space for all enemies a row ");
+	float dx = remainingWidth / (row.size() + 1.0f);
+
+	float x = -4;
+	for (const auto& enemy : row) {
+		x += dx + enemy->getSize().x / 2;
+		enemy->setPosition({x, y});
+		x += enemy->getSize().x / 2;
+	}
+
+	y += maxHeight / 2;
 }

@@ -14,6 +14,10 @@ namespace SI::model {
 		Enemy();
 
 		~Enemy() override = default;
+
+	private:
+	protected:
+		void onWallCollision(utils::Vector wall) override;
 	};
 
 }
