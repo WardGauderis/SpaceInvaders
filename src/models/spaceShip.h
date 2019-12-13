@@ -11,11 +11,16 @@ namespace SI::model {
 
 	class SpaceShip : public PhysicalEntity {
 	public:
-		SpaceShip() = default;
+		SpaceShip(unsigned int lives);
 
-		void action() override;
+		void shoot();
 
 		~SpaceShip() override = default;
+
+		unsigned int loseLive();
+
+	private:
+		unsigned int lives;
 	};
 
 }

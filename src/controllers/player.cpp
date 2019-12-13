@@ -14,10 +14,10 @@ void SI::controller::Player::update() {
 	if (cooldown != 0) --cooldown;
 
 	const float acc = 0.002f;
-	if (view->isKeyPressed(utils::Key::up))
-		model->addVelocity({0, acc});
-	if (view->isKeyPressed(utils::Key::down))
-		model->addVelocity({0, -acc});
+//	if (view->isKeyPressed(utils::Key::up))
+//		model->addVelocity({0, acc});
+//	if (view->isKeyPressed(utils::Key::down))
+//		model->addVelocity({0, -acc});
 	if (view->isKeyPressed(utils::Key::left))
 		model->addVelocity({-acc, 0});
 	if (view->isKeyPressed(utils::Key::right))
@@ -25,6 +25,6 @@ void SI::controller::Player::update() {
 	if (view->isKeyPressed(utils::Key::space))
 		if (cooldown == 0) {
 			cooldown = 15;
-			model->action();
+			std::dynamic_pointer_cast<model::Player>(model)->shoot();
 		}
 }

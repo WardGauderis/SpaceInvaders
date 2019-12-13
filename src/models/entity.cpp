@@ -26,4 +26,5 @@ void SI::model::Entity::addModels(const std::vector<std::shared_ptr<Entity>>& mo
 
 void SI::model::Entity::deleteThis() {
 	mustDelete = true;
+	notifyObservers();
 }

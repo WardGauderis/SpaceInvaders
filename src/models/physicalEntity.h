@@ -16,8 +16,6 @@ namespace SI::model {
 
 		void update() override;
 
-		virtual void action();
-
 		void addVelocity(const utils::Vector& vel);
 
 		[[nodiscard]] const utils::Vector& getPosition() const;
@@ -37,7 +35,7 @@ namespace SI::model {
 		~PhysicalEntity() override = default;
 
 		static bool
-		collides(const std::shared_ptr<PhysicalEntity>& entity0, const std::shared_ptr<PhysicalEntity>& entity1);
+		detectCollision(const std::shared_ptr<PhysicalEntity>& entity0, const std::shared_ptr<PhysicalEntity>& entity1);
 
 	protected:
 		float drag;

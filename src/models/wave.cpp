@@ -8,19 +8,21 @@
 
 SI::model::Wave::Wave() : Wave(0) {}
 
-SI::model::Wave::Wave(const size_t waveNumber) {
+SI::model::Wave::Wave(const size_t waveNumber) : waveNumber(waveNumber) {
 	try {
-		readFromFile(waveNumber);
+		readFromFile();
 	} catch (const std::exception& exception) {
 		throw std::runtime_error("Failed to load 'wave" + std::to_string(waveNumber) + ".json': " + exception.what());
 	}
 }
 
 void SI::model::Wave::update() {
-
+	enemies.erase(std::remove_if(enemies.begin(), enemies.end(),
+	                             [](const std::weak_ptr<Enemy>& enemy) { return !enemy.lock(); }), enemies.end());
+	if (enemies.empty()) *this = Wave(waveNumber + 1);
 }
 
-void SI::model::Wave::readFromFile(const size_t waveNumber) {
+void SI::model::Wave::readFromFile() {
 	const std::string filename = "data/waves/wave" + std::to_string(waveNumber) + ".json";
 	std::ifstream rFile(filename);
 
@@ -81,7 +83,7 @@ void SI::model::Wave::positionRow(const std::vector<std::shared_ptr<Enemy>>& row
 	y += dy + maxHeight / 2;
 
 	float remainingWidth = 8 - fullWidth;
-	if (remainingWidth < 0)throw std::runtime_error("Not enough space for all enemies a row ");
+	if (remainingWidth < 1)throw std::runtime_error("Not enough space for all enemies a row ");
 	float dx = remainingWidth / (row.size() + 1.0f);
 
 	float x = -4;

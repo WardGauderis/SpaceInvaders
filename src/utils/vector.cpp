@@ -19,6 +19,7 @@ float utils::Vector::length() const {
 }
 
 utils::Vector utils::Vector::normalize(const utils::Vector vector) {
+	if (vector.length() == 0) return vector;
 	return vector / vector.length();
 }
 

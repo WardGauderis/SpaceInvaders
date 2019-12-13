@@ -14,10 +14,9 @@ void SI::model::World::update() {
 		++it1;
 		for (; it1 != physicalEntities.end(); ++it1) {
 			auto& entity1 = (*it1);
-			if (model::PhysicalEntity::collides(entity0, entity1)) {
-				const auto copy = std::make_shared<PhysicalEntity>(*entity0);
+			if (model::PhysicalEntity::detectCollision(entity0, entity1)) {
 				entity0->onCollision(entity1);
-				entity1->onCollision(copy);
+				entity1->onCollision(entity0);
 			}
 		}
 	}

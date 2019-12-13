@@ -11,10 +11,6 @@ void SI::model::PhysicalEntity::update() {
 	notifyObservers();
 }
 
-void SI::model::PhysicalEntity::action() {
-
-}
-
 void SI::model::PhysicalEntity::addVelocity(const utils::Vector& vel) {
 	velocity += vel;
 }
@@ -44,16 +40,16 @@ void SI::model::PhysicalEntity::setSize(const utils::Vector& size) {
 	PhysicalEntity::size = size;
 }
 
-bool SI::model::PhysicalEntity::collides(const std::shared_ptr<PhysicalEntity>& entity0,
-                                         const std::shared_ptr<PhysicalEntity>& entity1) {
+void SI::model::PhysicalEntity::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
+	velocity.x = -velocity.x;
+}
+
+bool SI::model::PhysicalEntity::detectCollision(const std::shared_ptr<PhysicalEntity>& entity0,
+                                                const std::shared_ptr<PhysicalEntity>& entity1) {
 	return entity0->position.x - entity0->size.x / 2 < entity1->position.x + entity1->size.x / 2 &&
 	       entity0->position.x + entity0->size.x / 2 > entity1->position.x - entity1->size.x / 2 &&
 	       entity0->position.y - entity0->size.y / 2 < entity1->position.y + entity1->size.y / 2 &&
 	       entity0->position.y + entity0->size.y / 2 > entity1->position.y - entity1->size.y / 2;
-}
-
-void SI::model::PhysicalEntity::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
-
 }
 
 void SI::model::PhysicalEntity::move() {
@@ -73,13 +69,12 @@ utils::Vector SI::model::PhysicalEntity::detectWallCollision() {
 void SI::model::PhysicalEntity::onWallCollision(utils::Vector wall) {
 	if (static_cast<bool>(wall.x)) {
 		velocity.x = -velocity.x;
-		auto delta = position.x +  size.x / 2 * utils::getSign(wall.x)- wall.x;
-		position.x -= 2 * delta;
+		auto delta = position.x + size.x / 2 * utils::getSign(wall.x) - wall.x;
+		position.x -= 2 * delta * drag;
 	}
 	if (static_cast<bool>(wall.y)) {
 		velocity.y = -velocity.y;
-		auto delta = position.y +  size.y / 2 * utils::getSign(wall.y)- wall.y;
-		position.y -= 2 * delta;
+		auto delta = position.y + size.y / 2 * utils::getSign(wall.y) - wall.y;
+		position.y -= 2 * delta * drag;
 	}
 }
-

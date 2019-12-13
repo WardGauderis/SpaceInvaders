@@ -10,10 +10,9 @@
 SI::SpaceInvaders::SpaceInvaders() : model(std::make_shared<model::World>()),
                                      view(std::make_shared<view::World>(model)),
                                      controller(std::make_shared<controller::World>(model, view)),
-                                     running(true) {
-//	addEntity(std::make_shared<model::Player>());
-	addEntity(std::make_shared<model::Wave>());
-}
+                                     player(addEntity(std::make_shared<model::Player>())),
+                                     wave(addEntity(std::make_shared<model::Wave>())),
+                                     running(true) {}
 
 void SI::SpaceInvaders::eventLoop() {
 	while (running) {
@@ -48,6 +47,7 @@ void SI::SpaceInvaders::updateModel() {
 		addEntity(entity);
 	}
 	model->removeEntities();
+	checkIfFinished();
 }
 
 void SI::SpaceInvaders::updateView() {
@@ -55,7 +55,7 @@ void SI::SpaceInvaders::updateView() {
 	view->removeEntities();
 }
 
-void SI::SpaceInvaders::addEntity(const std::shared_ptr<model::Entity>& entityModel) {
+std::weak_ptr<SI::model::Entity> SI::SpaceInvaders::addEntity(const std::shared_ptr<model::Entity>& entityModel) {
 	std::shared_ptr<view::Entity> entityView;
 	std::shared_ptr<controller::Entity> entityController;
 
@@ -82,4 +82,10 @@ void SI::SpaceInvaders::addEntity(const std::shared_ptr<model::Entity>& entityMo
 	model->addEntity(entityModel);
 	view->addEntity(entityView);
 	controller->addEntity(entityController);
+
+	return entityModel;
+}
+
+void SI::SpaceInvaders::checkIfFinished() {
+	running = player.lock() && wave.lock();
 }

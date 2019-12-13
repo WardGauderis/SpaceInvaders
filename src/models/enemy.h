@@ -13,6 +13,8 @@ namespace SI::model {
 	public:
 		Enemy();
 
+		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) override;
+
 		~Enemy() override = default;
 
 	private:

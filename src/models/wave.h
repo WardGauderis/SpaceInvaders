@@ -21,8 +21,9 @@ namespace SI::model {
 
 	private:
 		std::vector<std::weak_ptr<Enemy>> enemies;
+		size_t waveNumber;
 
-		void readFromFile(size_t waveNumber);
+		void readFromFile();
 
 		static std::shared_ptr<Enemy> enemyFactory(const std::string& enemyType);
 
