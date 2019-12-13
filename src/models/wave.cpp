@@ -45,7 +45,7 @@ void SI::model::Wave::readFromFile() {
 
 		for (const auto& enemyType : row) {
 			auto enemy = enemyFactory(enemyType);
-			enemy->setVelocity({0.01f, -0.005f * speed});
+			enemy->setVelocity({0.005f, -0.005f * speed});
 			rowEnemies.emplace_back(enemy);
 		}
 

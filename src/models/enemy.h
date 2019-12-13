@@ -13,13 +13,14 @@ namespace SI::model {
 	public:
 		Enemy();
 
-		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) override;
+		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) final;
 
-		~Enemy() override = default;
+		bool shoot();
+
+		~Enemy() final = default;
 
 	private:
-	protected:
-		void onWallCollision(utils::Vector wall) override;
+		void onWallCollision(utils::Vector wall) final;
 	};
 
 }

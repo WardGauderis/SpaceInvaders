@@ -13,7 +13,9 @@ namespace SI::model {
 	public:
 		Player();
 
-		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) override;
+		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) final;
+
+		bool shoot();
 
 		~Player() final = default;
 	};

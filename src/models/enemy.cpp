@@ -6,7 +6,7 @@
 #include "bullet.h"
 #include "player.h"
 
-SI::model::Enemy::Enemy() : SpaceShip(1) {
+SI::model::Enemy::Enemy() : SpaceShip(1, 15) {
 	size = {0.5, 0.5};
 	drag = 1.0f;
 }
@@ -19,6 +19,10 @@ void SI::model::Enemy::onCollision(const std::shared_ptr<PhysicalEntity>& entity
 	} else {
 		PhysicalEntity::onCollision(entity);
 	}
+}
+
+bool SI::model::Enemy::shoot() {
+	return SpaceShip::shoot(false);
 }
 
 void SI::model::Enemy::onWallCollision(utils::Vector wall) {

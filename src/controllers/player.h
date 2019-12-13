@@ -18,9 +18,6 @@ namespace SI::controller {
 		void update() final;
 
 		~Player() final = default;
-
-	private:
-		unsigned int cooldown;
 	};
 
 }

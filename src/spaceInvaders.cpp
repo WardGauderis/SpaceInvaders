@@ -36,8 +36,8 @@ void SI::SpaceInvaders::updateController() {
 		}
 	}
 
-	controller->update();
 	controller->removeEntities();
+	controller->update();
 }
 
 void SI::SpaceInvaders::updateModel() {
@@ -51,8 +51,8 @@ void SI::SpaceInvaders::updateModel() {
 }
 
 void SI::SpaceInvaders::updateView() {
-	view->update();
 	view->removeEntities();
+	view->update();
 }
 
 std::weak_ptr<SI::model::Entity> SI::SpaceInvaders::addEntity(const std::shared_ptr<model::Entity>& entityModel) {

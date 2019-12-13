@@ -6,7 +6,7 @@
 #include "bullet.h"
 #include "enemy.h"
 
-SI::model::Player::Player(): SpaceShip(3) {
+SI::model::Player::Player() : SpaceShip(3, 15) {
 	size = {0.5, 0.5};
 	drag = 0.99f;
 	position = {0, -2.5};
@@ -19,3 +19,8 @@ void SI::model::Player::onCollision(const std::shared_ptr<PhysicalEntity>& entit
 		if (loseLive() == 0) deleteThis();
 	}
 }
+
+bool SI::model::Player::shoot() {
+	return SpaceShip::shoot(true);
+}
+

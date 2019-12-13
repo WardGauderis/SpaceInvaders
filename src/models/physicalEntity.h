@@ -43,7 +43,7 @@ namespace SI::model {
 		utils::Vector position;
 		utils::Vector velocity;
 
-		void move();
+		virtual void move();
 
 		utils::Vector detectWallCollision();
 

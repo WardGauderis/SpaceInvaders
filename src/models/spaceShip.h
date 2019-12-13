@@ -11,16 +11,21 @@ namespace SI::model {
 
 	class SpaceShip : public PhysicalEntity {
 	public:
-		SpaceShip(unsigned int lives);
+		SpaceShip(unsigned int lives, unsigned int cooldown);
 
-		void shoot();
+		void update() override;
 
 		~SpaceShip() override = default;
 
 		unsigned int loseLive();
 
+	protected:
+		bool shoot(bool team);
+
 	private:
 		unsigned int lives;
+		const unsigned int cooldown;
+		unsigned int timer;
 	};
 
 }
