@@ -1,42 +1,38 @@
 {
-  "speed": 1,
-  "shots": 1,
-  "wave": [
-    [
-      "default",
-      "default",
-      "default",
-      "default",
-      "default",
-      "default",
-      "default",
-      "default",
-      "default",
-      "default",
-      "default",
-      "default"
-    ],
-    [
-      "default",
-      "default"
-    ],
-    [
-      "default",
-      "default",
-      "default"
-    ],
-    [
-      "default",
-      "default",
-      "default",
-      "default"
-    ],
-    [
-      "default",
-      "default",
-      "default",
-      "default",
-      "default"
-    ]
+  "speed": 2,
+  "rows": [
+    {
+      "distance": 4,
+      "enemies": [
+        {},
+        {
+          "speed": 0
+        },
+        {}
+      ]
+    },
+    {
+      "distance": 4,
+      "enemies": [
+        {
+          "type": "default",
+          "cooldown": 10,
+          "speed": 0.2,
+          "size": [
+            2,
+            0.5
+          ],
+          "lives": 3
+        },
+        {},
+        {},
+        {
+          "speed": 0
+        },
+        {},
+        {},
+        {}
+      ]
+    }
   ]
 }

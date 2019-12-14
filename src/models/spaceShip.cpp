@@ -5,25 +5,34 @@
 #include "spaceShip.h"
 #include "bullet.h"
 
-SI::model::SpaceShip::SpaceShip(unsigned int lives, unsigned int cooldown) : lives(lives), cooldown(cooldown),
-                                                                             timer(0) {}
+SI::model::SpaceShip::SpaceShip(const float drag, const utils::Vector& size, const utils::Vector& position,
+                                const utils::Vector& velocity, const unsigned int lives) : PhysicalEntity(drag, size,
+                                                                                                          position,
+                                                                                                          velocity),
+                                                                                           lives(lives) {}
+
 
 void SI::model::SpaceShip::update() {
-	if (timer != 0) --timer;
 	PhysicalEntity::update();
 }
 
+unsigned int SI::model::SpaceShip::getLives() const {
+	return lives;
+}
+
+void SI::model::SpaceShip::setLives(const unsigned int lives) {
+	SpaceShip::lives = lives;
+	if(lives == 0) throw std::runtime_error("lives cannot manually be set to 0");
+}
+
 unsigned int SI::model::SpaceShip::loseLive() {
-	return --lives;
+	if(--lives == 0) deleteThis();
+	return lives;
 }
 
 bool SI::model::SpaceShip::shoot(bool team) {
-	if (timer != 0) return false;
-	timer = cooldown;
-	auto bullet = std::make_shared<Bullet>(team);
-	bullet->setPosition({position.x, position.y + size.y / 2 + bullet->getSize().y / 2});
-	bullet->setVelocity(velocity + utils::Vector(0, 0.1f));
+	auto bullet = std::make_shared<Bullet>(velocity + utils::Vector(0, team ? 0.05f : -0.05f), team);
+	bullet->setPosition({position.x, position.y + (team ? 1.0f : -1) * (size.y / 2 + bullet->getSize().y / 2)});
 	addModel(bullet);
 	return true;
 }
-

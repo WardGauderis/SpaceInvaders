@@ -21,6 +21,10 @@ SI::view::World::World(std::shared_ptr<model::World> model) : Entity(), model(st
 	window = std::make_shared<sf::RenderWindow>(
 			sf::VideoMode(utils::Transformation::get().getWidth(), utils::Transformation::get().getHeight()),
 			"Space Invaders", sf::Style::Close, settings);
+
+	music.openFromFile("data/audio/The_Cannery.wav");
+	music.setLoop(true);
+	music.play();
 }
 
 void SI::view::World::notify() {
@@ -41,7 +45,7 @@ void SI::view::World::addEntity(const std::shared_ptr<Entity>& entity) {
 
 void SI::view::World::removeEntities() {
 	for (auto it = entities.begin(); it != entities.end();) {
-		if((*it)->mayDeleteThis()) it = entities.erase(it);
+		if ((*it)->mayDeleteThis()) it = entities.erase(it);
 		else ++it;
 	}
 }

@@ -8,8 +8,7 @@ SI::controller::Wave::Wave(std::weak_ptr<model::Wave> model, std::weak_ptr<view:
 		model)), view(std::move(view)) {}
 
 void SI::controller::Wave::update() {
-	auto[model, view] = lock();
-
+	lock();
 }
 
 std::pair<std::shared_ptr<SI::model::Wave>, std::shared_ptr<SI::view::Wave>> SI::controller::Wave::lock() {

@@ -14,7 +14,9 @@ namespace SI::controller {
 	public:
 		Enemy(const std::weak_ptr<model::Enemy>& model, const std::weak_ptr<view::Enemy>& view);
 
-		~Enemy() override = default;
+		void update() final;
+
+		~Enemy() final = default;
 	};
 
 }

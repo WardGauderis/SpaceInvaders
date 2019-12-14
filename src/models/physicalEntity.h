@@ -12,7 +12,8 @@ namespace SI::model {
 
 	class PhysicalEntity : public Entity {
 	public:
-		PhysicalEntity() = default;
+		PhysicalEntity(float drag, const utils::Vector& size, const utils::Vector& position,
+		               const utils::Vector& velocity);
 
 		void update() override;
 

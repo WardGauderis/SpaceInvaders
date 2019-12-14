@@ -6,6 +6,7 @@
 #define SPACEINVADERS_WAVEMODEL_H
 
 #include "enemy.h"
+#include "../utils/json.h"
 
 namespace SI::model {
 
@@ -23,9 +24,11 @@ namespace SI::model {
 		std::vector<std::weak_ptr<Enemy>> enemies;
 		size_t waveNumber;
 
-		void readFromFile();
+		void parseWave();
 
-		static std::shared_ptr<Enemy> enemyFactory(const std::string& enemyType);
+		std::vector<std::shared_ptr<Enemy>> parseRow(const nlohmann::json& row, float& y);
+
+		std::shared_ptr<Enemy> parseEnemy(const nlohmann::json& enemy);
 
 		static void positionRow(const std::vector<std::shared_ptr<Enemy>>& row, float& y);
 	};

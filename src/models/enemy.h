@@ -5,6 +5,8 @@
 #ifndef SPACEINVADERS_ENEMYMODEL_H
 #define SPACEINVADERS_ENEMYMODEL_H
 
+#include <random>
+
 #include "spaceShip.h"
 
 namespace SI::model {
@@ -17,9 +19,16 @@ namespace SI::model {
 
 		bool shoot();
 
+		unsigned int getShootChance() const;
+
+		void setShootChance(const unsigned int chance);
+
 		~Enemy() final = default;
 
 	private:
+		std::uniform_int_distribution<> distribution;
+		static std::default_random_engine generator;
+
 		void onWallCollision(utils::Vector wall) final;
 	};
 

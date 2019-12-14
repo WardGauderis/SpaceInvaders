@@ -15,9 +15,15 @@ namespace SI::model {
 
 		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) final;
 
+		void update() override;
+
 		bool shoot();
 
 		~Player() final = default;
+
+	private:
+		const unsigned int cooldown;
+		unsigned int timer;
 	};
 
 }

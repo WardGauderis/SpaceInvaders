@@ -4,6 +4,12 @@
 
 #include "physicalEntity.h"
 
+SI::model::PhysicalEntity::PhysicalEntity(float drag, const utils::Vector& size, const utils::Vector& position,
+                                          const utils::Vector& velocity) : drag(drag), position(position),
+                                                                           velocity(velocity) {
+	setSize(size);
+}
+
 void SI::model::PhysicalEntity::update() {
 	move();
 	if (auto vector = detectWallCollision())
@@ -37,6 +43,8 @@ const utils::Vector& SI::model::PhysicalEntity::getSize() const {
 }
 
 void SI::model::PhysicalEntity::setSize(const utils::Vector& size) {
+	if (size.x < 0 || size.y < 0) throw std::runtime_error("size must be positive");
+	if (size.x > 7 || size.y > 5) throw std::runtime_error("size is too big");
 	PhysicalEntity::size = size;
 }
 

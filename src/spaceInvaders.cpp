@@ -75,6 +75,8 @@ std::weak_ptr<SI::model::Entity> SI::SpaceInvaders::addEntity(const std::shared_
 		auto castedView = std::make_shared<view::Player>(player, view->getWindow());
 		entityView = castedView;
 		entityController = std::make_shared<controller::Player>(player, castedView);
+	} else {
+		throw std::runtime_error("Entity instance is not supported");
 	}
 
 	entityModel->registerObserver(entityView);

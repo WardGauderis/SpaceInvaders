@@ -17,6 +17,7 @@ void SI::view::PhysicalEntity::notify() {
 }
 
 void SI::view::PhysicalEntity::update() {
+	if (mayDeleteThis()) return;
 	window->draw(sprite);
 }
 

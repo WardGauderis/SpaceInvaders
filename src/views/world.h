@@ -6,6 +6,7 @@
 #define SPACEINVADERS_WORLDVIEW_H
 
 #include <set>
+#include <SFML/Audio.hpp>
 
 #include "entity.h"
 #include "../models/world.h"
@@ -32,6 +33,7 @@ namespace SI::view {
 		std::shared_ptr<model::World> model;
 		std::set<std::shared_ptr<Entity>, std::function<bool(const std::shared_ptr<SI::view::Entity>&,
 		                                                     const std::shared_ptr<SI::view::Entity>&)>> entities;
+		sf::Music music;
 	};
 
 }

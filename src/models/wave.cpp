@@ -2,15 +2,15 @@
 // Created by ward on 12/9/19.
 //
 #include <fstream>
+#include <iostream>
 
 #include "wave.h"
-#include "../utils/json.h"
 
 SI::model::Wave::Wave() : Wave(0) {}
 
 SI::model::Wave::Wave(const size_t waveNumber) : waveNumber(waveNumber) {
 	try {
-		readFromFile();
+		parseWave();
 	} catch (const std::exception& exception) {
 		throw std::runtime_error("Failed to load 'wave" + std::to_string(waveNumber) + ".json': " + exception.what());
 	}
@@ -19,55 +19,77 @@ SI::model::Wave::Wave(const size_t waveNumber) : waveNumber(waveNumber) {
 void SI::model::Wave::update() {
 	enemies.erase(std::remove_if(enemies.begin(), enemies.end(),
 	                             [](const std::weak_ptr<Enemy>& enemy) { return !enemy.lock(); }), enemies.end());
-	if (enemies.empty()) *this = Wave(waveNumber + 1);
+	if (enemies.empty())
+		*this = Wave(waveNumber);
 }
 
-void SI::model::Wave::readFromFile() {
+void SI::model::Wave::parseWave() {
 	const std::string filename = "data/waves/wave" + std::to_string(waveNumber) + ".json";
 	std::ifstream rFile(filename);
 
-	bool waveExists = rFile.is_open();
-
-	if (!waveExists) {
+	if (!rFile.is_open()) {
 		if (waveNumber == 0) throw std::runtime_error("at least one wave must be present");
 		deleteThis();
 		return;
 	}
 
-	auto parser = nlohmann::json::parse(rFile);
+	auto wave = nlohmann::json::parse(rFile);
 
-	auto speed = parser["speed"].get<unsigned int>();
-	auto wave = parser["wave"].get<std::vector<std::vector<std::string>>>();
+	auto speed = wave.value<float>("speed", 1);
+	if (speed < 0) throw std::runtime_error("wave speed must be positive");
 
 	float y = 3;
-	for (const auto& row : wave) {
-		std::vector<std::shared_ptr<Enemy>> rowEnemies;
-
-		for (const auto& enemyType : row) {
-			auto enemy = enemyFactory(enemyType);
-			enemy->setVelocity({0.005f, -0.005f * speed});
-			rowEnemies.emplace_back(enemy);
-		}
-
-		positionRow(rowEnemies, y);
-
-		enemies.insert(enemies.end(), rowEnemies.begin(), rowEnemies.end());
-		addModels(std::vector<std::shared_ptr<Entity>>(rowEnemies.begin(), rowEnemies.end()));
+	std::vector<std::shared_ptr<Enemy>> newEnemies;
+	for (const auto& row: wave.at("rows")) {
+		auto rowEnemies = parseRow(row, y);
+		newEnemies.insert(newEnemies.end(), rowEnemies.begin(), rowEnemies.end());
 	}
 
+	for (const auto& enemy: newEnemies) {
+		enemy->setVelocity({enemy->getVelocity().x, -0.002f * speed});
+	}
+
+	enemies.insert(enemies.end(), newEnemies.begin(), newEnemies.end());
+	addModels(std::vector<std::shared_ptr<Entity>>(newEnemies.begin(), newEnemies.end()));
 }
 
-std::shared_ptr<SI::model::Enemy>
-SI::model::Wave::enemyFactory(const std::string& enemyType) {
-	std::shared_ptr<Enemy> enemy;
+std::vector<std::shared_ptr<SI::model::Enemy>> SI::model::Wave::parseRow(const nlohmann::json& row, float& y) {
+	auto distance = row.value<float>("distance", 1);
+	if (distance < 0) throw std::runtime_error("row distance must be positive");
 
-	if (enemyType == "default") {
-		enemy = std::make_shared<Enemy>();
-	} else {
-		throw std::runtime_error("Enemy type '" + enemyType + "' is not supported");
+	std::vector<std::shared_ptr<Enemy>> newEnemies;
+	for (const auto& enemy: row.at("enemies")) {
+		newEnemies.emplace_back(parseEnemy(enemy));
 	}
 
-	return enemy;
+	y += distance * 0.25f;
+	positionRow(newEnemies, y);
+
+	return newEnemies;
+}
+
+std::shared_ptr<SI::model::Enemy> SI::model::Wave::parseEnemy(const nlohmann::json& enemy) {
+	auto type = enemy.value<std::string>("type", "default");
+	auto cooldown = enemy.value<float>("cooldown", 1);
+	if (cooldown < 0) throw std::runtime_error("cooldown must be positive");
+	auto speed = enemy.value<float>("speed", 1);
+	auto size = enemy.value<std::array<float, 2>>("size", {1, 1});
+	auto lives = enemy.value<float>("lives", 1);
+
+	std::shared_ptr<Enemy> newEnemy;
+	if (type == "default") {
+		newEnemy = std::make_shared<Enemy>();
+	} else {
+		throw std::runtime_error("type '" + type + "' is not recognised");
+	}
+
+	newEnemy->setShootChance(
+			static_cast<unsigned int>(std::round(static_cast<float>(newEnemy->getShootChance()) * cooldown)));
+	newEnemy->setVelocity(newEnemy->getVelocity() * speed);
+	newEnemy->setSize({newEnemy->getSize().x * size[0], newEnemy->getSize().y * size[1]});
+	newEnemy->setLives(static_cast<unsigned int>(static_cast<float>(newEnemy->getLives()) * lives));
+
+	return newEnemy;
 }
 
 void SI::model::Wave::positionRow(const std::vector<std::shared_ptr<Enemy>>& row, float& y) {
@@ -79,8 +101,7 @@ void SI::model::Wave::positionRow(const std::vector<std::shared_ptr<Enemy>>& row
 		maxHeight = std::max(maxHeight, enemy->getSize().y);
 	}
 
-	const float dy = 0.125;
-	y += dy + maxHeight / 2;
+	y += maxHeight / 2;
 
 	float remainingWidth = 8 - fullWidth;
 	if (remainingWidth < 1)throw std::runtime_error("Not enough space for all enemies a row ");
