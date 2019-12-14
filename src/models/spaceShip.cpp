@@ -32,7 +32,7 @@ unsigned int SI::model::SpaceShip::loseLive() {
 
 bool SI::model::SpaceShip::shoot(bool team) {
 	auto bullet = std::make_shared<Bullet>(velocity + utils::Vector(0, team ? 0.05f : -0.05f), team);
-	bullet->setPosition({position.x, position.y + (team ? 1.0f : -1) * (size.y / 2 + bullet->getSize().y / 2)});
+	bullet->setPosition({position.x, position.y});
 	addModel(bullet);
 	return true;
 }

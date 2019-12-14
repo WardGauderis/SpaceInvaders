@@ -6,7 +6,8 @@
       "enemies": [
         {},
         {
-          "speed": 0
+          "speed": 0,
+          "cooldown": 0.1
         },
         {}
       ]
