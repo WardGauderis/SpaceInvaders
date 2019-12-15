@@ -14,6 +14,8 @@ namespace SI::view {
 	public:
 		SpaceShip(const std::weak_ptr<model::SpaceShip>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
+		int drawOrder() override;
+
 		~SpaceShip() override = default;
 	};
 

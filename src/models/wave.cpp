@@ -5,7 +5,6 @@
 #include <iostream>
 
 #include "wave.h"
-
 SI::model::Wave::Wave() : Wave(0) {}
 
 SI::model::Wave::Wave(const size_t waveNumber) : waveNumber(waveNumber) {
@@ -19,8 +18,16 @@ SI::model::Wave::Wave(const size_t waveNumber) : waveNumber(waveNumber) {
 void SI::model::Wave::update() {
 	enemies.erase(std::remove_if(enemies.begin(), enemies.end(),
 	                             [](const std::weak_ptr<Enemy>& enemy) { return !enemy.lock(); }), enemies.end());
-	if (enemies.empty())
-		*this = Wave(waveNumber);
+	if (enemies.empty()) {
+		Wave newWave(waveNumber + 1);
+		newWave.setObservers(getObservers());
+		*this = newWave;
+		notifyObservers();
+	}
+}
+
+const std::string& SI::model::Wave::getTitle() const {
+	return title;
 }
 
 void SI::model::Wave::parseWave() {
@@ -28,12 +35,14 @@ void SI::model::Wave::parseWave() {
 	std::ifstream rFile(filename);
 
 	if (!rFile.is_open()) {
-		if (waveNumber == 0) throw std::runtime_error("at least one wave must be present");
+		if (waveNumber == 0) throw std::runtime_error("at least wave0.json must be present in data/waves");
 		deleteThis();
 		return;
 	}
 
 	auto wave = nlohmann::json::parse(rFile);
+
+	title = wave.value<std::string>("title", "wave" + std::to_string(waveNumber));
 
 	auto speed = wave.value<float>("speed", 1);
 	if (speed < 0) throw std::runtime_error("wave speed must be positive");
@@ -71,10 +80,11 @@ std::vector<std::shared_ptr<SI::model::Enemy>> SI::model::Wave::parseRow(const n
 std::shared_ptr<SI::model::Enemy> SI::model::Wave::parseEnemy(const nlohmann::json& enemy) {
 	auto type = enemy.value<std::string>("type", "default");
 	auto cooldown = enemy.value<float>("cooldown", 1);
-	if (cooldown < 0) throw std::runtime_error("cooldown must be positive");
 	auto speed = enemy.value<float>("speed", 1);
 	auto size = enemy.value<std::array<float, 2>>("size", {1, 1});
 	auto lives = enemy.value<float>("lives", 1);
+	auto bulletSpeed = enemy.value<float>("bulletspeed", 1);
+	if (bulletSpeed < 0) throw std::runtime_error("bullet speed must be positive");
 
 	std::shared_ptr<Enemy> newEnemy;
 	if (type == "default") {
@@ -83,7 +93,8 @@ std::shared_ptr<SI::model::Enemy> SI::model::Wave::parseEnemy(const nlohmann::js
 		throw std::runtime_error("type '" + type + "' is not recognised");
 	}
 
-	newEnemy->setShootChance(
+	newEnemy->setBulletSpeed(newEnemy->getBulletSpeed() * bulletSpeed);
+	newEnemy->setCooldown(
 			static_cast<unsigned int>(std::round(static_cast<float>(newEnemy->getShootChance()) * cooldown)));
 	newEnemy->setVelocity(newEnemy->getVelocity() * speed);
 	newEnemy->setSize({newEnemy->getSize().x * size[0], newEnemy->getSize().y * size[1]});

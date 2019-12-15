@@ -18,11 +18,14 @@ namespace SI::model {
 
 		void update() final;
 
+		const std::string& getTitle() const;
+
 		~Wave() final = default;
 
 	private:
 		std::vector<std::weak_ptr<Enemy>> enemies;
 		size_t waveNumber;
+		std::string title;
 
 		void parseWave();
 

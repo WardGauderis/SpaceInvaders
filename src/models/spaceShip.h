@@ -12,7 +12,7 @@ namespace SI::model {
 	class SpaceShip : public PhysicalEntity {
 	public:
 		SpaceShip(float drag, const utils::Vector& size, const utils::Vector& position, const utils::Vector& velocity,
-		          unsigned int lives);
+		          const unsigned int lives, const float bulletSpeed);
 
 		void update() override;
 
@@ -22,13 +22,18 @@ namespace SI::model {
 
 		unsigned int loseLive();
 
+		float getBulletSpeed() const;
+
+		void setBulletSpeed(float bulletSpeed);
+
 		~SpaceShip() override = default;
 
 	protected:
-		bool shoot(bool team);
+		bool shoot(const bool team);
 
 	private:
 		unsigned int lives;
+		float bulletSpeed;
 	};
 
 }

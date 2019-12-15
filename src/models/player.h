@@ -6,6 +6,7 @@
 #define SPACEINVADERS_PLAYERMODEL_H
 
 #include "spaceShip.h"
+#include "../utils/stopWatch.h"
 
 namespace SI::model {
 
@@ -22,8 +23,7 @@ namespace SI::model {
 		~Player() final = default;
 
 	private:
-		const unsigned int cooldown;
-		unsigned int timer;
+		utils::Timer timer;
 	};
 
 }

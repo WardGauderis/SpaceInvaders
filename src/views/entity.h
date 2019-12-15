@@ -35,7 +35,6 @@ namespace SI::view {
 
 	protected:
 		std::shared_ptr<sf::RenderWindow> window;
-		sf::RectangleShape sprite;
 
 		void deleteThis();
 

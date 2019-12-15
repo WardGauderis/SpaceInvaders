@@ -5,7 +5,7 @@
 #include "observer.h"
 #include <algorithm>
 
-void utils::Subject::registerObserver(const std::shared_ptr<Observer>& observer) {
+void utils::Subject::addObserver(const std::shared_ptr<Observer>& observer) {
 	observers.emplace_back(observer);
 }
 
@@ -17,4 +17,12 @@ void utils::Subject::notifyObservers() {
 	for (const auto& observer: observers) {
 		observer->notify();
 	}
+}
+
+const std::vector<std::shared_ptr<utils::Observer>>& utils::Subject::getObservers() const {
+	return observers;
+}
+
+void utils::Subject::setObservers(const std::vector<std::shared_ptr<Observer>>& observers) {
+	Subject::observers = observers;
 }

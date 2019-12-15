@@ -21,7 +21,7 @@ namespace SI::model {
 
 		unsigned int getShootChance() const;
 
-		void setShootChance(const unsigned int chance);
+		void setCooldown(const unsigned int cooldown);
 
 		~Enemy() final = default;
 

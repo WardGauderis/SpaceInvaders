@@ -15,16 +15,16 @@ std::function<bool(const std::shared_ptr<SI::view::Entity>&,
 };
 
 SI::view::World::World(std::shared_ptr<model::World> model) : Entity(), model(std::move(model)), entities(cmpEntities) {
+	if(!music.openFromFile("data/audio/The_Cannery.wav")) throw std::runtime_error("The_Cannery.wav must be present in data/audio");
+	music.setLoop(true);
+	music.play();
+
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 8;
 
 	window = std::make_shared<sf::RenderWindow>(
 			sf::VideoMode(utils::Transformation::get().getWidth(), utils::Transformation::get().getHeight()),
 			"Space Invaders", sf::Style::Close, settings);
-
-	music.openFromFile("data/audio/The_Cannery.wav");
-	music.setLoop(true);
-	music.play();
 }
 
 void SI::view::World::notify() {
@@ -32,7 +32,7 @@ void SI::view::World::notify() {
 }
 
 void SI::view::World::update() {
-	window->clear();
+	window->clear(sf::Color(30, 27, 25));
 	for (const auto& entity: entities) {
 		entity->update();
 	}

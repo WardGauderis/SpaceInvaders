@@ -41,6 +41,7 @@ namespace utils {
 		 * @param newFPS preferred fps
 		 */
 		void setFPS(unsigned int newFPS);
+
 		/**
 		 * set whether the fps must be printed
 		 * @param print bool
@@ -63,6 +64,28 @@ namespace utils {
 
 		~StopWatch() = default;
 
+	};
+
+	class Timer {
+	public:
+		explicit Timer(unsigned int cooldown);
+
+		void update();
+
+		bool ready();
+
+		void reset();
+
+		void stop();
+
+		void start();
+
+		void setTime(unsigned int time);
+
+	private:
+		unsigned int cooldown;
+		unsigned int time;
+		bool active;
 	};
 
 }

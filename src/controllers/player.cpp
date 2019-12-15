@@ -11,7 +11,7 @@ void SI::controller::Player::update() {
 	auto[model, view] = lock();
 	if (mayDeleteThis()) return;
 
-	const float acc = 0.002f;
+	const float acc = 0.005f;
 //	if (view->isKeyPressed(utils::Key::up))
 //		model->addVelocity({0, acc});
 //	if (view->isKeyPressed(utils::Key::down))

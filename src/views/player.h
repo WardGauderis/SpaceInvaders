@@ -14,8 +14,6 @@ namespace SI::view {
 	public:
 		Player(const std::weak_ptr<model::Player>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
-		int drawOrder() override;
-
 		~Player() final = default;
 
 	};

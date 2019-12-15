@@ -79,7 +79,7 @@ std::weak_ptr<SI::model::Entity> SI::SpaceInvaders::addEntity(const std::shared_
 		throw std::runtime_error("Entity instance is not supported");
 	}
 
-	entityModel->registerObserver(entityView);
+	entityModel->addObserver(entityView);
 
 	model->addEntity(entityModel);
 	view->addEntity(entityView);
@@ -89,5 +89,5 @@ std::weak_ptr<SI::model::Entity> SI::SpaceInvaders::addEntity(const std::shared_
 }
 
 void SI::SpaceInvaders::checkIfFinished() {
-	running = player.lock() && wave.lock();
+	running = running && player.lock() && wave.lock();
 }

@@ -18,11 +18,15 @@ float utils::Vector::length() const {
 	return std::sqrt(std::pow(x, 2.0f) + std::pow(y, 2.0f));
 }
 
-utils::Vector utils::Vector::normalize(const utils::Vector vector) {
-	if (vector.length() == 0) return vector;
-	return vector / vector.length();
+utils::Vector utils::Vector::normalize() const {
+	if (length() == 0) return *this;
+	return *this / length();
 }
 
+utils::Vector utils::Vector::rotate(const float angle) const {
+	float radians = angle * static_cast<float>(M_PI) / 180.0f;
+	return {x * std::cos(radians) - y * std::sin(radians), x * std::sin(x) + y * std::cos(radians)};
+}
 
 float utils::Vector::dot(utils::Vector vector) const {
 	return x * vector.x + y * vector.y;

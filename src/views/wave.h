@@ -7,6 +7,7 @@
 
 #include "enemy.h"
 #include "../models/wave.h"
+#include "../utils/stopWatch.h"
 
 namespace SI::view {
 
@@ -14,16 +15,23 @@ namespace SI::view {
 	public:
 		Wave(std::weak_ptr<model::Wave> model, const std::shared_ptr<sf::RenderWindow>& window);
 
-		void notify() override;
+		void notify() final;
 
-		void update() override;
+		void update() final;
+
+		int drawOrder() final;
 
 		std::shared_ptr<model::Wave> lock();
 
-		~Wave() override = default;
+		~Wave() final = default;
 
 	private:
 		std::weak_ptr<model::Wave> model;
+		sf::Font font;
+		sf::Text text;
+
+		utils::Timer timer;
+		uint8_t opacity;
 	};
 
 }

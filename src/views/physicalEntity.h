@@ -24,6 +24,7 @@ namespace SI::view {
 
 	protected:
 		std::weak_ptr<model::PhysicalEntity> model;
+		sf::RectangleShape sprite;
 	};
 
 }

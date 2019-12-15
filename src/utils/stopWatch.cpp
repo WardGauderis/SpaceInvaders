@@ -53,3 +53,35 @@ void utils::StopWatch::setFPS(unsigned int newFPS) {
 void utils::StopWatch::printFPS(bool print) {
 	showFPS = print;
 }
+
+
+utils::Timer::Timer(const unsigned int cooldown) : cooldown(cooldown), time(0), active(true) {}
+
+void utils::Timer::update() {
+	if(!active) return;
+	if (time != 0) --time;
+}
+
+bool utils::Timer::ready() {
+	if (time == 0) {
+		if(active) reset();
+		return true;
+	}
+	return false;
+}
+
+void utils::Timer::reset() {
+	time = cooldown;
+}
+
+void utils::Timer::stop() {
+	active = false;
+}
+
+void utils::Timer::start() {
+	active = true;
+}
+
+void utils::Timer::setTime(unsigned int time) {
+	Timer::time = time;
+}
