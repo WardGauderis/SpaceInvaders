@@ -6,13 +6,21 @@
 #include "utils/stopWatch.h"
 #include "controllers/wave.h"
 #include "controllers/bullet.h"
+#include "views/display.h"
 
 SI::SpaceInvaders::SpaceInvaders() : model(std::make_shared<model::World>()),
                                      view(std::make_shared<view::World>(model)),
                                      controller(std::make_shared<controller::World>(model, view)),
-                                     player(addEntity(std::make_shared<model::Player>())),
-                                     wave(addEntity(std::make_shared<model::Wave>())),
-                                     running(true) {}
+                                     running(true) {
+	auto newPlayer = std::make_shared<model::Player>();
+	auto newWave = std::make_shared<model::Wave>();
+	auto newDisplay = std::make_shared<view::Display>(view->getWindow(), newPlayer, newWave);
+	newPlayer->addObserver(newDisplay);
+	newWave->addObserver(newDisplay);
+	view->addEntity(newDisplay);
+	player = addEntity(newPlayer);
+	wave = addEntity(newWave);
+}
 
 void SI::SpaceInvaders::eventLoop() {
 	while (running) {
@@ -88,6 +96,6 @@ std::weak_ptr<SI::model::Entity> SI::SpaceInvaders::addEntity(const std::shared_
 	return entityModel;
 }
 
-void SI::SpaceInvaders::checkIfFinished() {
-	running = running && player.lock() && wave.lock();
+bool SI::SpaceInvaders::checkIfFinished() {
+	return running;
 }

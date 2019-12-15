@@ -38,12 +38,12 @@ std::vector<std::shared_ptr<SI::model::Entity>> SI::model::World::getNewModels()
 
 void SI::model::World::removeEntities() {
 	for (auto it = entities.begin(); it != entities.end();) {
-		if((*it)->mayDeleteThis())
+		if ((*it)->mayDeleteThis())
 			it = entities.erase(it);
 		else ++it;
 	}
 	for (auto it = physicalEntities.begin(); it != physicalEntities.end();) {
-		if((*it)->mayDeleteThis()) it = physicalEntities.erase(it);
+		if ((*it)->mayDeleteThis()) it = physicalEntities.erase(it);
 		else ++it;
 	}
 }

@@ -7,6 +7,7 @@
 #include "player.h"
 
 std::default_random_engine SI::model::Enemy::generator = std::default_random_engine((std::random_device()) ());
+unsigned int SI::model::Enemy::score = 0;
 
 SI::model::Enemy::Enemy() : SpaceShip(1, {0.5, 0.5}, {0, 0}, {0.015f, 0}, 1, 0.05f) {
 	setCooldown(90);
@@ -23,7 +24,7 @@ void SI::model::Enemy::onCollision(const std::shared_ptr<PhysicalEntity>& entity
 }
 
 bool SI::model::Enemy::shoot() {
-	if(detectWallCollision().y == 3) return false;
+	if (detectWallCollision().y == 3) return false;
 	if (distribution(generator) == 1) return SpaceShip::shoot(false);
 	return false;
 }
@@ -37,6 +38,10 @@ void SI::model::Enemy::setCooldown(const unsigned int cooldown) {
 	distribution = std::uniform_int_distribution<>(1, static_cast<int>(cooldown));
 }
 
+unsigned int SI::model::Enemy::getScore() {
+	return score;
+}
+
 void SI::model::Enemy::onWallCollision(utils::Vector wall) {
 	if (wall.y == 3) {
 		wall.y = 0;
@@ -45,4 +50,8 @@ void SI::model::Enemy::onWallCollision(utils::Vector wall) {
 		return;
 	}
 	PhysicalEntity::onWallCollision(wall);
+}
+
+SI::model::Enemy::~Enemy() {
+	score += 10;
 }

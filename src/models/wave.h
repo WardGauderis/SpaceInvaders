@@ -20,6 +20,8 @@ namespace SI::model {
 
 		const std::string& getTitle() const;
 
+		size_t getWaveNumber() const;
+
 		~Wave() final = default;
 
 	private:

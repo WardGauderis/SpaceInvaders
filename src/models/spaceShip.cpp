@@ -27,6 +27,7 @@ void SI::model::SpaceShip::setLives(const unsigned int lives) {
 
 unsigned int SI::model::SpaceShip::loseLive() {
 	if (--lives == 0) deleteThis();
+	notifyObservers();
 	return lives;
 }
 

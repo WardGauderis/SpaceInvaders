@@ -64,8 +64,6 @@ sf::Vector2<T> utils::Transformation::convertDistance(const utils::Vector vector
 
 template sf::Vector2<int> utils::Transformation::convertDistance(const Vector vector) const;
 
-template sf::Vector2<float> utils::Transformation::convertDistance(const Vector vector) const;
+template sf::Vector2<unsigned int> utils::Transformation::convertDistance(const Vector vector) const;
 
-//utils::Vector utils::Transformation::convert(const sf::Vector2i vector) const {
-//	return {convertWidth(vector.x), convertHeight(vector.y)};
-//}
+template sf::Vector2<float> utils::Transformation::convertDistance(const Vector vector) const;

@@ -33,7 +33,7 @@ namespace SI {
 
 		std::weak_ptr<model::Entity> addEntity(const std::shared_ptr<model::Entity>& entityModel);
 
-		void checkIfFinished();
+		bool checkIfFinished();
 	};
 
 }

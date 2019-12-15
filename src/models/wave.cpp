@@ -30,6 +30,10 @@ const std::string& SI::model::Wave::getTitle() const {
 	return title;
 }
 
+size_t SI::model::Wave::getWaveNumber() const {
+	return waveNumber;
+}
+
 void SI::model::Wave::parseWave() {
 	const std::string filename = "data/waves/wave" + std::to_string(waveNumber) + ".json";
 	std::ifstream rFile(filename);

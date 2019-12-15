@@ -8,6 +8,7 @@
 #include <unordered_set>
 
 #include "player.h"
+#include "wave.h"
 
 namespace SI::model {
 
@@ -28,6 +29,7 @@ namespace SI::model {
 	private:
 		std::unordered_set<std::shared_ptr<Entity>> entities;
 		std::unordered_set<std::shared_ptr<PhysicalEntity>> physicalEntities;
+
 	};
 
 }
