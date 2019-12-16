@@ -38,7 +38,7 @@ void SI::view::Display::notify() {
 	if(mayDeleteThis()) return;
 	lives.setString("Lives: " + std::to_string(player->getLives()));
 	waveNumber.setString("Wave " + std::to_string(wave->getWaveNumber()));
-	score.setString(std::to_wstring(model::Enemy::getScore()));
+	score.setString("Score: " + std::to_string(model::Enemy::getScore()));
 
 	auto box = lives.getLocalBounds();
 	lives.setOrigin(box.left, box.top + box.height / 2);

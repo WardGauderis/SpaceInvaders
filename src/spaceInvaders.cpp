@@ -97,5 +97,6 @@ std::weak_ptr<SI::model::Entity> SI::SpaceInvaders::addEntity(const std::shared_
 }
 
 bool SI::SpaceInvaders::checkIfFinished() {
+	running = running && player.lock() && wave.lock();
 	return running;
 }
