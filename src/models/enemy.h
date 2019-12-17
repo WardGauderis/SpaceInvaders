@@ -23,17 +23,24 @@ namespace SI::model {
 
 		void setCooldown(const unsigned int cooldown);
 
-		static unsigned int getScore();
+		int getValue() const;
 
-		~Enemy() final;
+		void setValue(int value);
+
+		static int getScore();
+
+		~Enemy() final = default;
 
 	private:
 		std::uniform_int_distribution<> distribution;
 		static std::default_random_engine generator;
 
-		static unsigned int score;
+		int value;
+		static int score;
 
 		void onWallCollision(utils::Vector wall) final;
+
+		void deleteThis() final;
 	};
 
 }

@@ -30,7 +30,8 @@ namespace SI::view {
 
 		sf::Font font;
 		sf::Text title;
-		utils::Timer timer;
+		utils::Timer fadeInTimer;
+		utils::Timer fadeOutTimer;
 		uint8_t opacity;
 	};
 

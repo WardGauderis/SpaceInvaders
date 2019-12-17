@@ -13,7 +13,7 @@ void SI::view::PhysicalEntity::notify() {
 	auto model = lock();
 	if (mayDeleteThis()) return;
 	sprite.setSize(utils::Transformation::get().convertDistance<float>(model->getSize()));
-	sprite.setPosition(utils::Transformation::get().convertPoint<float>(model->getPosition() - model->getSize() / 2));
+	sprite.setPosition(utils::Transformation::get().convertPoint<float>(model->getPosition() - model->getSize() / 2.0f));
 }
 
 void SI::view::PhysicalEntity::update() {

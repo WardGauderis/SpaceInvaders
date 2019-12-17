@@ -5,11 +5,12 @@
 #include "enemy.h"
 #include "bullet.h"
 #include "player.h"
+#include "explosionParticle.h"
 
 std::default_random_engine SI::model::Enemy::generator = std::default_random_engine((std::random_device()) ());
-unsigned int SI::model::Enemy::score = 0;
+int SI::model::Enemy::score = 0;
 
-SI::model::Enemy::Enemy() : SpaceShip(1, {0.5, 0.5}, {0, 0}, {0.015f, 0}, 1, 0.05f) {
+SI::model::Enemy::Enemy() : SpaceShip(1, {0.5, 0.5}, {0, 0}, {0.015f, 0}, 1, 0.05f), value(10) {
 	setCooldown(90);
 }
 
@@ -38,7 +39,15 @@ void SI::model::Enemy::setCooldown(const unsigned int cooldown) {
 	distribution = std::uniform_int_distribution<>(1, static_cast<int>(cooldown));
 }
 
-unsigned int SI::model::Enemy::getScore() {
+int SI::model::Enemy::getValue() const {
+	return value;
+}
+
+void SI::model::Enemy::setValue(int value) {
+	Enemy::value = value;
+}
+
+int SI::model::Enemy::getScore() {
 	return score;
 }
 
@@ -52,6 +61,21 @@ void SI::model::Enemy::onWallCollision(utils::Vector wall) {
 	PhysicalEntity::onWallCollision(wall);
 }
 
-SI::model::Enemy::~Enemy() {
-	score += 10;
+void SI::model::Enemy::deleteThis() {
+	score += value;
+	addModel(std::make_shared<ExplosionParticle>(utils::Vector{0.125, 0.125} / 2, position,
+	                                             utils::Vector{velocity.x * 5, velocity.y + 0.1f}));
+	addModel(std::make_shared<ExplosionParticle>(utils::Vector{0.125, 0.125} / 2, position,
+	                                             utils::Vector{-velocity.x * 5, velocity.y + 0.1f}));
+	addModel(std::make_shared<ExplosionParticle>(utils::Vector{0.125, 0.125} / 2, position,
+	                                             utils::Vector{velocity.x, velocity.y + 0.1f}));
+	addModel(std::make_shared<ExplosionParticle>(utils::Vector{0.125, 0.125} / 2, position,
+	                                             utils::Vector{velocity.x * 4, velocity.y + 0.1f}));
+	addModel(std::make_shared<ExplosionParticle>(utils::Vector{0.125, 0.125} / 2, position,
+	                                             utils::Vector{-velocity.x * 4, velocity.y + 0.1f}));
+	addModel(std::make_shared<ExplosionParticle>(utils::Vector{0.125, 0.125} / 2, position,
+	                                             utils::Vector{velocity.x * 3, velocity.y + 0.1f}));
+	addModel(std::make_shared<ExplosionParticle>(utils::Vector{0.125, 0.125} / 2, position,
+	                                             utils::Vector{-velocity.x * 3, velocity.y + 0.1f}));
+	SI::model::PhysicalEntity::deleteThis();
 }

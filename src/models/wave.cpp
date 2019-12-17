@@ -89,6 +89,7 @@ std::shared_ptr<SI::model::Enemy> SI::model::Wave::parseEnemy(const nlohmann::js
 	auto lives = enemy.value<float>("lives", 1);
 	auto bulletSpeed = enemy.value<float>("bulletspeed", 1);
 	if (bulletSpeed < 0) throw std::runtime_error("bullet speed must be positive");
+	auto score = enemy.value<float>("score", 1);
 
 	std::shared_ptr<Enemy> newEnemy;
 	if (type == "default") {
@@ -103,6 +104,7 @@ std::shared_ptr<SI::model::Enemy> SI::model::Wave::parseEnemy(const nlohmann::js
 	newEnemy->setVelocity(newEnemy->getVelocity() * speed);
 	newEnemy->setSize({newEnemy->getSize().x * size[0], newEnemy->getSize().y * size[1]});
 	newEnemy->setLives(static_cast<unsigned int>(static_cast<float>(newEnemy->getLives()) * lives));
+	newEnemy->setValue(static_cast<int>(static_cast<float>(newEnemy->getValue()) * score));
 
 	return newEnemy;
 }

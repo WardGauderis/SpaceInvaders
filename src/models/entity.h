@@ -26,7 +26,7 @@ namespace SI::model {
 
 		void addModels(const std::vector<std::shared_ptr<Entity>>& models);
 
-		void deleteThis();
+		virtual void deleteThis();
 
 	private:
 		std::vector<std::shared_ptr<Entity>> newModels;

@@ -50,6 +50,8 @@ namespace SI::model {
 
 		virtual void onWallCollision(utils::Vector wall);
 
+		void deleteThis() override;
+
 	};
 
 }

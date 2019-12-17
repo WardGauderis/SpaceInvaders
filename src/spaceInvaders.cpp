@@ -7,6 +7,9 @@
 #include "controllers/wave.h"
 #include "controllers/bullet.h"
 #include "views/display.h"
+#include "models/explosionParticle.h"
+#include "views/explosionParticle.h"
+#include "controllers/explosionParticle.h"
 
 SI::SpaceInvaders::SpaceInvaders() : model(std::make_shared<model::World>()),
                                      view(std::make_shared<view::World>(model)),
@@ -75,6 +78,10 @@ std::weak_ptr<SI::model::Entity> SI::SpaceInvaders::addEntity(const std::shared_
 		auto castedView = std::make_shared<view::Enemy>(enemy, view->getWindow());
 		entityView = castedView;
 		entityController = std::make_shared<controller::Enemy>(enemy, castedView);
+	} else if (auto explosionParticle = std::dynamic_pointer_cast<model::ExplosionParticle>(entityModel)) {
+		auto castedView = std::make_shared<view::ExplosionParticle>(explosionParticle, view->getWindow());
+		entityView = castedView;
+		entityController = std::make_shared<controller::ExplosionParticle>(explosionParticle, castedView);
 	} else if (auto wave = std::dynamic_pointer_cast<model::Wave>(entityModel)) {
 		auto castedView = std::make_shared<view::Wave>(wave, view->getWindow());
 		entityView = castedView;
@@ -98,5 +105,6 @@ std::weak_ptr<SI::model::Entity> SI::SpaceInvaders::addEntity(const std::shared_
 
 bool SI::SpaceInvaders::checkIfFinished() {
 	running = running && player.lock() && wave.lock();
+//	running = true;
 	return running;
 }
