@@ -82,6 +82,10 @@ namespace utils {
 
 		void setTime(unsigned int time);
 
+		[[nodiscard]] unsigned int getCooldown() const;
+
+		[[nodiscard]] unsigned int getTime() const;
+
 	private:
 		unsigned int cooldown;
 		unsigned int time;

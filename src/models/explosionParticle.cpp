@@ -19,19 +19,23 @@ void SI::model::ExplosionParticle::update() {
 void SI::model::ExplosionParticle::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {}
 
 void SI::model::ExplosionParticle::move() {
-	velocity -= {0, 0.005f};
+	velocity -= {0, 0.001f};
 	PhysicalEntity::move();
 }
 
 void SI::model::ExplosionParticle::onWallCollision(utils::Vector wall) {
 	if (static_cast<bool>(wall.x)) {
-		velocity.x = -velocity.x * 0.6f;
+		velocity.x = -velocity.x * 0.5f;
 		auto delta = position.x + size.x / 2 * utils::getSign(wall.x) - wall.x;
 		position.x -= 2 * delta * drag;
 	}
 	if (static_cast<bool>(wall.y)) {
-		velocity.y = -velocity.y * 0.6f;
+		velocity.y = -velocity.y * 0.5f;
 		auto delta = position.y + size.y / 2 * utils::getSign(wall.y) - wall.y;
 		position.y -= 2 * delta * drag;
 	}
+}
+
+const utils::Timer& SI::model::ExplosionParticle::getTimer() const {
+	return timer;
 }

@@ -62,20 +62,17 @@ void SI::model::Enemy::onWallCollision(utils::Vector wall) {
 }
 
 void SI::model::Enemy::deleteThis() {
+	std::normal_distribution<> a(0, 0.002);
 	score += value;
-	addModel(std::make_shared<ExplosionParticle>(utils::Vector{0.125, 0.125} / 2, position,
-	                                             utils::Vector{velocity.x * 5, velocity.y + 0.1f}));
-	addModel(std::make_shared<ExplosionParticle>(utils::Vector{0.125, 0.125} / 2, position,
-	                                             utils::Vector{-velocity.x * 5, velocity.y + 0.1f}));
-	addModel(std::make_shared<ExplosionParticle>(utils::Vector{0.125, 0.125} / 2, position,
-	                                             utils::Vector{velocity.x, velocity.y + 0.1f}));
-	addModel(std::make_shared<ExplosionParticle>(utils::Vector{0.125, 0.125} / 2, position,
-	                                             utils::Vector{velocity.x * 4, velocity.y + 0.1f}));
-	addModel(std::make_shared<ExplosionParticle>(utils::Vector{0.125, 0.125} / 2, position,
-	                                             utils::Vector{-velocity.x * 4, velocity.y + 0.1f}));
-	addModel(std::make_shared<ExplosionParticle>(utils::Vector{0.125, 0.125} / 2, position,
-	                                             utils::Vector{velocity.x * 3, velocity.y + 0.1f}));
-	addModel(std::make_shared<ExplosionParticle>(utils::Vector{0.125, 0.125} / 2, position,
-	                                             utils::Vector{-velocity.x * 3, velocity.y + 0.1f}));
+	float width = size.x / 5;
+	float height = size.y / 5;
+	for (int x = 0; x < 5; ++x) {
+		for (int y = 0; y < 5; ++y) {
+			auto pos = position + utils::Vector(width * (x - 2.0f), height * (y - 2.0f));
+			utils::Vector random(static_cast<float>(a(generator)), static_cast<float>(a(generator)));
+			auto vel = velocity + (pos - position) * 0.05f + random;
+			addModel(std::make_shared<ExplosionParticle>(utils::Vector{width, height}, pos, vel));
+		}
+	}
 	SI::model::PhysicalEntity::deleteThis();
 }

@@ -78,12 +78,12 @@ utils::Vector SI::model::PhysicalEntity::detectWallCollision() {
 
 void SI::model::PhysicalEntity::onWallCollision(utils::Vector wall) {
 	if (static_cast<bool>(wall.x)) {
-		velocity.x = -velocity.x * 0.9f;
+		velocity.x = -velocity.x;
 		auto delta = position.x + size.x / 2 * utils::getSign(wall.x) - wall.x;
 		position.x -= 2 * delta * drag;
 	}
 	if (static_cast<bool>(wall.y)) {
-		velocity.y = -velocity.y * 0.9f;
+		velocity.y = -velocity.y;
 		auto delta = position.y + size.y / 2 * utils::getSign(wall.y) - wall.y;
 		position.y -= 2 * delta * drag;
 	}

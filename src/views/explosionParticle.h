@@ -15,6 +15,8 @@ namespace SI::view {
 		ExplosionParticle(const std::weak_ptr<model::ExplosionParticle>& model,
 		                  const std::shared_ptr<sf::RenderWindow>& window);
 
+		void notify() final;
+
 		int drawOrder() final;
 
 		~ExplosionParticle() final = default;

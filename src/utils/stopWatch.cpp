@@ -85,3 +85,11 @@ void utils::Timer::start() {
 void utils::Timer::setTime(unsigned int time) {
 	Timer::time = time;
 }
+
+unsigned int utils::Timer::getCooldown() const {
+	return cooldown;
+}
+
+unsigned int utils::Timer::getTime() const {
+	return time;
+}

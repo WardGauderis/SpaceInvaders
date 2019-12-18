@@ -18,6 +18,8 @@ namespace SI::model {
 
 		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) override;
 
+		const utils::Timer& getTimer() const;
+
 		~ExplosionParticle() final = default;
 
 	private:
