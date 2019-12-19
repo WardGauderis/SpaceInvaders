@@ -14,6 +14,7 @@ void SI::controller::World::update() {
 }
 
 void SI::controller::World::addEntity(const std::shared_ptr<Entity>& entity) {
+	if(entity == nullptr) return;
 	entities.emplace(entity);
 }
 

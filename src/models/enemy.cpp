@@ -5,9 +5,9 @@
 #include "enemy.h"
 #include "bullet.h"
 #include "player.h"
-#include "explosionParticle.h"
+#include "explosion.h"
 
-std::default_random_engine SI::model::Enemy::generator = std::default_random_engine((std::random_device()) ());
+std::default_random_engine SI::model::Enemy::generator = std::default_random_engine(std::random_device()());
 int SI::model::Enemy::score = 0;
 
 SI::model::Enemy::Enemy() : SpaceShip(1, {0.5, 0.5}, {0, 0}, {0.015f, 0}, 1, 0.05f), value(10) {
@@ -64,15 +64,6 @@ void SI::model::Enemy::onWallCollision(utils::Vector wall) {
 void SI::model::Enemy::deleteThis() {
 	std::normal_distribution<> a(0, 0.002);
 	score += value;
-	float width = size.x / 5;
-	float height = size.y / 5;
-	for (int x = 0; x < 5; ++x) {
-		for (int y = 0; y < 5; ++y) {
-			auto pos = position + utils::Vector(width * (x - 2.0f), height * (y - 2.0f));
-			utils::Vector random(static_cast<float>(a(generator)), static_cast<float>(a(generator)));
-			auto vel = velocity + (pos - position) * 0.05f + random;
-			addModel(std::make_shared<ExplosionParticle>(utils::Vector{width, height}, pos, vel));
-		}
-	}
+	addModel(std::make_shared<Explosion>(size, position, velocity, false));
 	SI::model::PhysicalEntity::deleteThis();
 }

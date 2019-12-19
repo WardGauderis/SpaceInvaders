@@ -23,6 +23,7 @@ void SI::model::World::update() {
 }
 
 void SI::model::World::addEntity(const std::shared_ptr<Entity>& entity) {
+	if(entity == nullptr) return;
 	if (auto physicalEntity = std::dynamic_pointer_cast<PhysicalEntity>(entity))
 		physicalEntities.emplace(physicalEntity);
 	entities.emplace(entity);

@@ -6,6 +6,8 @@
 #include <algorithm>
 
 void utils::Subject::addObserver(const std::shared_ptr<Observer>& observer) {
+	if(observer == nullptr)
+		return;
 	observers.emplace_back(observer);
 }
 

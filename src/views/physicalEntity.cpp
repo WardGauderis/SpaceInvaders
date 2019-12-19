@@ -7,13 +7,15 @@
 
 SI::view::PhysicalEntity::PhysicalEntity(std::weak_ptr<model::PhysicalEntity> model,
                                          const std::shared_ptr<sf::RenderWindow>& window) : Entity(window),
-                                                                                            model(std::move(model)) {}
+                                                                                            model(std::move(model)) {
+	sprite.setSize(utils::Transformation::get().convertDistance<float>(lock()->getSize()));
+}
 
 void SI::view::PhysicalEntity::notify() {
 	auto model = lock();
 	if (mayDeleteThis()) return;
-	sprite.setSize(utils::Transformation::get().convertDistance<float>(model->getSize()));
-	sprite.setPosition(utils::Transformation::get().convertPoint<float>(model->getPosition() - model->getSize() / 2.0f));
+	sprite.setPosition(
+			utils::Transformation::get().convertPoint<float>(model->getPosition() - model->getSize() / 2.0f));
 }
 
 void SI::view::PhysicalEntity::update() {

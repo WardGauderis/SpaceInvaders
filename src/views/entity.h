@@ -8,7 +8,6 @@
 #include <SFML/Graphics.hpp>
 
 #include "../models/entity.h"
-#include "../utils/observer.h"
 #include "../utils/key.h"
 #include "../utils/event.h"
 

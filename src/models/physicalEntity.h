@@ -46,7 +46,7 @@ namespace SI::model {
 
 		virtual void move();
 
-		utils::Vector detectWallCollision();
+		[[nodiscard]] utils::Vector detectWallCollision() const;
 
 		virtual void onWallCollision(utils::Vector wall);
 

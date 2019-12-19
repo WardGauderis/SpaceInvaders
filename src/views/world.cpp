@@ -2,7 +2,6 @@
 // Created by ward on 12/3/19.
 //
 
-#include <functional>
 
 #include "world.h"
 #include "../utils/transformation.h"
@@ -43,6 +42,7 @@ void SI::view::World::update() {
 }
 
 void SI::view::World::addEntity(const std::shared_ptr<Entity>& entity) {
+	if (entity == nullptr) return;
 	entities.emplace(entity);
 }
 

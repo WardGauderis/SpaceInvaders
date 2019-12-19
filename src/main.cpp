@@ -1,7 +1,6 @@
 #include <iostream>
 
 #include "spaceInvaders.h"
-#include "utils/stopWatch.h"
 #include "utils/transformation.h"
 
 int main() {

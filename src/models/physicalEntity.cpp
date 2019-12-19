@@ -3,7 +3,6 @@
 //
 
 #include "physicalEntity.h"
-#include "explosionParticle.h"
 
 SI::model::PhysicalEntity::PhysicalEntity(float drag, const utils::Vector& size, const utils::Vector& position,
                                           const utils::Vector& velocity) : drag(drag), position(position),
@@ -50,7 +49,6 @@ void SI::model::PhysicalEntity::setSize(const utils::Vector& size) {
 }
 
 void SI::model::PhysicalEntity::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
-	if (typeid(ExplosionParticle) == typeid(*entity)) return;
 	velocity.x = -velocity.x;
 }
 
@@ -67,7 +65,7 @@ void SI::model::PhysicalEntity::move() {
 	velocity *= drag;
 }
 
-utils::Vector SI::model::PhysicalEntity::detectWallCollision() {
+utils::Vector SI::model::PhysicalEntity::detectWallCollision() const {
 	utils::Vector wall;
 	if (position.x + size.x / 2 > 4) wall.x = 4;
 	else if (position.x - size.x / 2 < -4) wall.x = -4;

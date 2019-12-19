@@ -5,12 +5,12 @@
 #ifndef SPACEINVADERS_ENEMYCONTROLLER_H
 #define SPACEINVADERS_ENEMYCONTROLLER_H
 
-#include "spaceShip.h"
 #include "../views/enemy.h"
+#include "physicalEntity.h"
 
 namespace SI::controller {
 
-	class Enemy : public SpaceShip {
+	class Enemy : public PhysicalEntity {
 	public:
 		Enemy(const std::weak_ptr<model::Enemy>& model, const std::weak_ptr<view::Enemy>& view);
 

@@ -5,7 +5,6 @@
 #ifndef SPACEINVADERS_ENTITYCONTROLLER_H
 #define SPACEINVADERS_ENTITYCONTROLLER_H
 
-#include <memory>
 #include "../views/entity.h"
 
 namespace SI::controller {

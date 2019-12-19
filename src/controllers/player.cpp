@@ -5,7 +5,7 @@
 #include "player.h"
 
 SI::controller::Player::Player(const std::weak_ptr<model::Player>& model, const std::weak_ptr<view::Player>& view)
-		: SpaceShip(model, view) {}
+		: PhysicalEntity(model, view) {}
 
 void SI::controller::Player::update() {
 	auto[model, view] = lock();
