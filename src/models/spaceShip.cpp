@@ -4,10 +4,11 @@
 
 #include "spaceShip.h"
 #include "bullet.h"
+#include "explosion.h"
 
 SI::model::SpaceShip::SpaceShip(const float drag, const utils::Vector& size, const utils::Vector& position,
-                                const utils::Vector& velocity, const unsigned int lives, const float bulletSpeed)
-		: PhysicalEntity(drag, size, position, velocity), lives(lives) {
+                                const utils::Vector& velocity, const unsigned int lives, const float bulletSpeed, bool team)
+		: PhysicalEntity(drag, size, position, velocity, team), lives(lives) {
 	setBulletSpeed(bulletSpeed);
 }
 
@@ -26,6 +27,7 @@ void SI::model::SpaceShip::setLives(const unsigned int lives) {
 }
 
 unsigned int SI::model::SpaceShip::loseLive() {
+	addModel(std::make_shared<Explosion>(*this));
 	if (--lives == 0) deleteThis();
 	notifyObservers();
 	return lives;

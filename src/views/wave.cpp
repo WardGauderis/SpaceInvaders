@@ -11,7 +11,6 @@ SI::view::Wave::Wave(std::weak_ptr<model::Wave> model, const std::shared_ptr<sf:
 		throw std::runtime_error("tf2build.ttf must be present in data/fonts");
 	title.setFont(font);
 	title.setCharacterSize(window->getSize().x / 30);
-
 	notify();
 }
 

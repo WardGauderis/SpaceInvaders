@@ -7,7 +7,7 @@
 
 #include <random>
 
-#include "entity.h"
+#include "physicalEntity.h"
 #include "../utils/vector.h"
 #include "../utils/stopWatch.h"
 
@@ -29,13 +29,14 @@ namespace SI::model {
 			utils::Vector velocity;
 
 			static float drag;
+			static std::normal_distribution<> distribution;
 
 			[[nodiscard]] utils::Vector detectWallCollision(utils::Vector size) const;
 
 			void onWallCollision(utils::Vector wall, utils::Vector size);
 		};
 
-		Explosion(utils::Vector entitySize, utils::Vector entityPosition, utils::Vector entityVelocity, bool team);
+		Explosion(const PhysicalEntity& origin);
 
 		void update() final;
 
@@ -43,7 +44,7 @@ namespace SI::model {
 
 		[[nodiscard]] const utils::Timer& getTimer() const;
 
-		[[nodiscard]] bool isTeam() const;
+		[[nodiscard]] bool getTeam() const;
 
 		[[nodiscard]] const std::vector<ExplosionParticle>& getParticles() const;
 

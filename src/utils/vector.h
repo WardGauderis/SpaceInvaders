@@ -37,6 +37,8 @@ namespace utils {
 
 		Vector operator-(Vector vector) const;
 
+		Vector operator/(Vector vector) const;
+
 		Vector operator*(float amount) const;
 
 		Vector operator/(float amount) const;

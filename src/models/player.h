@@ -16,7 +16,9 @@ namespace SI::model {
 
 		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) final;
 
-		void update() override;
+		void update() final;
+
+		unsigned int loseLive() override;
 
 		bool shoot();
 

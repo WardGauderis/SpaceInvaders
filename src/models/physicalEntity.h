@@ -13,7 +13,7 @@ namespace SI::model {
 	class PhysicalEntity : public Entity {
 	public:
 		PhysicalEntity(float drag, const utils::Vector& size, const utils::Vector& position,
-		               const utils::Vector& velocity);
+		               const utils::Vector& velocity, bool team);
 
 		void update() override;
 
@@ -31,6 +31,8 @@ namespace SI::model {
 
 		void setSize(const utils::Vector& size);
 
+		bool getTeam() const;
+
 		virtual void onCollision(const std::shared_ptr<PhysicalEntity>& entity);
 
 		~PhysicalEntity() override = default;
@@ -43,6 +45,8 @@ namespace SI::model {
 		utils::Vector size;
 		utils::Vector position;
 		utils::Vector velocity;
+
+		bool team;
 
 		virtual void move();
 

@@ -10,7 +10,7 @@
 std::default_random_engine SI::model::Enemy::generator = std::default_random_engine(std::random_device()());
 int SI::model::Enemy::score = 0;
 
-SI::model::Enemy::Enemy() : SpaceShip(1, {0.5, 0.5}, {0, 0}, {0.015f, 0}, 1, 0.05f), value(10) {
+SI::model::Enemy::Enemy() : SpaceShip(1, {0.5, 0.5}, {0, 0}, {0.015f, 0}, 1, 0.05f, false), value(10) {
 	setCooldown(90);
 }
 
@@ -54,7 +54,7 @@ int SI::model::Enemy::getScore() {
 void SI::model::Enemy::onWallCollision(utils::Vector wall) {
 	if (wall.y == 3) {
 		wall.y = 0;
-	} else if (wall.y == -3) {
+	} else if (wall.y == -2.75f) {
 		deleteThis();
 		return;
 	}
@@ -62,8 +62,6 @@ void SI::model::Enemy::onWallCollision(utils::Vector wall) {
 }
 
 void SI::model::Enemy::deleteThis() {
-	std::normal_distribution<> a(0, 0.002);
 	score += value;
-	addModel(std::make_shared<Explosion>(size, position, velocity, false));
-	SI::model::PhysicalEntity::deleteThis();
+	SI::model::SpaceShip::deleteThis();
 }

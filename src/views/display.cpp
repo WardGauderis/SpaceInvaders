@@ -29,7 +29,6 @@ SI::view::Display::Display(const std::shared_ptr<sf::RenderWindow>& window, std:
 	lives.setFillColor(color);
 	waveNumber.setFillColor(color);
 	score.setFillColor(color);
-
 	notify();
 }
 

@@ -27,9 +27,7 @@ SI::view::World::World(std::shared_ptr<model::World> model) : Entity(), model(st
 			"Space Invaders", sf::Style::Close, settings);
 }
 
-void SI::view::World::notify() {
-
-}
+void SI::view::World::notify() {}
 
 void SI::view::World::update() {
 	window->clear(sf::Color(30, 27, 25));

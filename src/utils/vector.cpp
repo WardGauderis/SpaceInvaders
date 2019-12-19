@@ -62,6 +62,10 @@ utils::Vector utils::Vector::operator-(utils::Vector vector) const {
 	return {x - vector.x, y - vector.y};
 }
 
+utils::Vector utils::Vector::operator/(utils::Vector vector) const {
+	return {x / vector.x, y / vector.y};
+}
+
 utils::Vector utils::Vector::operator*(float amount) const {
 	return {x * amount, y * amount};
 }

@@ -15,8 +15,9 @@ void SI::view::Explosion::notify() {
 	auto model = lock();
 	if (mayDeleteThis()) return;
 	auto timer = model->getTimer();
-	auto opacity = static_cast<uint8_t>(255 * timer.getTime() / timer.getCooldown());
-	sprite.setFillColor(sf::Color(240, 129, 73, opacity));
+	auto opacity = static_cast<uint8_t>(255 * std::pow(static_cast<float>(timer.getTime()) / timer.getCooldown(), 2));
+	if (model->getTeam()) sprite.setFillColor(sf::Color(59, 200, 200, opacity));
+	else sprite.setFillColor(sf::Color(200, 106, 59, opacity));
 }
 
 void SI::view::Explosion::update() {
@@ -29,7 +30,7 @@ void SI::view::Explosion::update() {
 }
 
 int SI::view::Explosion::drawOrder() {
-	return -1;
+	return -2;
 }
 
 std::shared_ptr<SI::model::Explosion> SI::view::Explosion::lock() {

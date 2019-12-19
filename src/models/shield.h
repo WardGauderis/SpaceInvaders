@@ -9,8 +9,15 @@
 
 namespace SI::model {
 
-	class Shield: public PhysicalEntity {
+	class Shield : public PhysicalEntity {
+	public:
+		explicit Shield(const utils::Vector& position);
 
+		void update() final;
+
+		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) final;
+
+		~Shield() final = default;
 	};
 
 }

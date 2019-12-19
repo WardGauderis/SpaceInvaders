@@ -6,7 +6,7 @@
 #include "bullet.h"
 #include "enemy.h"
 
-SI::model::Player::Player() : SpaceShip(0.9f, {0.5, 0.5}, {0, -2.5}, {0, 0}, 3, 0.05f), timer(20) {}
+SI::model::Player::Player() : SpaceShip(0.9f, {0.5, 0.5}, {0, -2.5}, {0, 0}, 3, 0.05f, true), timer(20) {}
 
 void SI::model::Player::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
 	if (auto bullet = std::dynamic_pointer_cast<Bullet>(entity)) {
@@ -22,6 +22,13 @@ void SI::model::Player::update() {
 }
 
 bool SI::model::Player::shoot() {
-	if(!timer.ready()) return false;
+	if (!timer.ready()) return false;
 	return SpaceShip::shoot(true);
+}
+
+unsigned int SI::model::Player::loseLive() {
+	addVelocity({0, 0.05f});
+	SpaceShip::loseLive();
+	addVelocity({0, -0.05f});
+	return getLives();
 }
