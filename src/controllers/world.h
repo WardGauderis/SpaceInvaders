@@ -14,11 +14,15 @@ namespace SI::controller {
 	public:
 		World(std::shared_ptr<model::World>  model, std::shared_ptr<view::World>  view);
 
+		void reset();
+
 		void update() final;
 
 		void addEntity(const std::shared_ptr<Entity>& entity);
 
 		void removeEntities();
+
+		bool isRunning() const;
 
 		~World() final = default;
 
@@ -26,6 +30,8 @@ namespace SI::controller {
 		std::shared_ptr<model::World> model;
 		std::shared_ptr<view::World> view;
 		std::unordered_set<std::shared_ptr<Entity>> entities;
+
+		bool running;
 
 	};
 

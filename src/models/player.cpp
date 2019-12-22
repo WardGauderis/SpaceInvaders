@@ -3,10 +3,13 @@
 //
 
 #include "player.h"
-#include "bullet.h"
 #include "enemy.h"
 
-SI::model::Player::Player() : SpaceShip(0.9f, {0.5, 0.5}, {0, -2.5}, {0, 0}, 3, 0.05f, true), timer(20) {}
+int SI::model::Player::score = 0;
+
+SI::model::Player::Player() : SpaceShip(0.9f, {0.5f, 0.5f}, {0, -2.5f}, {0, 0}, 3, 0.05f, true), timer(20) {
+	resetScore();
+}
 
 void SI::model::Player::update() {
 	timer.update();
@@ -19,9 +22,21 @@ bool SI::model::Player::shoot() {
 }
 
 unsigned int SI::model::Player::loseLive() {
-	auto backupVelocity  = velocity;
+	auto backupVelocity = velocity;
 	addVelocity({0, 0.05f});
 	SpaceShip::loseLive();
 	velocity = backupVelocity;
 	return getLives();
+}
+
+int SI::model::Player::getScore() {
+	return score;
+}
+
+void SI::model::Player::addScore(int score) {
+	Player::score += score;
+}
+
+void SI::model::Player::resetScore() {
+	score = 0;
 }

@@ -7,6 +7,7 @@
 
 #include "enemy.h"
 #include "../utils/json.h"
+#include "../utils/stopWatch.h"
 
 namespace SI::model {
 
@@ -14,13 +15,15 @@ namespace SI::model {
 	public:
 		Wave();
 
-		Wave(size_t waveNumber);
+		explicit Wave(size_t waveNumber);
 
 		void update() final;
 
-		const std::string& getTitle() const;
+		[[nodiscard]] const std::string& getTitle() const;
 
-		size_t getWaveNumber() const;
+		[[nodiscard]] size_t getWaveNumber() const;
+
+		[[nodiscard]] uint8_t getOpacity() const;
 
 		~Wave() final = default;
 
@@ -29,11 +32,15 @@ namespace SI::model {
 		size_t waveNumber;
 		std::string title;
 
+		utils::Timer fadeInTimer;
+		utils::Timer fadeOutTimer;
+		uint8_t opacity;
+
 		void parseWave();
 
-		std::vector<std::shared_ptr<Enemy>> parseRow(const nlohmann::json& row, float& y);
+		static std::vector<std::shared_ptr<Enemy>> parseRow(const nlohmann::json& row, float& y);
 
-		std::shared_ptr<Enemy> parseEnemy(const nlohmann::json& enemy);
+		static std::shared_ptr<Enemy> parseEnemy(const nlohmann::json& enemy);
 
 		static void positionRow(const std::vector<std::shared_ptr<Enemy>>& row, float& y);
 	};

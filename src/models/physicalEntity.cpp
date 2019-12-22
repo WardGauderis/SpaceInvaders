@@ -70,6 +70,11 @@ void SI::model::PhysicalEntity::onCollision(const std::shared_ptr<PhysicalEntity
 	velocity.x = -velocity.x;
 }
 
+void SI::model::PhysicalEntity::deleteThis() {
+	addModel(std::make_shared<Explosion>(*this));
+	Entity::deleteThis();
+}
+
 void SI::model::PhysicalEntity::move() {
 	position += velocity;
 	velocity *= drag;
@@ -95,9 +100,4 @@ void SI::model::PhysicalEntity::onWallCollision(utils::Vector wall) {
 		auto delta = position.y + size.y / 2 * utils::getSign(wall.y) - wall.y;
 		position.y -= 2 * delta * drag;
 	}
-}
-
-void SI::model::PhysicalEntity::deleteThis() {
-	addModel(std::make_shared<Explosion>(*this));
-	Entity::deleteThis();
 }

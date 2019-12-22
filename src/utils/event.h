@@ -10,11 +10,14 @@ namespace utils {
 	struct Event {
 
 		enum EventType {
-			Closed
+			closed,
+			keyPressed
 		};
 
 		EventType type;
-
+		union {
+			Key key;
+		};
 	};
 
 }

@@ -3,11 +3,48 @@
 //
 
 #include "world.h"
+#include "shield.h"
+
+SI::model::World::World(): state(State::start) {
+	reset();
+}
+
+void SI::model::World::reset() {
+	setState(State::start);
+	Enemy::restart();
+
+	entities.clear();
+	physicalEntities.clear();
+	getNewModels();
+
+	auto newPlayer = std::make_shared<model::Player>();
+	auto newWave = std::make_shared<model::Wave>();
+	player = newPlayer;
+	wave = newWave;
+	addModel(newPlayer);
+	addModel(newWave);
+	addModel(std::make_shared<model::Shield>(utils::Vector{0, -1.75f}));
+	addModel(std::make_shared<model::Shield>(utils::Vector{2, -1.75f}));
+	addModel(std::make_shared<model::Shield>(utils::Vector{-2, -1.75f}));
+}
 
 void SI::model::World::update() {
+	if (state == State::defeat || state == State::victory) {
+		for (const auto& entity: physicalEntities) {
+			entity->deleteThis();
+		}
+	} else {
+		if (!wave.lock()) setState(State::victory);
+		if (!player.lock()) setState(State::defeat);
+		if(Enemy::hasHitGround()) setState(State::defeat);
+	}
+
+	if (state == State::start || state == State::pause) return;
+
 	for (const auto& entity: entities) {
 		entity->update();
 	}
+
 	for (auto it0 = physicalEntities.begin(); it0 != physicalEntities.end(); ++it0) {
 		auto& entity0 = (*it0);
 		auto it1 = it0;
@@ -45,4 +82,21 @@ void SI::model::World::removeEntities() {
 		if ((*it)->mayDeleteThis()) it = physicalEntities.erase(it);
 		else ++it;
 	}
+}
+
+const std::weak_ptr<SI::model::Player>& SI::model::World::getPlayer() const {
+	return player;
+}
+
+const std::weak_ptr<SI::model::Wave>& SI::model::World::getWave() const {
+	return wave;
+}
+
+SI::model::World::State SI::model::World::getState() const {
+	return state;
+}
+
+void SI::model::World::setState(SI::model::World::State state) {
+	World::state = state;
+	notifyObservers();
 }

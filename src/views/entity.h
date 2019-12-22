@@ -10,6 +10,7 @@
 #include "../models/entity.h"
 #include "../utils/key.h"
 #include "../utils/event.h"
+#include "../utils/vector.h"
 
 namespace SI::view {
 
@@ -30,12 +31,14 @@ namespace SI::view {
 
 		virtual int drawOrder();
 
-		virtual ~Entity() = default;
+		 ~Entity() override = default;
 
 	protected:
 		std::shared_ptr<sf::RenderWindow> window;
 
 		void deleteThis();
+
+		static void centerText(sf::Text& text, const std::string& string, utils::Vector pos);
 
 	private:
 		bool mustDelete;

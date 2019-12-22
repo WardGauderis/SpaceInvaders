@@ -17,27 +17,29 @@ namespace SI::model {
 
 		bool shoot();
 
-		unsigned int getShootChance() const;
+		[[nodiscard]] unsigned int getShootChance() const;
 
-		void setCooldown(const unsigned int cooldown);
+		void setCoolDown(unsigned int coolDown);
 
-		int getValue() const;
+		[[nodiscard]] int getValue() const;
 
-		void setValue(int value);
+		void setValue(int v);
 
-		static int getScore();
+		void deleteThis() final;
+
+		static bool hasHitGround();
+
+		static void restart();
 
 		~Enemy() final = default;
 
 	private:
 		std::uniform_int_distribution<int> distribution;
-
 		int value;
-		static int score;
+
+		static bool hitGround;
 
 		void onWallCollision(utils::Vector wall) final;
-
-		void deleteThis() final;
 	};
 
 }

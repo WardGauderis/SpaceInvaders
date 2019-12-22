@@ -32,16 +32,18 @@ namespace SI::model {
 
 		void setSize(const utils::Vector& size);
 
-		bool getTeam() const;
+		[[nodiscard]] bool getTeam() const;
 
 		~PhysicalEntity() override = default;
 
 		virtual bool collidesWith(const std::shared_ptr<PhysicalEntity>& entity);
 
 		static bool
-		AABB(const utils::Vector p0, const utils::Vector s0, const utils::Vector p1, const utils::Vector s1);
+		AABB(utils::Vector p0, utils::Vector s0, utils::Vector p1, utils::Vector s1);
 
 		virtual void onCollision(const std::shared_ptr<PhysicalEntity>& entity);
+
+		void deleteThis() override;
 
 	protected:
 		float drag;
@@ -56,8 +58,6 @@ namespace SI::model {
 		[[nodiscard]] utils::Vector detectWallCollision() const;
 
 		virtual void onWallCollision(utils::Vector wall);
-
-		void deleteThis() override;
 
 	};
 

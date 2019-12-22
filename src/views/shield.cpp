@@ -10,13 +10,11 @@ SI::view::Shield::Shield(const std::weak_ptr<model::Shield>& model,
                          const std::shared_ptr<sf::RenderWindow>& window) : PhysicalEntity(model, window) {
 	sprite.setFillColor(sf::Color(106, 128, 150));
 	sprite.setSize(utils::Transformation::get().convertDistance<float>(
-			model::Shield::ShieldSegment::size / model::Shield::ShieldSegment::amount));
+			model::Shield::ShieldSegment::size() / model::Shield::ShieldSegment::amount));
 	notify();
 }
 
-void SI::view::Shield::notify() {
-
-}
+void SI::view::Shield::notify() {}
 
 void SI::view::Shield::update() {
 	auto model = std::dynamic_pointer_cast<model::Shield>(lock());
@@ -30,9 +28,10 @@ void SI::view::Shield::update() {
 				const auto& row1 = segment.points[x1];
 				for (size_t y1 = 0; y1 < row1.size(); ++y1) {
 					const auto& point = row1[y1];
-					if(!point) continue;
+					if (!point) continue;
 
-					const auto pos = model->convert(x0, y0, x1, y1);
+					const auto pos = model->convert(static_cast<int>(x0), static_cast<int>(y0), static_cast<int>(x1),
+					                                static_cast<int>(y1));
 					sprite.setPosition(utils::Transformation::get().convertPoint<float>(pos));
 					window->draw(sprite);
 				}

@@ -29,7 +29,8 @@ namespace SI::model {
 			utils::Vector velocity;
 
 			static float drag;
-			static std::normal_distribution<float> distribution;
+
+			static std::normal_distribution<float>& distribution();
 
 			[[nodiscard]] utils::Vector detectWallCollision(utils::Vector size) const;
 
@@ -56,7 +57,7 @@ namespace SI::model {
 		utils::Timer timer;
 		bool team;
 
-		static std::normal_distribution<float> distribution;
+		static std::normal_distribution<float>& distribution();
 	};
 
 }

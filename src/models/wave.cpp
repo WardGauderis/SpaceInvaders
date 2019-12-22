@@ -5,9 +5,14 @@
 #include <iostream>
 
 #include "wave.h"
+
 SI::model::Wave::Wave() : Wave(0) {}
 
-SI::model::Wave::Wave(const size_t waveNumber) : waveNumber(waveNumber) {
+SI::model::Wave::Wave(const size_t waveNumber) : waveNumber(waveNumber), fadeInTimer(60), fadeOutTimer(300), opacity(0) {
+	fadeInTimer.reset();
+	fadeInTimer.start();
+	fadeOutTimer.reset();
+	fadeOutTimer.stop();
 	try {
 		parseWave();
 	} catch (const std::exception& exception) {
@@ -16,8 +21,26 @@ SI::model::Wave::Wave(const size_t waveNumber) : waveNumber(waveNumber) {
 }
 
 void SI::model::Wave::update() {
+	fadeInTimer.update();
+	fadeOutTimer.update();
+
+	if (fadeInTimer.ready()) {
+		fadeInTimer.stop();
+		fadeOutTimer.start();
+		fadeInTimer.setTime(0);
+		++opacity;
+		if (opacity == 255) fadeInTimer.reset();
+	}
+	if (fadeOutTimer.ready()) {
+		fadeOutTimer.stop();
+		fadeOutTimer.setTime(0);
+		--opacity;
+		if (opacity == 0) fadeOutTimer.reset();
+	}
+
 	enemies.erase(std::remove_if(enemies.begin(), enemies.end(),
 	                             [](const std::weak_ptr<Enemy>& enemy) { return !enemy.lock(); }), enemies.end());
+
 	if (enemies.empty()) {
 		Wave newWave(waveNumber + 1);
 		newWave.setObservers(getObservers());
@@ -83,7 +106,7 @@ std::vector<std::shared_ptr<SI::model::Enemy>> SI::model::Wave::parseRow(const n
 
 std::shared_ptr<SI::model::Enemy> SI::model::Wave::parseEnemy(const nlohmann::json& enemy) {
 	auto type = enemy.value<std::string>("type", "default");
-	auto cooldown = enemy.value<float>("cooldown", 1);
+	auto coolDown = enemy.value<float>("cooldown", 1);
 	auto speed = enemy.value<float>("speed", 1);
 	auto size = enemy.value<std::array<float, 2>>("size", {1, 1});
 	auto lives = enemy.value<float>("lives", 1);
@@ -99,8 +122,8 @@ std::shared_ptr<SI::model::Enemy> SI::model::Wave::parseEnemy(const nlohmann::js
 	}
 
 	newEnemy->setBulletSpeed(newEnemy->getBulletSpeed() * bulletSpeed);
-	newEnemy->setCooldown(
-			static_cast<unsigned int>(std::round(static_cast<float>(newEnemy->getShootChance()) * cooldown)));
+	newEnemy->setCoolDown(
+			static_cast<unsigned int>(std::round(static_cast<float>(newEnemy->getShootChance()) * coolDown)));
 	newEnemy->setVelocity(newEnemy->getVelocity() * speed);
 	newEnemy->setSize({newEnemy->getSize().x * size[0], newEnemy->getSize().y * size[1]});
 	newEnemy->setLives(static_cast<unsigned int>(static_cast<float>(newEnemy->getLives()) * lives));
@@ -132,4 +155,8 @@ void SI::model::Wave::positionRow(const std::vector<std::shared_ptr<Enemy>>& row
 	}
 
 	y += maxHeight / 2;
+}
+
+uint8_t SI::model::Wave::getOpacity() const {
+	return opacity;
 }

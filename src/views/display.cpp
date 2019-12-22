@@ -4,21 +4,20 @@
 
 #include "display.h"
 #include "../utils/transformation.h"
+#include "../utils/assets.h"
 
 
 SI::view::Display::Display(const std::shared_ptr<sf::RenderWindow>& window, std::weak_ptr<model::Player> playerModel,
                            std::weak_ptr<model::Wave> waveModel) : Entity(window), playerModel(std::move(playerModel)),
                                                                    waveModel(std::move(waveModel)) {
-	if (!font.loadFromFile("data/fonts/TF2secondary.ttf"))
-		throw std::runtime_error("TF2secondary.ttf must be present in data/fonts");
 
 	bar.setPosition(utils::Transformation::get().convertPoint<float>({-4, -3}));
 	bar.setSize(utils::Transformation::get().convertDistance<float>({8, 0.25}));
 	bar.setFillColor(sf::Color(50, 49, 47));
 
-	lives.setFont(font);
-	waveNumber.setFont(font);
-	score.setFont(font);
+	lives.setFont(*utils::Assets::get().getNormal());
+	waveNumber.setFont(*utils::Assets::get().getNormal());
+	score.setFont(*utils::Assets::get().getNormal());
 
 	auto size = utils::Transformation::get().convertDistance<unsigned int>({0.25, 0}).x;
 	lives.setCharacterSize(size);
@@ -34,14 +33,18 @@ SI::view::Display::Display(const std::shared_ptr<sf::RenderWindow>& window, std:
 
 void SI::view::Display::notify() {
 	auto[player, wave] = lock();
-	if(mayDeleteThis()) return;
-	lives.setString("Lives: " + std::to_string(player->getLives()));
-	waveNumber.setString("Wave " + std::to_string(wave->getWaveNumber()));
-	score.setString("Score: " + std::to_string(model::Enemy::getScore()));
+	if (mayDeleteThis()) return;
+	if (player) {
+		lives.setString("Lives: " + std::to_string(player->getLives()));
+		score.setString("Score: " + std::to_string(player->getScore()));
+	}
+	if (wave) {
+		waveNumber.setString("Wave " + std::to_string(wave->getWaveNumber()));
+	}
 
 	auto box = lives.getLocalBounds();
 	lives.setOrigin(box.left, box.top + box.height / 2);
-	lives.setPosition(utils::Transformation::get().convertPoint<float>({-3.9f, -3 +0.125f}));
+	lives.setPosition(utils::Transformation::get().convertPoint<float>({-3.9f, -3 + 0.125f}));
 
 	box = waveNumber.getLocalBounds();
 	waveNumber.setOrigin(box.left + box.width / 2, box.top + box.height / 2);
@@ -65,6 +68,6 @@ int SI::view::Display::drawOrder() {
 
 std::pair<std::shared_ptr<SI::model::Player>, std::shared_ptr<SI::model::Wave>> SI::view::Display::lock() {
 	auto player = playerModel.lock();
-	auto wave = waveModel.lock();	if (!player || !wave || player->mayDeleteThis() || wave->mayDeleteThis()) deleteThis();
+	auto wave = waveModel.lock();
 	return {player, wave};
 }

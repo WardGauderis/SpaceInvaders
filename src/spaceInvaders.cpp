@@ -12,23 +12,12 @@
 
 SI::SpaceInvaders::SpaceInvaders() : model(std::make_shared<model::World>()),
                                      view(std::make_shared<view::World>(model)),
-                                     controller(std::make_shared<controller::World>(model, view)),
-                                     running(true) {
-	auto newPlayer = std::make_shared<model::Player>();
-	auto newWave = std::make_shared<model::Wave>();
-	auto newDisplay = std::make_shared<view::Display>(view->getWindow(), newPlayer, newWave);
-	newPlayer->addObserver(newDisplay);
-	newWave->addObserver(newDisplay);
-	view->addEntity(newDisplay);
-	player = addEntity(newPlayer);
-	wave = addEntity(newWave);
-	addEntity(std::make_shared<model::Shield>(utils::Vector{0, -1.75f}));
-	addEntity(std::make_shared<model::Shield>(utils::Vector{2, -1.75f}));
-	addEntity(std::make_shared<model::Shield>(utils::Vector{-2, -1.75f}));
+                                     controller(std::make_shared<controller::World>(model, view)) {
+	model->addObserver(view);
 }
 
 void SI::SpaceInvaders::eventLoop() {
-	while (running) {
+	while (controller->isRunning()) {
 		while (utils::StopWatch::get().updateModel()) {
 			updateController();
 			updateModel();
@@ -40,15 +29,6 @@ void SI::SpaceInvaders::eventLoop() {
 }
 
 void SI::SpaceInvaders::updateController() {
-	utils::Event event{};
-	while (view->pollEvent(event)) {
-		switch (event.type) {
-			case utils::Event::Closed:
-				running = false;
-				break;
-		}
-	}
-
 	controller->removeEntities();
 	controller->update();
 }
@@ -60,7 +40,6 @@ void SI::SpaceInvaders::updateModel() {
 		addEntity(entity);
 	}
 	model->removeEntities();
-	checkIfFinished();
 }
 
 void SI::SpaceInvaders::updateView() {
@@ -99,10 +78,4 @@ std::weak_ptr<SI::model::Entity> SI::SpaceInvaders::addEntity(const std::shared_
 	controller->addEntity(entityController);
 
 	return entityModel;
-}
-
-bool SI::SpaceInvaders::checkIfFinished() {
-	running = running && player.lock() && wave.lock();
-	running = true;
-	return running;
 }

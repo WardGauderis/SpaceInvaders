@@ -15,7 +15,9 @@ namespace SI::view {
 
 	class World : public Entity {
 	public:
-		World(std::shared_ptr<model::World> model);
+		explicit World(std::shared_ptr<model::World> model);
+
+		void reset();
 
 		void notify() final;
 
@@ -33,7 +35,10 @@ namespace SI::view {
 		std::shared_ptr<model::World> model;
 		std::set<std::shared_ptr<Entity>, std::function<bool(const std::shared_ptr<SI::view::Entity>&,
 		                                                     const std::shared_ptr<SI::view::Entity>&)>> entities;
-		sf::Music music;
+
+		sf::RectangleShape dim;
+		sf::Text instruction;
+		sf::Text head;
 	};
 
 }

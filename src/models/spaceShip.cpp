@@ -9,7 +9,7 @@
 SI::model::SpaceShip::SpaceShip(const float drag, const utils::Vector& size, const utils::Vector& position,
                                 const utils::Vector& velocity, const unsigned int lives, const float bulletSpeed,
                                 bool team)
-		: PhysicalEntity(drag, size, position, velocity, team), lives(lives) {
+		: PhysicalEntity(drag, size, position, velocity, team), lives(lives), bulletSpeed(0) {
 	setBulletSpeed(bulletSpeed);
 }
 

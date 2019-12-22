@@ -21,16 +21,16 @@ namespace SI::model {
 
 		[[nodiscard]] bool mayDeleteThis() const;
 
+		virtual void deleteThis();
+
 		virtual ~Entity() = default;
 
 	protected:
-		static std::default_random_engine generator;
+		static std::default_random_engine& generator();
 
 		void addModel(const std::shared_ptr<Entity>& model);
 
 		void addModels(const std::vector<std::shared_ptr<Entity>>& models);
-
-		virtual void deleteThis();
 
 	private:
 		std::vector<std::shared_ptr<Entity>> newModels;

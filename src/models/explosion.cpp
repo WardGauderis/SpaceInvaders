@@ -6,9 +6,6 @@
 
 float SI::model::Explosion::ExplosionParticle::drag = 0.99f;
 
-std::normal_distribution<float> SI::model::Explosion::distribution = std::normal_distribution<float>(0, 0.005f);
-std::normal_distribution<float> SI::model::Explosion::ExplosionParticle::distribution = std::normal_distribution<float>(0.5f, 0.2f);
-
 SI::model::Explosion::ExplosionParticle::ExplosionParticle(utils::Vector position, utils::Vector velocity) :
 		position(position), velocity(velocity) {}
 
@@ -24,6 +21,11 @@ void SI::model::Explosion::ExplosionParticle::update(const utils::Vector size) {
 		onWallCollision(vector, size);
 }
 
+std::normal_distribution<float>& SI::model::Explosion::ExplosionParticle::distribution() {
+	static auto distribution = std::normal_distribution<float>(0.5f, 0.2f);
+	return distribution;
+}
+
 utils::Vector SI::model::Explosion::ExplosionParticle::detectWallCollision(const utils::Vector size) const {
 	utils::Vector wall;
 	if (position.x + size.x / 2 > 4) wall.x = 4;
@@ -35,28 +37,28 @@ utils::Vector SI::model::Explosion::ExplosionParticle::detectWallCollision(const
 
 void SI::model::Explosion::ExplosionParticle::onWallCollision(const utils::Vector wall, const utils::Vector size) {
 	if (static_cast<bool>(wall.x)) {
-		velocity.x = -velocity.x * static_cast<float>(distribution(generator));
+		velocity.x = -velocity.x * distribution()(generator());
 		auto delta = position.x + size.x / 2 * utils::getSign(wall.x) - wall.x;
 		position.x -= 2 * delta * 0.99f;
 	}
 	if (static_cast<bool>(wall.y)) {
-		velocity.y = -velocity.y * static_cast<float>(distribution(generator)) ;
+		velocity.y = -velocity.y * distribution()(generator());
 		auto delta = position.y + size.y / 2 * utils::getSign(wall.y) - wall.y;
 		position.y -= 2 * delta * drag;
 	}
 }
 
-SI::model::Explosion::Explosion(const PhysicalEntity& origin) : timer(180), team(origin.getTeam()) {
+SI::model::Explosion::Explosion(const PhysicalEntity& origin) : timer(240), team(origin.getTeam()) {
 	timer.reset();
 
 	size = {0.05f, 0.05f};
 	auto times = origin.getSize() / size;
-	for (int x = 0; x < std::ceil(times.x); ++x) {
-		for (int y = 0; y < std::ceil(times.y); ++y) {
+	for (int x = 0; static_cast<float>(x) < std::ceil(times.x); ++x) {
+		for (int y = 0; static_cast<float>(y) < std::ceil(times.y); ++y) {
 			auto position = origin.getPosition() - origin.getSize() / 2 + size +
 			                utils::Vector(size.x * static_cast<float>(x), size.y * static_cast<float>(y));
-			utils::Vector random(static_cast<float>(distribution(generator)),
-			                     static_cast<float>(distribution(generator)));
+			utils::Vector random(distribution()(generator()),
+			                     distribution()(generator()));
 			auto velocity = origin.getVelocity() + (position - origin.getPosition()) * 0.07f + random;
 			particles.emplace_back(position, velocity);
 		}
@@ -86,4 +88,9 @@ bool SI::model::Explosion::getTeam() const {
 
 const std::vector<SI::model::Explosion::ExplosionParticle>& SI::model::Explosion::getParticles() const {
 	return particles;
+}
+
+std::normal_distribution<float>& SI::model::Explosion::distribution() {
+	static auto distribution = std::normal_distribution<float>(0, 0.005f);
+	return distribution;
 }

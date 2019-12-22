@@ -29,7 +29,6 @@ namespace SI::view {
 		std::weak_ptr<model::Wave> waveModel;
 
 		sf::RectangleShape bar;
-		sf::Font font;
 
 		sf::Text lives;
 		sf::Text score;

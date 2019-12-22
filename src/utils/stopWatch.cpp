@@ -55,7 +55,7 @@ void utils::StopWatch::printFPS(bool print) {
 }
 
 
-utils::Timer::Timer(const unsigned int cooldown) : cooldown(cooldown), time(0), active(true) {}
+utils::Timer::Timer(const unsigned int coolDown) : coolDown(coolDown), time(0), active(true) {}
 
 void utils::Timer::update() {
 	if(!active) return;
@@ -71,7 +71,7 @@ bool utils::Timer::ready() {
 }
 
 void utils::Timer::reset() {
-	time = cooldown;
+	time = coolDown;
 }
 
 void utils::Timer::stop() {
@@ -87,7 +87,7 @@ void utils::Timer::setTime(unsigned int time) {
 }
 
 unsigned int utils::Timer::getCooldown() const {
-	return cooldown;
+	return coolDown;
 }
 
 unsigned int utils::Timer::getTime() const {

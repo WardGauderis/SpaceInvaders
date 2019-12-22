@@ -12,7 +12,9 @@ namespace utils {
 		down,
 		left,
 		right,
-		space
+		space,
+		escape,
+		enter
 	};
 
 }

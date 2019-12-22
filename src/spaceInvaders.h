@@ -20,11 +20,6 @@ namespace SI {
 		std::shared_ptr<view::World> view;
 		std::shared_ptr<controller::World> controller;
 
-		std::weak_ptr<model::Entity> player;
-		std::weak_ptr<model::Entity> wave;
-
-		bool running;
-
 		void updateController();
 
 		void updateModel();
@@ -32,8 +27,6 @@ namespace SI {
 		void updateView();
 
 		std::weak_ptr<model::Entity> addEntity(const std::shared_ptr<model::Entity>& entityModel);
-
-		bool checkIfFinished();
 	};
 
 }

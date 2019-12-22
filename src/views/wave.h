@@ -28,11 +28,7 @@ namespace SI::view {
 	private:
 		std::weak_ptr<model::Wave> model;
 
-		sf::Font font;
 		sf::Text title;
-		utils::Timer fadeInTimer;
-		utils::Timer fadeOutTimer;
-		uint8_t opacity;
 	};
 
 }

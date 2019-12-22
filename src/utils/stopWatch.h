@@ -68,7 +68,7 @@ namespace utils {
 
 	class Timer {
 	public:
-		explicit Timer(unsigned int cooldown);
+		explicit Timer(unsigned int coolDown);
 
 		void update();
 
@@ -87,7 +87,7 @@ namespace utils {
 		[[nodiscard]] unsigned int getTime() const;
 
 	private:
-		unsigned int cooldown;
+		unsigned int coolDown;
 		unsigned int time;
 		bool active;
 	};

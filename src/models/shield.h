@@ -14,21 +14,21 @@ namespace SI::model {
 
 		struct ShieldSegment {
 			constexpr static int amount = 15;
-			const static utils::Vector size;
-
 			std::array<std::array<bool, amount>, amount> points{};
 
 			enum class Type {
 				full,
-				rightbottom,
-				leftbottom,
-				righttop,
-				lefttop
+				rightBottom,
+				leftBottom,
+				rightTop,
+				leftTop
 			};
 
 			ShieldSegment() = default;
 
 			explicit ShieldSegment(Type type);
+
+			static const utils::Vector& size();
 		};
 
 		explicit Shield(const utils::Vector& position);
@@ -37,7 +37,7 @@ namespace SI::model {
 
 		[[nodiscard]] const std::array<std::array<ShieldSegment, 3>, 4>& getSegments() const;
 
-		utils::Vector convert(size_t x0, size_t y0, size_t x1, size_t y1) const;
+		[[nodiscard]] utils::Vector convert(int x0, int y0, int x1, int y1) const;
 
 		~Shield() final = default;
 
@@ -48,7 +48,7 @@ namespace SI::model {
 
 		void onCollision(int x0, int y0, int x1, int y1, const std::shared_ptr<PhysicalEntity>& entity);
 
-		static bool correct(int& x0, int& y0, int& x1, int& y1) ;
+		static bool correct(int& x0, int& y0, int& x1, int& y1);
 	};
 
 }

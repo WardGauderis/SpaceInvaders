@@ -19,9 +19,9 @@ namespace utils {
 
 		[[nodiscard]] float length() const;
 
-		Vector normalize() const;
+		[[nodiscard]] Vector normalize() const;
 
-		Vector rotate(const float angle) const;
+		[[nodiscard]] Vector rotate(float angle) const;
 
 		[[nodiscard]] float dot(Vector vector) const;
 

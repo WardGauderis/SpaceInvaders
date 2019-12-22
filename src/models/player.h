@@ -20,10 +20,18 @@ namespace SI::model {
 
 		bool shoot();
 
+		static int getScore();
+
+		static void addScore(int score);
+
+		static void resetScore();
+
 		~Player() final = default;
 
 	private:
 		utils::Timer timer;
+
+		static int score;
 	};
 
 }
