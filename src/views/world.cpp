@@ -26,16 +26,19 @@ SI::view::World::World(std::shared_ptr<model::World> model)
 
 	dim.setSize(utils::Transformation::get().convertDistance<float>({8, 6}));
 	dim.setPosition(utils::Transformation::get().convertPoint<float>({-4, -3}));
+	dim.setFillColor(sf::Color(10, 10, 10, 150));
 
 	instruction.setFont(*utils::Assets::get().getNormal());
 	auto size = utils::Transformation::get().convertDistance<unsigned int>({0.25f, 0}).x;
 	instruction.setCharacterSize(size);
 	centerText(instruction, "Press Enter to continue", {0, -1});
+	instruction.setFillColor(sf::Color(245, 231, 222));
 
 	head.setFont(*utils::Assets::get().getBold());
 	size = utils::Transformation::get().convertDistance<unsigned int>({0.75f, 0}).x;
 	head.setCharacterSize(size);
 	head.setOutlineThickness(static_cast<float>(utils::Transformation::get().getWidth()) / 120.0f);
+	head.setFillColor(sf::Color(245, 231, 222));
 
 	reset();
 }
@@ -56,40 +59,24 @@ void SI::view::World::notify() {
 		case model::World::State::running:
 			utils::Assets::get().getMusic()->pause();
 			utils::Assets::get().getMusic()->play();
-			dim.setFillColor(sf::Color(0, 0, 0, 0));
-			instruction.setFillColor(sf::Color(0, 0, 0, 0));
-			head.setFillColor(sf::Color(0, 0, 0, 0));
-			head.setOutlineColor(sf::Color(0, 0, 0, 0));
 			break;
 		case model::World::State::pause:
 			utils::Assets::get().getMusic()->pause();
-			dim.setFillColor(sf::Color(10, 10, 10, 150));
-			instruction.setFillColor(sf::Color(245, 231, 222));
-			head.setFillColor(sf::Color(245, 231, 222));
-			head.setOutlineColor(sf::Color(250, 119, 54));
+			head.setOutlineColor(sf::Color(11, 69, 100));
 			centerText(head, "PAUSE", {0, 1.5f});
 			break;
 		case model::World::State::victory:
-			dim.setFillColor(sf::Color(10, 10, 10, 150));
-			instruction.setFillColor(sf::Color(245, 231, 222));
-			head.setFillColor(sf::Color(245, 231, 222));
 			head.setOutlineColor(sf::Color(43, 143, 200));
 			centerText(head, "VICTORY", {0, 1.5f});
 			break;
 		case model::World::State::defeat:
-			dim.setFillColor(sf::Color(10, 10, 10, 150));
-			instruction.setFillColor(sf::Color(245, 231, 222));
-			head.setFillColor(sf::Color(245, 231, 222));
 			head.setOutlineColor(sf::Color(200, 43, 43));
 			centerText(head, "DEFEAT", {0, 1.5f});
 			break;
 		case model::World::State::start:
 			utils::Assets::get().getMusic()->pause();
 			utils::Assets::get().getMusic()->play();
-			dim.setFillColor(sf::Color(10, 10, 10, 150));
-			instruction.setFillColor(sf::Color(245, 231, 222));
-			head.setFillColor(sf::Color(245, 231, 222));
-			head.setOutlineColor(sf::Color(250, 119, 54));
+			head.setOutlineColor(sf::Color(11, 69, 100));
 			centerText(head, "SPACE PARADERS", {0, 1.5f});
 			break;
 	}
@@ -102,9 +89,11 @@ void SI::view::World::update() {
 		entity->update();
 	}
 
-	window->draw(dim);
-	window->draw(instruction);
-	window->draw(head);
+	if(model->getState() != model::World::State::running) {
+		window->draw(dim);
+		window->draw(instruction);
+		window->draw(head);
+	}
 
 	window->display();
 }
