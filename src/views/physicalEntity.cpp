@@ -14,6 +14,7 @@ SI::view::PhysicalEntity::PhysicalEntity(std::weak_ptr<model::PhysicalEntity> mo
 void SI::view::PhysicalEntity::notify() {
 	auto model = lock();
 	if (mayDeleteThis()) return;
+
 	sprite.setPosition(
 			utils::Transformation::get().convertPoint<float>(model->getPosition() - model->getSize() / 2.0f));
 }

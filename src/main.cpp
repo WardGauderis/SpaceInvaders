@@ -7,11 +7,11 @@ int main() {
 	utils::StopWatch::get().printFPS(true);
 	utils::Transformation::get().setDimensions(1200, 900);
 
-	try {
+//	try {
 		SI::SpaceInvaders spaceInvaders;
 		spaceInvaders.eventLoop();
-	} catch (const std::exception& exception) {
-		std::cerr << exception.what() << std::endl;
-	}
+//	} catch (const std::exception& exception) {
+//		std::cerr << exception.what() << std::endl;
+//	}
 	return 0;
 }

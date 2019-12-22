@@ -4,6 +4,8 @@
 
 #include "entity.h"
 
+std::default_random_engine SI::model::Entity::generator = std::default_random_engine(std::random_device()());
+
 SI::model::Entity::Entity() : mustDelete(false) {}
 
 std::vector <std::shared_ptr<SI::model::Entity>> SI::model::Entity::getNewModels() {

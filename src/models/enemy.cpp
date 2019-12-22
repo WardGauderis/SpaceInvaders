@@ -7,21 +7,10 @@
 #include "player.h"
 #include "explosion.h"
 
-std::default_random_engine SI::model::Enemy::generator = std::default_random_engine(std::random_device()());
 int SI::model::Enemy::score = 0;
 
 SI::model::Enemy::Enemy() : SpaceShip(1, {0.5, 0.5}, {0, 0}, {0.015f, 0}, 1, 0.05f, false), value(10) {
 	setCooldown(90);
-}
-
-void SI::model::Enemy::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
-	if (auto bullet = std::dynamic_pointer_cast<Bullet>(entity)) {
-		if (bullet->getTeam() && loseLive() == 0) deleteThis();
-	} else if (typeid(*entity) == typeid(Player)) {
-		loseLive();
-	} else {
-		PhysicalEntity::onCollision(entity);
-	}
 }
 
 bool SI::model::Enemy::shoot() {
@@ -36,7 +25,7 @@ unsigned int SI::model::Enemy::getShootChance() const {
 
 void SI::model::Enemy::setCooldown(const unsigned int cooldown) {
 	if (cooldown < 0) throw std::runtime_error("cooldown must be positive");
-	distribution = std::uniform_int_distribution<>(1, static_cast<int>(cooldown));
+	distribution = std::uniform_int_distribution<int>(1, static_cast<int>(cooldown));
 }
 
 int SI::model::Enemy::getValue() const {

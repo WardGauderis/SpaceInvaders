@@ -54,6 +54,12 @@ utils::Vector& utils::Vector::operator*=(float amount) {
 	return *this;
 }
 
+utils::Vector& utils::Vector::operator/=(float amount) {
+	x /= amount;
+	y /= amount;
+	return *this;
+}
+
 utils::Vector utils::Vector::operator+(const utils::Vector vector) const {
 	return {x + vector.x, y + vector.y};
 }
@@ -64,6 +70,10 @@ utils::Vector utils::Vector::operator-(utils::Vector vector) const {
 
 utils::Vector utils::Vector::operator/(utils::Vector vector) const {
 	return {x / vector.x, y / vector.y};
+}
+
+utils::Vector utils::Vector::operator*(utils::Vector vector) const {
+	return {x * vector.x, y * vector.y};
 }
 
 utils::Vector utils::Vector::operator*(float amount) const {
@@ -80,4 +90,8 @@ utils::Vector utils::Vector::operator+(float amount) const {
 
 float utils::getSign(const float f) {
 	return std::signbit(f) ? -1 : 1;
+}
+
+int utils::positiveModulo(const int value, const int m) {
+	return (value % m + m) % m;
 }

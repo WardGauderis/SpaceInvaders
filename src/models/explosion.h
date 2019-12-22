@@ -29,14 +29,14 @@ namespace SI::model {
 			utils::Vector velocity;
 
 			static float drag;
-			static std::normal_distribution<> distribution;
+			static std::normal_distribution<float> distribution;
 
 			[[nodiscard]] utils::Vector detectWallCollision(utils::Vector size) const;
 
 			void onWallCollision(utils::Vector wall, utils::Vector size);
 		};
 
-		Explosion(const PhysicalEntity& origin);
+		explicit Explosion(const PhysicalEntity& origin);
 
 		void update() final;
 
@@ -56,8 +56,7 @@ namespace SI::model {
 		utils::Timer timer;
 		bool team;
 
-		static std::default_random_engine generator;
-		static std::normal_distribution<> distribution;
+		static std::normal_distribution<float> distribution;
 	};
 
 }

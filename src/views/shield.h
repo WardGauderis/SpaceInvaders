@@ -14,7 +14,11 @@ namespace SI::view {
 	public:
 		Shield(const std::weak_ptr<model::Shield>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
-		int drawOrder() override;
+		void notify() override;
+
+		void update() override;
+
+		int drawOrder() final;
 	};
 
 }

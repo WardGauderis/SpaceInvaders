@@ -5,6 +5,8 @@
 #ifndef SPACEINVADERS_ENTITYMODEL_H
 #define SPACEINVADERS_ENTITYMODEL_H
 
+#include <random>
+
 #include "../utils/observer.h"
 
 namespace SI::model {
@@ -22,6 +24,8 @@ namespace SI::model {
 		virtual ~Entity() = default;
 
 	protected:
+		static std::default_random_engine generator;
+
 		void addModel(const std::shared_ptr<Entity>& model);
 
 		void addModels(const std::vector<std::shared_ptr<Entity>>& models);

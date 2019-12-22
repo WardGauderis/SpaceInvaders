@@ -7,7 +7,7 @@
 
 SI::model::PhysicalEntity::PhysicalEntity(float drag, const utils::Vector& size, const utils::Vector& position,
                                           const utils::Vector& velocity, bool team) : drag(drag), position(position),
-                                                                           velocity(velocity), team(team) {
+                                                                                      velocity(velocity), team(team) {
 	setSize(size);
 }
 
@@ -53,16 +53,21 @@ bool SI::model::PhysicalEntity::getTeam() const {
 	return team;
 }
 
-void SI::model::PhysicalEntity::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
-	velocity.x = -velocity.x;
+bool SI::model::PhysicalEntity::collidesWith(const std::shared_ptr<PhysicalEntity>& entity) {
+	bool collision = AABB(position - size / 2, size, entity->position - entity->size / 2, entity->size);
+	return collision;
 }
 
-bool SI::model::PhysicalEntity::detectCollision(const std::shared_ptr<PhysicalEntity>& entity0,
-                                                const std::shared_ptr<PhysicalEntity>& entity1) {
-	return entity0->position.x - entity0->size.x / 2 < entity1->position.x + entity1->size.x / 2 &&
-	       entity0->position.x + entity0->size.x / 2 > entity1->position.x - entity1->size.x / 2 &&
-	       entity0->position.y - entity0->size.y / 2 < entity1->position.y + entity1->size.y / 2 &&
-	       entity0->position.y + entity0->size.y / 2 > entity1->position.y - entity1->size.y / 2;
+bool SI::model::PhysicalEntity::AABB(const utils::Vector p0, const utils::Vector s0, const utils::Vector p1,
+                                     const utils::Vector s1) {
+	return p0.x < p1.x + s1.x &&
+	       p0.x + s0.x > p1.x &&
+	       p0.y < p1.y + s1.y &&
+	       p0.y + s0.y > p1.y;
+}
+
+void SI::model::PhysicalEntity::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
+	velocity.x = -velocity.x;
 }
 
 void SI::model::PhysicalEntity::move() {

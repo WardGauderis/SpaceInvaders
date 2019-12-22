@@ -20,7 +20,7 @@ void SI::view::Wave::notify() {
 	auto textRect = title.getLocalBounds();
 	title.setOrigin(textRect.left + textRect.width / 2.0f,
 	                textRect.top + textRect.height / 2.0f);
-	title.setPosition(utils::Transformation::get().convertPoint<float>({0, 0}));
+	title.setPosition(utils::Transformation::get().convertPoint<float>({0, 0.75}));
 
 	opacity = 0;
 	title.setFillColor(sf::Color(245, 231, 222, opacity));

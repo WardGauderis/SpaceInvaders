@@ -7,14 +7,20 @@
 #include "explosion.h"
 
 SI::model::SpaceShip::SpaceShip(const float drag, const utils::Vector& size, const utils::Vector& position,
-                                const utils::Vector& velocity, const unsigned int lives, const float bulletSpeed, bool team)
+                                const utils::Vector& velocity, const unsigned int lives, const float bulletSpeed,
+                                bool team)
 		: PhysicalEntity(drag, size, position, velocity, team), lives(lives) {
 	setBulletSpeed(bulletSpeed);
 }
 
-
-void SI::model::SpaceShip::update() {
-	PhysicalEntity::update();
+void SI::model::SpaceShip::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
+	if (typeid(*entity) == typeid(Bullet)) {
+		if (entity->getTeam() == getTeam()) return;
+	} else if (entity->getTeam() == getTeam()) {
+		PhysicalEntity::onCollision(entity);
+		return;
+	}
+	loseLive();
 }
 
 unsigned int SI::model::SpaceShip::getLives() const {
@@ -38,7 +44,7 @@ float SI::model::SpaceShip::getBulletSpeed() const {
 }
 
 void SI::model::SpaceShip::setBulletSpeed(float bulletSpeed) {
-	if(bulletSpeed < 0) throw std::runtime_error("bullet speed must be greater than 0");
+	if (bulletSpeed < 0) throw std::runtime_error("bullet speed must be greater than 0");
 	SpaceShip::bulletSpeed = bulletSpeed;
 }
 

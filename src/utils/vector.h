@@ -33,11 +33,15 @@ namespace utils {
 
 		Vector& operator*=(float amount);
 
+		Vector& operator/=(float amount);
+
 		Vector operator+(Vector vector) const;
 
 		Vector operator-(Vector vector) const;
 
 		Vector operator/(Vector vector) const;
+
+		Vector operator*(Vector vector) const;
 
 		Vector operator*(float amount) const;
 
@@ -48,6 +52,7 @@ namespace utils {
 
 	float getSign(float);
 
+	int positiveModulo(int value, int m);
 }
 
 

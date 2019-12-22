@@ -6,9 +6,8 @@
 
 float SI::model::Explosion::ExplosionParticle::drag = 0.99f;
 
-std::default_random_engine SI::model::Explosion::generator = std::default_random_engine(std::random_device()());
-std::normal_distribution<> SI::model::Explosion::distribution = std::normal_distribution<>(0, 0.005);
-std::normal_distribution<> SI::model::Explosion::ExplosionParticle::distribution = std::normal_distribution<>(0.5, 0.2);
+std::normal_distribution<float> SI::model::Explosion::distribution = std::normal_distribution<float>(0, 0.005f);
+std::normal_distribution<float> SI::model::Explosion::ExplosionParticle::distribution = std::normal_distribution<float>(0.5f, 0.2f);
 
 SI::model::Explosion::ExplosionParticle::ExplosionParticle(utils::Vector position, utils::Vector velocity) :
 		position(position), velocity(velocity) {}

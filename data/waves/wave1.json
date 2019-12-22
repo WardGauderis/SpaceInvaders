@@ -1,6 +1,6 @@
 {
   "title": "Roses are red, violets are blue\n\nSomeone has yet to pass the next wave\n\nBut it won't be you...",
-  "speed": 1,
+  "speed": 5,
   "rows": [
     {
       "distance": 1,
@@ -14,10 +14,9 @@
             1,
             1
           ],
-          "lives": 1,
-          "score": 10
-        },
-        {}
+          "lives": 5,
+          "score": 1
+        }
       ]
     }
   ]

@@ -15,7 +15,7 @@ void SI::view::Explosion::notify() {
 	auto model = lock();
 	if (mayDeleteThis()) return;
 	auto timer = model->getTimer();
-	auto opacity = static_cast<uint8_t>(255 * std::pow(static_cast<float>(timer.getTime()) / timer.getCooldown(), 2));
+	auto opacity = static_cast<uint8_t>(255 * std::pow(static_cast<float>(timer.getTime()) / timer.getCooldown(), 2.5f));
 	if (model->getTeam()) sprite.setFillColor(sf::Color(59, 200, 200, opacity));
 	else sprite.setFillColor(sf::Color(200, 106, 59, opacity));
 }

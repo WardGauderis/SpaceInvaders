@@ -14,16 +14,15 @@ void SI::model::World::update() {
 		++it1;
 		for (; it1 != physicalEntities.end(); ++it1) {
 			auto& entity1 = (*it1);
-			if (model::PhysicalEntity::detectCollision(entity0, entity1)) {
-				entity0->onCollision(entity1);
-				entity1->onCollision(entity0);
-			}
+			if (!entity0->collidesWith(entity1) || !entity1->collidesWith(entity0)) continue;
+			entity0->onCollision(entity1);
+			entity1->onCollision(entity0);
 		}
 	}
 }
 
 void SI::model::World::addEntity(const std::shared_ptr<Entity>& entity) {
-	if(entity == nullptr) return;
+	if (entity == nullptr) return;
 	if (auto physicalEntity = std::dynamic_pointer_cast<PhysicalEntity>(entity))
 		physicalEntities.emplace(physicalEntity);
 	entities.emplace(entity);

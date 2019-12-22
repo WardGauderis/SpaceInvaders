@@ -14,7 +14,7 @@ namespace SI::model {
 		SpaceShip(float drag, const utils::Vector& size, const utils::Vector& position, const utils::Vector& velocity,
 		          unsigned int lives, float bulletSpeed, bool team);
 
-		void update() override;
+		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) override;
 
 		[[nodiscard]] unsigned int getLives() const;
 

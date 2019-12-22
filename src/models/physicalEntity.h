@@ -12,6 +12,7 @@ namespace SI::model {
 
 	class PhysicalEntity : public Entity {
 	public:
+
 		PhysicalEntity(float drag, const utils::Vector& size, const utils::Vector& position,
 		               const utils::Vector& velocity, bool team);
 
@@ -33,12 +34,14 @@ namespace SI::model {
 
 		bool getTeam() const;
 
-		virtual void onCollision(const std::shared_ptr<PhysicalEntity>& entity);
-
 		~PhysicalEntity() override = default;
 
+		virtual bool collidesWith(const std::shared_ptr<PhysicalEntity>& entity);
+
 		static bool
-		detectCollision(const std::shared_ptr<PhysicalEntity>& entity0, const std::shared_ptr<PhysicalEntity>& entity1);
+		AABB(const utils::Vector p0, const utils::Vector s0, const utils::Vector p1, const utils::Vector s1);
+
+		virtual void onCollision(const std::shared_ptr<PhysicalEntity>& entity);
 
 	protected:
 		float drag;

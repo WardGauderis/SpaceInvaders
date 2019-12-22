@@ -15,8 +15,6 @@ namespace SI::model {
 	public:
 		Enemy();
 
-		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) final;
-
 		bool shoot();
 
 		unsigned int getShootChance() const;
@@ -32,8 +30,7 @@ namespace SI::model {
 		~Enemy() final = default;
 
 	private:
-		std::uniform_int_distribution<> distribution;
-		static std::default_random_engine generator;
+		std::uniform_int_distribution<int> distribution;
 
 		int value;
 		static int score;
