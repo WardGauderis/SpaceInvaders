@@ -11,4 +11,4 @@ target_link_libraries(SI "-lsfml-graphics -lsfml-window -lsfml-system -lsfml-aud
 
 set(CMAKE_CXX_FLAGS "-O3")
 # -Wnull-dereference
-# -march=native -Wall -Wextra -Wnon-virtual-dtor -Wold-style-cast -Wunused -Woverloaded-virtual -Wpedantic -Wconversion -Wsign-conversion  -Wdouble-promotion -Wformat=2
+# -march=native -Wall -Wextra -Wnon-vigrtual-dtor -Wold-style-cast -Wunused -Woverloaded-virtual -Wpedantic -Wconversion -Wsign-conversion  -Wdouble-promotion -Wformat=2

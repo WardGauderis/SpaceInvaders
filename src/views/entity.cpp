@@ -6,7 +6,7 @@
 #include "entity.h"
 #include "../utils/transformation.h"
 
-SI::view::Entity::Entity(): Entity(nullptr) {}
+SI::view::Entity::Entity() : Entity(nullptr) {}
 
 SI::view::Entity::Entity(std::shared_ptr<sf::RenderWindow> window) : window(std::move(window)), mustDelete(false) {}
 
@@ -35,6 +35,8 @@ bool SI::view::Entity::isKeyPressed(utils::Key key) {
 		case utils::Key::enter:
 			return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Return);
 	}
+
+	return false;
 }
 
 bool SI::view::Entity::pollEvent(utils::Event& event) {

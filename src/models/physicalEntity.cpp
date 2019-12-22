@@ -66,7 +66,7 @@ bool SI::model::PhysicalEntity::AABB(const utils::Vector p0, const utils::Vector
 	       p0.y + s0.y > p1.y;
 }
 
-void SI::model::PhysicalEntity::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
+void SI::model::PhysicalEntity::onCollision([[maybe_unused]] const std::shared_ptr<PhysicalEntity>& entity) {
 	velocity.x = -velocity.x;
 }
 

@@ -11,7 +11,7 @@ SI::model::Shield::ShieldSegment::ShieldSegment(const Type type) {
 	std::function<bool(size_t, size_t)> requirement;
 	switch (type) {
 		case Type::full:
-			requirement = [](size_t x, size_t y) { return true; };
+			requirement = []([[maybe_unused]] size_t x, [[maybe_unused]] size_t y) { return true; };
 			break;
 		case Type::rightBottom:
 			requirement = [](size_t x, size_t y) { return y < x; };
@@ -66,8 +66,8 @@ bool SI::model::Shield::collidesWith(const std::shared_ptr<PhysicalEntity>& enti
 		return false;
 
 	bool collides = false;
-	for (int x = 0; x < segments.size(); ++x) {
-		for (int y = 0; y < segments[x].size(); ++y) {
+	for (size_t x = 0; x < segments.size(); ++x) {
+		for (size_t y = 0; y < segments[x].size(); ++y) {
 			auto pos = convert(x, y, 0, 0);
 			if (!AABB(pos, ShieldSegment::size(), entity->getPosition() - entity->getSize() / 2, entity->getSize()))
 				continue;
@@ -82,8 +82,8 @@ bool SI::model::Shield::collidesWithSegment(const int x0, const int y0,
                                             const std::shared_ptr<PhysicalEntity>& entity) {
 	auto& segment = segments[x0][y0];
 	bool collides = false;
-	for (int x1 = 0; x1 < segment.points.size(); ++x1) {
-		for (int y1 = 0; y1 < segment.points[x1].size(); ++y1) {
+	for (size_t x1 = 0; x1 < segment.points.size(); ++x1) {
+		for (size_t y1 = 0; y1 < segment.points[x1].size(); ++y1) {
 			if (!segment.points[x1][y1]) continue;
 
 			auto pos = convert(x0, y0, x1, y1);
