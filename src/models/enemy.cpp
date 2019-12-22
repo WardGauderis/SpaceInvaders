@@ -22,9 +22,9 @@ unsigned int SI::model::Enemy::getShootChance() const {
 	return static_cast<unsigned int>(distribution.max());
 }
 
-void SI::model::Enemy::setCoolDown(const unsigned int coolDown) {
+void SI::model::Enemy::setCoolDown(const int coolDown) {
 	if (coolDown < 0) throw std::runtime_error("cooldown must be positive");
-	distribution = std::uniform_int_distribution<int>(1, static_cast<int>(coolDown));
+	distribution = std::uniform_int_distribution<int>(1, coolDown);
 }
 
 int SI::model::Enemy::getValue() const {

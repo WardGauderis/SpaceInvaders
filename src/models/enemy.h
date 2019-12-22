@@ -19,7 +19,7 @@ namespace SI::model {
 
 		[[nodiscard]] unsigned int getShootChance() const;
 
-		void setCoolDown(unsigned int coolDown);
+		void setCoolDown(int coolDown);
 
 		[[nodiscard]] int getValue() const;
 
