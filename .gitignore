@@ -35,3 +35,8 @@
 .idea
 cmake-*
 CMakeFiles
+CMakeCache.txt
+Makefile
+SI
+*.cmake
+*.cbp
