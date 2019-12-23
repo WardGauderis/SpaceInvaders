@@ -7,7 +7,7 @@
 
 SI::view::Explosion::Explosion(std::weak_ptr<model::Explosion> model, const std::shared_ptr<sf::RenderWindow>& window)
 		: Entity(window), model(std::move(model)) {
-	sprite.setSize(utils::Transformation::get().convertDistance<float>(lock()->getSize()));
+	sprite.setSize(utils::Transformation::get().convertDistance<float>(model::Explosion::ExplosionParticle::size()));
 	notify();
 }
 

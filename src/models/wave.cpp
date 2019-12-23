@@ -123,7 +123,7 @@ std::shared_ptr<SI::model::Enemy> SI::model::Wave::parseEnemy(const nlohmann::js
 	}
 
 	newEnemy->setBulletSpeed(newEnemy->getBulletSpeed() * bulletSpeed);
-	newEnemy->setCoolDown(static_cast<int>(std::round(static_cast<float>(newEnemy->getShootChance()) * coolDown)));
+	newEnemy->setCoolDown(static_cast<int>(std::round(static_cast<float>(newEnemy->getCoolDown()) * coolDown)));
 	newEnemy->setVelocity(newEnemy->getVelocity() * speed);
 	newEnemy->setSize({newEnemy->getSize().x * size[0], newEnemy->getSize().y * size[1]});
 	newEnemy->setLives(static_cast<unsigned int>(static_cast<float>(newEnemy->getLives()) * lives));

@@ -88,7 +88,7 @@ void SI::view::World::update() {
 		entity->update();
 	}
 
-	if(model->getState() != model::World::State::running) {
+	if (model->getState() != model::World::State::running) {
 		window->draw(dim);
 		window->draw(instruction);
 		window->draw(head);

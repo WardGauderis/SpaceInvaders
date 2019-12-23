@@ -18,7 +18,7 @@ bool SI::model::Enemy::shoot() {
 	return false;
 }
 
-unsigned int SI::model::Enemy::getShootChance() const {
+unsigned int SI::model::Enemy::getCoolDown() const {
 	return static_cast<unsigned int>(distribution.max());
 }
 
@@ -55,6 +55,6 @@ bool SI::model::Enemy::hasHitGround() {
 	return hitGround;
 }
 
-void SI::model::Enemy::restart() {
+void SI::model::Enemy::reset() {
 	hitGround = false;
 }

@@ -33,8 +33,8 @@ int SI::model::Player::getScore() {
 	return score;
 }
 
-void SI::model::Player::addScore(int score) {
-	Player::score += score;
+void SI::model::Player::addScore(int points) {
+	Player::score += points;
 }
 
 void SI::model::Player::resetScore() {

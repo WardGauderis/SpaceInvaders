@@ -6,7 +6,7 @@
 
 SI::model::Entity::Entity() : mustDelete(false) {}
 
-std::vector <std::shared_ptr<SI::model::Entity>> SI::model::Entity::getNewModels() {
+std::vector<std::shared_ptr<SI::model::Entity>> SI::model::Entity::getNewModels() {
 	auto copy = newModels;
 	newModels.clear();
 	return copy;
@@ -26,7 +26,7 @@ std::default_random_engine& SI::model::Entity::generator() {
 	return generator;
 }
 
-void SI::model::Entity::addModel(const std::shared_ptr <Entity>& model) {
+void SI::model::Entity::addModel(const std::shared_ptr<Entity>& model) {
 	newModels.emplace_back(model);
 }
 

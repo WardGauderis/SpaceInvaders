@@ -9,28 +9,55 @@
 #include "../utils/stopWatch.h"
 
 namespace SI::model {
-
+	/**
+	 * model for the player
+	 */
 	class Player : public SpaceShip {
 	public:
+		/**
+		 * default constructor
+		 */
 		Player();
 
+		/**
+		 * function that is called when the model is update every tick
+		 * move the player
+		 */
 		void update() final;
 
+		/**
+		 * lose a live and make an explosion
+		 * @return lives
+		 */
 		unsigned int loseLive() override;
 
+		/**
+		 * try to shoot a bullet
+		 * @return success
+		 */
 		bool shoot();
 
+		/**
+		 * get the player score
+		 * @return score
+		 */
 		static int getScore();
 
-		static void addScore(int score);
+		/**
+		 * add points to the player score
+		 * @param points points
+		 */
+		static void addScore(int points);
 
+		/**
+		 * reset the player score to 0;
+		 */
 		static void resetScore();
 
 		~Player() final = default;
 
 	private:
 		utils::Timer timer;
-
 		static int score;
 	};
 

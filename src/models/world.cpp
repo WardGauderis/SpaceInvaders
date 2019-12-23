@@ -11,7 +11,7 @@ SI::model::World::World(): state(State::start) {
 
 void SI::model::World::reset() {
 	setState(State::start);
-	Enemy::restart();
+	Enemy::reset();
 
 	entities.clear();
 	physicalEntities.clear();

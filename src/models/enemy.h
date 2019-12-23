@@ -9,26 +9,61 @@
 #include "spaceShip.h"
 
 namespace SI::model {
-
+	/**
+	 * model class for enemies
+	 */
 	class Enemy : public SpaceShip {
 	public:
+		/**
+		 * default constructor
+		 */
 		Enemy();
 
+		/**
+		 * try to shoot a bullet
+		 * @return success
+		 */
 		bool shoot();
 
-		[[nodiscard]] unsigned int getShootChance() const;
+		/**
+		 * get the chance (cooldown) to shoot
+		 * @return cooldown
+		 */
+		[[nodiscard]] unsigned int getCoolDown() const;
 
+		/**
+		 * set the chance (cooldown) to shoot
+		 * @param coolDown int;
+		 */
 		void setCoolDown(int coolDown);
 
+		/**
+		 * get the value (points)
+		 * @return value
+		 */
 		[[nodiscard]] int getValue() const;
 
+		/**
+		 * set the value (points)
+		 * @param v value
+		 */
 		void setValue(int v);
 
+		/**
+		 * indicate that this may be deleted
+		 */
 		void deleteThis() final;
 
+		/**
+		 * returns whether an enemy has yet hit the ground
+		 * @return true if it has happened;
+		 */
 		static bool hasHitGround();
 
-		static void restart();
+		/**
+		 * reset the hasHitGround() function
+		 */
+		static void reset();
 
 		~Enemy() final = default;
 
@@ -37,7 +72,10 @@ namespace SI::model {
 		int value;
 
 		static bool hitGround;
-
+		/**
+		 * handle wall collision
+		 * @param wall collision position
+		 */
 		void onWallCollision(utils::Vector wall) final;
 	};
 
