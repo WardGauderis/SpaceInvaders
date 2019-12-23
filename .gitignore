@@ -34,4 +34,4 @@
 # Extra
 .idea
 cmake-*
-CMake*
+CMakeFiles
