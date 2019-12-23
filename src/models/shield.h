@@ -15,7 +15,7 @@ namespace SI::model {
 	public:
 		/**
 		 * a segment of the shield
-		 * multiple segments result in faster collision detection
+		 * multiple segments result in faster collision detection by Grid based space partitioning
 		 */
 		struct ShieldSegment {
 			constexpr static int amount = 15;
@@ -82,7 +82,7 @@ namespace SI::model {
 
 		/**
 		 * checks if an entity collides with a segment
-		 * by doing collision checks at 3 different levels, the operation becomes much less heavy
+		 * by doing collision checks at 3 different levels, the operation becomes much less heavy (Grid based space partitioning)
 		 * @param x0 x in shield
 		 * @param y0 y in shield
 		 * @param entity entity
