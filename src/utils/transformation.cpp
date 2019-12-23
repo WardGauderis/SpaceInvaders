@@ -27,9 +27,11 @@ T utils::Transformation::convertWidth(const float x) const {
 	return static_cast<T>((x / 8.0f) * static_cast<float>(width));
 }
 
-template int utils::Transformation::convertWidth<int>(float x) const;
+template int utils::Transformation::convertWidth(float x) const;
 
-template float utils::Transformation::convertWidth<float>(float x) const;
+template unsigned int utils::Transformation::convertWidth(float x) const;
+
+template float utils::Transformation::convertWidth(float x) const;
 
 template<typename T>
 T utils::Transformation::convertHeight(const float y) const {
@@ -38,15 +40,9 @@ T utils::Transformation::convertHeight(const float y) const {
 
 template int utils::Transformation::convertHeight(float x) const;
 
+template unsigned int utils::Transformation::convertHeight(float x) const;
+
 template float utils::Transformation::convertHeight(float x) const;
-
-//float utils::Transformation::convertWidth(const int x) const {
-//	return (static_cast<float>(x) / static_cast<float>(width) - 0.5f) * 8.0f;
-//}
-
-//float utils::Transformation::convertHeight(const int y) const {
-//	return (static_cast<float>(y) / static_cast<float>(height) - 0.5f) * 6.0f;
-//}
 
 template<typename T>
 sf::Vector2<T> utils::Transformation::convertPoint(const utils::Vector vector) const {
@@ -54,6 +50,8 @@ sf::Vector2<T> utils::Transformation::convertPoint(const utils::Vector vector) c
 }
 
 template sf::Vector2<int> utils::Transformation::convertPoint(const Vector vector) const;
+
+template sf::Vector2<unsigned int> utils::Transformation::convertPoint(const Vector vector) const;
 
 template sf::Vector2<float> utils::Transformation::convertPoint(const Vector vector) const;
 

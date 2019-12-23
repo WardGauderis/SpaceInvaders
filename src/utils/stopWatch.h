@@ -10,7 +10,10 @@
 using namespace std::chrono_literals;
 
 namespace utils {
-
+	/**
+	 * stopwatch class that determines when the model (and controller) or the view should update
+	 * for a constant game speed (singleton)
+	 */
 	class StopWatch {
 	public:
 		/**
@@ -66,24 +69,60 @@ namespace utils {
 
 	};
 
+	/**
+	 * class that counts down to zero each time it is updated
+	 * designed to work with game-ticks (not real time)
+	 */
 	class Timer {
 	public:
+		/**
+		 * construct the timer and set its cooldown
+		 * @param coolDown amount of ticks
+		 */
 		explicit Timer(unsigned int coolDown);
 
+		/**
+		 * count down if the the timer is active
+		 */
 		void update();
 
+		/**
+		 * resets the timer if it has reached zero
+		 * @return tue if the timer is done
+		 */
 		bool ready();
 
+		/**
+		 * resets the timer
+		 */
 		void reset();
 
+		/**
+		 * stops the timer
+		 */
 		void stop();
 
+		/**
+		 * starts the timer
+		 */
 		void start();
 
+		/**
+		 * set the current time
+		 * @param time amount of ticks
+		 */
 		void setTime(unsigned int time);
 
+		/**
+		 * get the cooldown
+		 * @return the set cooldown
+		 */
 		[[nodiscard]] unsigned int getCooldown() const;
 
+		/**
+		 * get the current time
+		 * @return current amount of ticks
+		 */
 		[[nodiscard]] unsigned int getTime() const;
 
 	private:

@@ -12,7 +12,7 @@
 
 SI::SpaceInvaders::SpaceInvaders() : model(std::make_shared<model::World>()),
                                      view(std::make_shared<view::World>(model)),
-                                     controller(std::make_shared<controller::World>(model, view)) {
+                                     controller(std::make_unique<controller::World>(model, view)) {
 	model->addObserver(view);
 }
 

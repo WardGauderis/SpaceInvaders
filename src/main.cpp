@@ -4,7 +4,7 @@
 #include "utils/transformation.h"
 
 int main() {
-//	utils::StopWatch::get().printFPS(true);
+	utils::StopWatch::get().printFPS(true);
 	utils::Transformation::get().setDimensions(1200, 900);
 
 	try {

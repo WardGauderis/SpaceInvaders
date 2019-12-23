@@ -10,6 +10,9 @@
 
 namespace utils {
 
+	/**
+	 * class that convert float values from [-4, 4] by [-3, 3] to a custom pixel range for display (singleton)
+	 */
 	class Transformation {
 	public:
 		/**
@@ -29,14 +32,22 @@ namespace utils {
 		 */
 		void setDimensions(unsigned int x, unsigned int y);
 
+		/**
+		 * get the set width
+		 * @return width
+		 */
 		[[nodiscard]] unsigned int getWidth() const;
 
+		/**
+		 * get the set height
+		 * @return height
+		 */
 		[[nodiscard]] unsigned int getHeight() const;
 
 		/**
 		 * convert point from range [-4, 4], [-3, 3] to [0, width], [0, height]
 		 * @param vector vector from model
-		 * @return vector from view
+		 * @return vector from view (float, unsigned int or int)
 		 */
 		template<typename T>
 		[[nodiscard]] sf::Vector2<T> convertPoint(Vector vector) const;
@@ -44,17 +55,10 @@ namespace utils {
 		/**
 		 * convert distance from range [-4, 4], [-3, 3] to [0, width], [0, height]
 		 * @param vector vector from model
-		 * @return vector from view
+		 * @return vector from view (float, unsigned int or int)
 		 */
 		template<typename T>
 		[[nodiscard]] sf::Vector2<T> convertDistance(Vector vector) const;
-
-		/**
-		 * convert from range [0, width], [0, height] to [-4, 4], [-3, 3]
-		 * @param vector vector from view
-		 * @return vector from model
-		 */
-//		[[nodiscard]] Vector convert(sf::Vector2i vector) const;
 
 	private:
 		unsigned int width;
@@ -67,7 +71,7 @@ namespace utils {
 		/**
  		* convert from range [-4, 4] to [0, width]
  		* @param x width
- 		* @return width
+ 		* @return width (float, unsigned int or int)
  		*/
 		template<typename T>
 		[[nodiscard]] T convertWidth(float x) const;
@@ -75,24 +79,10 @@ namespace utils {
 		/**
 		 * convert from range [-3, 3] to [0, height]
 		 * @param y height
-		 * @return height
+		 * @return height (float, unsigned int or int)
 		 */
 		template<typename T>
 		[[nodiscard]] T convertHeight(float y) const;
-
-		/**
-		 * convert from range [0, width] to [-4, 4]
-		 * @param x width
-		 * @return width
-		 */
-//		[[nodiscard]] float convertWidth(int x) const;
-
-		/**
-		 * convert from range [0, height] to [-3, 3]
-		 * @param y height
-		 * @return height
-		 */
-//		[[nodiscard]] float convertHeight(int y) const;
 	};
 
 }

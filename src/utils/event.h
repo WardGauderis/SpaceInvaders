@@ -7,6 +7,9 @@
 
 namespace utils {
 
+	/**
+	 * custom event class to not be dependent on SFML events
+	 */
 	struct Event {
 
 		enum EventType {
@@ -15,9 +18,7 @@ namespace utils {
 		};
 
 		EventType type;
-		union {
-			Key key;
-		};
+		Key key;
 	};
 
 }

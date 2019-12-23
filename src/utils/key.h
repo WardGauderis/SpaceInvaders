@@ -7,6 +7,9 @@
 
 namespace utils {
 
+	/**
+	 * custom key class to not be dependent on SFML keys
+	 */
 	enum class Key {
 		up,
 		down,

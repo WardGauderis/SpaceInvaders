@@ -9,17 +9,22 @@
 #include <memory>
 
 namespace utils {
-
+	/**
+	 * abstract observer class from which observers must inherit
+	 */
 	class Observer {
 	public:
 		/**
-		 * function that is ran on an update
+		 * function that is ran on update
 		 */
 		virtual void notify() = 0;
 
 		virtual ~Observer() = default;
 	};
 
+	/**
+	 * subject class from which subject must inherit
+	 */
 	class Subject {
 	public:
 		/**
@@ -34,8 +39,16 @@ namespace utils {
 		 */
 		void removeObserver(const std::shared_ptr<Observer>& observer);
 
+		/**
+		 * get a vector of all the observers of the subject
+		 * @return vector
+		 */
 		[[nodiscard]] const std::vector<std::shared_ptr<Observer>>& getObservers() const;
 
+		/**
+		 * replace the current observers with new ones
+		 * @param observers vector of new observers
+		 */
 		void setObservers(const std::vector<std::shared_ptr<Observer>>& observers);
 
 	protected:
