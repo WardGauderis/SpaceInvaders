@@ -12,11 +12,11 @@ SI::view::PhysicalEntity::PhysicalEntity(std::weak_ptr<model::PhysicalEntity> mo
 }
 
 void SI::view::PhysicalEntity::notify() {
-	auto model = lock();
+	auto m = lock();
 	if (mayDeleteThis()) return;
 
 	sprite.setPosition(
-			utils::Transformation::get().convertPoint<float>(model->getPosition() - model->getSize() / 2.0f));
+			utils::Transformation::get().convertPoint<float>(m->getPosition() - m->getSize() / 2.0f));
 }
 
 void SI::view::PhysicalEntity::update() {
@@ -25,7 +25,7 @@ void SI::view::PhysicalEntity::update() {
 }
 
 std::shared_ptr<SI::model::PhysicalEntity> SI::view::PhysicalEntity::lock() {
-	auto model = PhysicalEntity::model.lock();
-	if (!model || model->mayDeleteThis()) deleteThis();
-	return model;
+	auto m = model.lock();
+	if (!m || m->mayDeleteThis()) deleteThis();
+	return m;
 }

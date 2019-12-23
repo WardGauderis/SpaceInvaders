@@ -10,8 +10,8 @@ SI::controller::PhysicalEntity::PhysicalEntity(std::weak_ptr<model::PhysicalEnti
 
 std::pair<std::shared_ptr<SI::model::PhysicalEntity>, std::shared_ptr<SI::view::PhysicalEntity>>
 SI::controller::PhysicalEntity::lock() {
-	auto model = PhysicalEntity::model.lock();
-	auto view = PhysicalEntity::view.lock();
-	if(!model || !view || model->mayDeleteThis() || view->mayDeleteThis()) deleteThis();
-	return {model, view};
+	auto m = PhysicalEntity::model.lock();
+	auto v = PhysicalEntity::view.lock();
+	if(!m || !v || m->mayDeleteThis() || v->mayDeleteThis()) deleteThis();
+	return {m, v};
 }

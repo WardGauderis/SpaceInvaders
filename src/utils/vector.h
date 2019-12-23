@@ -47,14 +47,14 @@ namespace utils {
 		 * @param angle in degrees
 		 * @return rotated vector
 		 */
-		[[nodiscard]] Vector rotate(float angle) const;
+		[[nodiscard]] [[maybe_unused]] Vector rotate(float angle) const;
 
 		/**
 		 * calculate the dot product
 		 * @param vector second operand
 		 * @return float
 		 */
-		[[nodiscard]] float dot(Vector vector) const;
+		[[nodiscard]] [[maybe_unused]] float dot(Vector vector) const;
 
 		/**
 		 * negation

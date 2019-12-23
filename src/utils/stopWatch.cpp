@@ -82,8 +82,8 @@ void utils::Timer::start() {
 	active = true;
 }
 
-void utils::Timer::setTime(unsigned int time) {
-	Timer::time = time;
+void utils::Timer::setTime(unsigned int newTime) {
+	Timer::time = newTime;
 }
 
 unsigned int utils::Timer::getCooldown() const {

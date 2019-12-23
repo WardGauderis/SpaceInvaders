@@ -45,9 +45,9 @@ namespace SI::model {
 
 		/**
 		 * set the position
-		 * @param position vector
+		 * @param pos vector
 		 */
-		void setPosition(const utils::Vector& position);
+		void setPosition(const utils::Vector& pos);
 
 		/**
 		 * get the velocity
@@ -57,9 +57,9 @@ namespace SI::model {
 
 		/**
 		 * set the velocity
-		 * @param velocity vector
+		 * @param vel vector
 		 */
-		void setVelocity(const utils::Vector& velocity);
+		void setVelocity(const utils::Vector& vel);
 
 		/**
 		 * get the size
@@ -69,9 +69,9 @@ namespace SI::model {
 
 		/**
 		 * set the size
-		 * @param size vector
+		 * @param s vector
 		 */
-		void setSize(const utils::Vector& size);
+		void setSize(const utils::Vector& s);
 
 		/**
 		 * get the team

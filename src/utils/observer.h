@@ -36,7 +36,7 @@ namespace utils {
 		 * remove a certain observer from the subject;
 		 * @param observer observer to remove
 		 */
-		void removeObserver(const std::shared_ptr<Observer>& observer);
+		[[maybe_unused]] void removeObserver(const std::shared_ptr<Observer>& observer);
 
 		/**
 		 * get a vector of all the observers of the subject
@@ -46,9 +46,9 @@ namespace utils {
 
 		/**
 		 * replace the current observers with new ones
-		 * @param observers vector of new observers
+		 * @param newObservers vector of new observers
 		 */
-		void setObservers(const std::vector<std::shared_ptr<Observer>>& observers);
+		void setObservers(const std::vector<std::shared_ptr<Observer>>& newObservers);
 
 	protected:
 		/**

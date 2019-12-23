@@ -43,7 +43,7 @@ namespace utils {
 		 * set fps
 		 * @param newFPS preferred fps
 		 */
-		void setFPS(unsigned int newFPS);
+		[[maybe_unused]] void setFPS(unsigned int newFPS);
 
 		/**
 		 * set whether the fps must be printed
@@ -109,9 +109,9 @@ namespace utils {
 
 		/**
 		 * set the current time
-		 * @param time amount of ticks
+		 * @param newTime amount of ticks
 		 */
-		void setTime(unsigned int time);
+		void setTime(unsigned int newTime);
 
 		/**
 		 * get the cooldown

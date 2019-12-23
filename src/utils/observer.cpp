@@ -26,6 +26,6 @@ const std::vector<std::shared_ptr<utils::Observer>>& utils::Subject::getObserver
 	return observers;
 }
 
-void utils::Subject::setObservers(const std::vector<std::shared_ptr<Observer>>& observers) {
-	Subject::observers = observers;
+void utils::Subject::setObservers(const std::vector<std::shared_ptr<Observer>>& newObservers) {
+	Subject::observers = newObservers;
 }

@@ -53,7 +53,7 @@ namespace SI::model {
 		 * polls all the entities
 		 * @return vector of models
 		 */
-		std::vector<std::shared_ptr<Entity>> getNewModels() override;
+		std::vector<std::shared_ptr<Entity>> getNewModels() final;
 
 		/**
 		 * remove an entity from the world
@@ -80,9 +80,9 @@ namespace SI::model {
 
 		/**
 		 * set the state
-		 * @param state new state
+		 * @param newState new state
 		 */
-		void setState(State state);
+		void setState(State newState);
 
 		~World() final = default;
 

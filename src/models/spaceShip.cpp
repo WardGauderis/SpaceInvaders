@@ -14,7 +14,7 @@ SI::model::SpaceShip::SpaceShip(const float drag, const utils::Vector& size, con
 }
 
 void SI::model::SpaceShip::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
-	if (typeid(*entity) == typeid(Bullet)) {
+	if (std::dynamic_pointer_cast<Bullet>(entity)) {
 		if (entity->getTeam() == getTeam()) return;
 	} else if (entity->getTeam() == getTeam()) {
 		PhysicalEntity::onCollision(entity);
@@ -27,9 +27,9 @@ unsigned int SI::model::SpaceShip::getLives() const {
 	return lives;
 }
 
-void SI::model::SpaceShip::setLives(const unsigned int lives) {
-	if (lives <= 0) throw std::runtime_error("lives must be more than 0");
-	SpaceShip::lives = lives;
+void SI::model::SpaceShip::setLives(const unsigned int amount) {
+	if (amount <= 0) throw std::runtime_error("lives must be more than 0");
+	SpaceShip::lives = amount;
 }
 
 unsigned int SI::model::SpaceShip::loseLive() {
@@ -43,9 +43,9 @@ float SI::model::SpaceShip::getBulletSpeed() const {
 	return bulletSpeed;
 }
 
-void SI::model::SpaceShip::setBulletSpeed(float bulletSpeed) {
-	if (bulletSpeed < 0) throw std::runtime_error("bullet speed must be greater than 0");
-	SpaceShip::bulletSpeed = bulletSpeed;
+void SI::model::SpaceShip::setBulletSpeed(float speed) {
+	if (speed < 0) throw std::runtime_error("bullet speed must be greater than 0");
+	SpaceShip::bulletSpeed = speed;
 }
 
 bool SI::model::SpaceShip::shoot(const bool team) {

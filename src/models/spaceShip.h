@@ -40,9 +40,9 @@ namespace SI::model {
 
 		/**
 		 * set the live of the ship
-		 * @param lives new lives
+		 * @param amount new lives
 		 */
-		void setLives(unsigned int lives);
+		void setLives(unsigned int amount);
 
 		/**
 		 * lose a live
@@ -58,9 +58,9 @@ namespace SI::model {
 
 		/**
 		 * set the bullet speed
-		 * @param bulletSpeed float
+		 * @param speed float
 		 */
-		void setBulletSpeed(float bulletSpeed);
+		void setBulletSpeed(float speed);
 
 		~SpaceShip() override = default;
 

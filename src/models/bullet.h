@@ -23,7 +23,7 @@ namespace SI::model {
 		/**
 		 * handle collision with entity
 		 */
-		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) override;
+		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) final;
 
 		~Bullet() final = default;
 
@@ -32,7 +32,7 @@ namespace SI::model {
 		 * handle wall collision
 		 * @param wall collision position
 		 */
-		void onWallCollision(utils::Vector wall) override;
+		void onWallCollision(utils::Vector wall) final;
 	};
 
 }

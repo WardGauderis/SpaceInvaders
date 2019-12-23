@@ -25,8 +25,8 @@ const utils::Vector& SI::model::PhysicalEntity::getPosition() const {
 	return position;
 }
 
-void SI::model::PhysicalEntity::setPosition(const utils::Vector& position) {
-	PhysicalEntity::position = position;
+void SI::model::PhysicalEntity::setPosition(const utils::Vector& pos) {
+	PhysicalEntity::position = pos;
 }
 
 const utils::Vector& SI::model::PhysicalEntity::getVelocity() const {
@@ -34,18 +34,18 @@ const utils::Vector& SI::model::PhysicalEntity::getVelocity() const {
 }
 
 
-void SI::model::PhysicalEntity::setVelocity(const utils::Vector& velocity) {
-	PhysicalEntity::velocity = velocity;
+void SI::model::PhysicalEntity::setVelocity(const utils::Vector& vel) {
+	PhysicalEntity::velocity = vel;
 }
 
 const utils::Vector& SI::model::PhysicalEntity::getSize() const {
 	return size;
 }
 
-void SI::model::PhysicalEntity::setSize(const utils::Vector& size) {
-	if (size.x < 0 || size.y < 0) throw std::runtime_error("size must be positive");
-	if (size.x > 7 || size.y > 5) throw std::runtime_error("size is too big");
-	PhysicalEntity::size = size;
+void SI::model::PhysicalEntity::setSize(const utils::Vector& s) {
+	if (s.x < 0 || s.y < 0) throw std::runtime_error("size must be positive");
+	if (s.x > 7 || s.y > 5) throw std::runtime_error("size is too big");
+	PhysicalEntity::size = s;
 }
 
 bool SI::model::PhysicalEntity::getTeam() const {

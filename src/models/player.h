@@ -29,7 +29,7 @@ namespace SI::model {
 		 * lose a live and make an explosion
 		 * @return lives
 		 */
-		unsigned int loseLive() override;
+		unsigned int loseLive() final;
 
 		/**
 		 * try to shoot a bullet

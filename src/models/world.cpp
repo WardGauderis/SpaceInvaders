@@ -96,7 +96,7 @@ SI::model::World::State SI::model::World::getState() const {
 	return state;
 }
 
-void SI::model::World::setState(SI::model::World::State state) {
-	World::state = state;
+void SI::model::World::setState(SI::model::World::State newState) {
+	World::state = newState;
 	notifyObservers();
 }

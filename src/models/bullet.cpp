@@ -10,8 +10,8 @@ SI::model::Bullet::Bullet(const utils::Vector& velocity, bool team)
 		: PhysicalEntity(1, {0.05f, 0.1f}, {0, 0}, velocity, team) {}
 
 void SI::model::Bullet::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
-	if (team && typeid(*entity) == typeid(Player)) return;
-	if (!team && typeid(*entity) == typeid(Enemy)) return;
+	if (team && std::dynamic_pointer_cast<Player>(entity)) return;
+	if (!team && std::dynamic_pointer_cast<Enemy>(entity)) return;
 	deleteThis();
 }
 

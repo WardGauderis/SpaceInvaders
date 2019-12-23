@@ -14,28 +14,35 @@ bool SI::view::Entity::mayDeleteThis() const {
 }
 
 bool SI::view::Entity::isKeyPressed(utils::Key key) {
+	bool value = false;
 	switch (key) {
 		case utils::Key::up:
-			return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) ||
-			       sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Z);
+			value = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) ||
+			        sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Z);
+			break;
 		case utils::Key::down:
-			return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) ||
-			       sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S);
+			value = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) ||
+			        sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S);
+			break;
 		case utils::Key::left:
-			return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) ||
-			       sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q);
+			value = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) ||
+			        sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q);
+			break;
 		case utils::Key::right:
-			return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) ||
-			       sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D);
+			value = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) ||
+			        sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D);
+			break;
 		case utils::Key::space:
-			return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space);
+			value = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space);
+			break;
 		case utils::Key::escape:
-			return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape);
+			value = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape);
+			break;
 		case utils::Key::enter:
-			return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Return);
+			value = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Return);
+			break;
 	}
-
-	return false;
+	return value;
 }
 
 bool SI::view::Entity::pollEvent(utils::Event& event) {

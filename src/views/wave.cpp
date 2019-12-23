@@ -16,15 +16,15 @@ SI::view::Wave::Wave(std::weak_ptr<model::Wave> model, const std::shared_ptr<sf:
 }
 
 void SI::view::Wave::notify() {
-	auto model = lock();
+	auto m = lock();
 	if (mayDeleteThis()) return;
-	centerText(title, model->getTitle(), {0, 0.66f});
+	centerText(title, m->getTitle(), {0, 0.66f});
 }
 
 void SI::view::Wave::update() {
-	auto model = lock();
+	auto m = lock();
 	if (mayDeleteThis()) return;
-	title.setFillColor(sf::Color(245, 231, 222, model->getOpacity()));
+	title.setFillColor(sf::Color(245, 231, 222, m->getOpacity()));
 	window->draw(title);
 }
 
@@ -33,7 +33,7 @@ int SI::view::Wave::drawOrder() {
 }
 
 std::shared_ptr<SI::model::Wave> SI::view::Wave::lock() {
-	auto model = Wave::model.lock();
-	if (!model || model->mayDeleteThis()) deleteThis();
-	return model;
+	auto m = model.lock();
+	if (!m || m->mayDeleteThis()) deleteThis();
+	return m;
 }
