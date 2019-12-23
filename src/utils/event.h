@@ -5,6 +5,8 @@
 #ifndef SPACEINVADERS_EVENT_H
 #define SPACEINVADERS_EVENT_H
 
+#include "key.h"
+
 namespace utils {
 
 /**
