@@ -6,8 +6,8 @@
 #define SPACEINVADERS_ASSETS_H
 
 #include <SFML/Audio/Music.hpp>
-#include <memory>
 #include <SFML/Graphics/Font.hpp>
+#include <memory>
 
 namespace utils {
 

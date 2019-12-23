@@ -5,7 +5,6 @@
 #ifndef SPACEINVADERS_OBSERVER_H
 #define SPACEINVADERS_OBSERVER_H
 
-#include <vector>
 #include <memory>
 
 namespace utils {

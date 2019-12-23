@@ -5,7 +5,7 @@
 #ifndef SPACEINVADERS_WORLDCONTROLLER_H
 #define SPACEINVADERS_WORLDCONTROLLER_H
 
-#include "player.h"
+#include "entity.h"
 #include "../views/world.h"
 
 namespace SI::controller {

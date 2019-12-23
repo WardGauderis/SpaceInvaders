@@ -5,8 +5,8 @@
 
 #include "world.h"
 
-#include "../utils/transformation.h"
 #include "display.h"
+#include "../utils/transformation.h"
 #include "../utils/assets.h"
 
 SI::view::World::World(std::shared_ptr<model::World> model)

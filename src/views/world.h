@@ -5,7 +5,6 @@
 #ifndef SPACEINVADERS_WORLDVIEW_H
 #define SPACEINVADERS_WORLDVIEW_H
 
-#include <set>
 #include <SFML/Audio.hpp>
 
 #include "entity.h"

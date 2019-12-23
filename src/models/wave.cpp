@@ -2,7 +2,6 @@
 // Created by ward on 12/9/19.
 //
 #include <fstream>
-#include <iostream>
 
 #include "wave.h"
 

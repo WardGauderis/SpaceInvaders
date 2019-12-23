@@ -2,7 +2,6 @@
 // Created by ward on 11/25/19.
 //
 
-#include <iostream>
 #include "entity.h"
 #include "../utils/transformation.h"
 

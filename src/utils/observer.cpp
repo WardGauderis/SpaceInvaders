@@ -2,8 +2,9 @@
 // Created by ward on 12/1/19.
 //
 
-#include "observer.h"
 #include <algorithm>
+
+#include "observer.h"
 
 void utils::Subject::addObserver(const std::shared_ptr<Observer>& observer) {
 	if(observer == nullptr)

@@ -3,7 +3,6 @@
 //
 
 #include "enemy.h"
-#include "bullet.h"
 #include "player.h"
 
 bool SI::model::Enemy::hitGround = false;

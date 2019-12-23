@@ -5,7 +5,6 @@
 #ifndef SPACEINVADERS_ENEMYVIEW_H
 #define SPACEINVADERS_ENEMYVIEW_H
 
-#include <unordered_set>
 #include "spaceShip.h"
 #include "../models/enemy.h"
 

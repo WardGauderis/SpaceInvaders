@@ -3,11 +3,11 @@
 //
 
 #include "spaceInvaders.h"
-#include "views/display.h"
+#include "controllers/player.h"
+#include "controllers/enemy.h"
 #include "views/bullet.h"
 #include "views/explosion.h"
 #include "views/wave.h"
-#include "controllers/enemy.h"
 #include "views/shield.h"
 
 SI::SpaceInvaders::SpaceInvaders() : model(std::make_shared<model::World>()),

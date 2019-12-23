@@ -5,8 +5,8 @@
 #ifndef SPACEINVADERS_PLAYERCONTROLLER_H
 #define SPACEINVADERS_PLAYERCONTROLLER_H
 
-#include "../views/player.h"
 #include "physicalEntity.h"
+#include "../views/player.h"
 
 namespace SI::controller {
 	/**

@@ -3,7 +3,6 @@
 //
 
 #include "player.h"
-#include "enemy.h"
 
 int SI::model::Player::score = 0;
 

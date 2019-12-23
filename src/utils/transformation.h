@@ -5,8 +5,9 @@
 #ifndef SPACEINVADERS_TRANSFORMATION_H
 #define SPACEINVADERS_TRANSFORMATION_H
 
-#include "vector.h"
 #include <SFML/Graphics.hpp>
+
+#include "vector.h"
 
 namespace utils {
 

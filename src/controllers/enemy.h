@@ -5,8 +5,8 @@
 #ifndef SPACEINVADERS_ENEMYCONTROLLER_H
 #define SPACEINVADERS_ENEMYCONTROLLER_H
 
-#include "../views/enemy.h"
 #include "physicalEntity.h"
+#include "../views/enemy.h"
 
 namespace SI::controller {
 	/**

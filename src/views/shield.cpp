@@ -2,7 +2,6 @@
 // Created by ward on 12/19/19.
 //
 
-#include <iostream>
 #include "shield.h"
 #include "../utils/transformation.h"
 
