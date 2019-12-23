@@ -18,11 +18,7 @@ SI::view::Wave::Wave(std::weak_ptr<model::Wave> model, const std::shared_ptr<sf:
 void SI::view::Wave::notify() {
 	auto model = lock();
 	if (mayDeleteThis()) return;
-	title.setString(model->getTitle());
-	auto textRect = title.getLocalBounds();
-	title.setOrigin(textRect.left + textRect.width / 2.0f,
-	                textRect.top + textRect.height / 2.0f);
-	title.setPosition(utils::Transformation::get().convertPoint<float>({0, 0.66f}));
+	centerText(title, model->getTitle(), {0, 0.66f});
 }
 
 void SI::view::Wave::update() {

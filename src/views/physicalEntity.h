@@ -9,22 +9,40 @@
 #include "../models/physicalEntity.h"
 
 namespace SI::view {
-
+	/**
+	 * view class for physical entities
+	 */
 	class PhysicalEntity : public Entity {
 	public:
+		/**
+		 * construct with the correct model and window
+		 * @param model pointer
+		 * @param window SFML window
+		 */
 		PhysicalEntity(std::weak_ptr<model::PhysicalEntity> model, const std::shared_ptr<sf::RenderWindow>& window);
 
+		/**
+		 * function that is called when the model changes
+		 */
 		void notify() override;
 
+		/**
+		 * function that is called when the view is updated
+		 */
 		void update() override;
-
-		std::shared_ptr<model::PhysicalEntity> lock();
 
 		~PhysicalEntity() override = default;
 
 	protected:
-		std::weak_ptr<model::PhysicalEntity> model;
+		const std::weak_ptr<model::PhysicalEntity> model;
 		sf::RectangleShape sprite;
+
+		/**
+ 		 * check whether the model pointer is still present, otherwise delete this
+ 		 * @return shared pointer to model
+ 		 */
+		std::shared_ptr<model::PhysicalEntity> lock();
+
 	};
 
 }

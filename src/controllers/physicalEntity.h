@@ -9,21 +9,30 @@
 #include "../views/physicalEntity.h"
 
 namespace SI::controller {
-
+	/**
+	 * controller class for physical entities
+	 */
 	class PhysicalEntity : public Entity {
 	public:
+		/**
+		 * construct with the correct model and view
+		 * @param model pointer
+		 * @param view pointer
+		 */
 		PhysicalEntity(std::weak_ptr<model::PhysicalEntity> model,
 		               std::weak_ptr<view::PhysicalEntity> view);
 
-		void update() override;
-
+		/**
+		 * check whether the model and view pointers are still present, otherwise delete this
+		 * @return shared pointers to model and view
+		 */
 		std::pair<std::shared_ptr<model::PhysicalEntity>, std::shared_ptr<view::PhysicalEntity>> lock();
 
 		~PhysicalEntity() override = default;
 
 	protected:
-		std::weak_ptr<model::PhysicalEntity> model;
-		std::weak_ptr<view::PhysicalEntity> view;
+		const std::weak_ptr<model::PhysicalEntity> model;
+		const std::weak_ptr<view::PhysicalEntity> view;
 	};
 
 }
