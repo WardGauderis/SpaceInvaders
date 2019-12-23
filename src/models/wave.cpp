@@ -69,7 +69,7 @@ void SI::model::Wave::parseWave() {
 
 	auto wave = nlohmann::json::parse(rFile);
 
-	title = wave.value<std::string>("title", "wave" + std::to_string(waveNumber));
+	title = wave.value<std::string>("title", "wave " + std::to_string(waveNumber));
 
 	auto speed = wave.value<float>("speed", 1);
 	if (speed < 0) throw std::runtime_error("wave speed must be positive");
@@ -111,7 +111,6 @@ std::shared_ptr<SI::model::Enemy> SI::model::Wave::parseEnemy(const nlohmann::js
 	auto size = enemy.value<std::array<float, 2>>("size", {1, 1});
 	auto lives = enemy.value<float>("lives", 1);
 	auto bulletSpeed = enemy.value<float>("bulletspeed", 1);
-	if (bulletSpeed < 0) throw std::runtime_error("bullet speed must be positive");
 	auto score = enemy.value<float>("score", 1);
 
 	std::shared_ptr<Enemy> newEnemy;
