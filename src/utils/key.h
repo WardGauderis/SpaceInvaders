@@ -7,20 +7,20 @@
 
 namespace utils {
 
-	/**
-	 * custom key class to not be dependent on SFML keys
-	 */
-	enum class Key {
-		up,
-		down,
-		left,
-		right,
-		space,
-		escape,
-		enter
-	};
+/**
+ * custom key class to not be dependent on SFML keys
+ */
+enum class Key
+{
+        up,
+        down,
+        left,
+        right,
+        space,
+        escape,
+        enter
+};
 
-}
+} // namespace utils
 
-
-#endif //SPACEINVADERS_KEY_H
+#endif // SPACEINVADERS_KEY_H

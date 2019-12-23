@@ -4,12 +4,8 @@
 
 #include "entity.h"
 
-SI::controller::Entity::Entity(): mustDelete(false) {}
+SI::controller::Entity::Entity() : mustDelete(false) {}
 
-bool SI::controller::Entity::mayDeleteThis() const {
-	return mustDelete;
-}
+bool SI::controller::Entity::mayDeleteThis() const { return mustDelete; }
 
-void SI::controller::Entity::deleteThis() {
-	mustDelete = true;
-}
+void SI::controller::Entity::deleteThis() { mustDelete = true; }

@@ -11,91 +11,93 @@
 #include "wave.h"
 
 namespace SI::model {
-	/**
-	 * model class for the world
-	 */
-	class World : public Entity {
-	public:
-		/**
-		 * internal states of the world
-		 */
-		enum class State {
-			running,
-			pause,
-			victory,
-			defeat,
-			start
-		};
+/**
+ * model class for the world
+ */
+class World : public Entity
+{
+public:
+        /**
+         * internal states of the world
+         */
+        enum class State
+        {
+                running,
+                pause,
+                victory,
+                defeat,
+                start
+        };
 
-		/**
-		 * default constructor
-		 */
-		World();
+        /**
+         * default constructor
+         */
+        World();
 
-		/**
-		 * reset the world
-		 */
-		void reset();
+        /**
+         * reset the world
+         */
+        void reset();
 
-		/**
-		 * function that is called every game tick
-		 * update all the models, handle collision and adjust state
-		 */
-		void update() final;
+        /**
+         * function that is called every game tick
+         * update all the models, handle collision and adjust state
+         */
+        void update() final;
 
-		/**
-		 * add an entity to the world
-		 */
-		void addEntity(const std::shared_ptr<Entity>& entity);
+        /**
+         * add an entity to the world
+         */
+        void addEntity(const std::shared_ptr<Entity>& entity);
 
-		/**
-		 * poll whether the object wants to add new models to the world
-		 * polls all the entities
-		 * @return vector of models
-		 */
-		std::vector<std::shared_ptr<Entity>> getNewModels() final;
+        /**
+         * poll whether the object wants to add new models to the world
+         * polls all the entities
+         * @return vector of models
+         */
+        std::vector<std::shared_ptr<Entity>> getNewModels() final;
 
-		/**
-		 * remove an entity from the world
-		 */
-		void removeEntities();
+        /**
+         * remove an entity from the world
+         */
+        void removeEntities();
 
-		/**
-		 * get the player
-		 * @return player
-		 */
-		const std::weak_ptr<model::Player>& getPlayer() const;
+        /**
+         * get the player
+         * @return player
+         */
+        const std::weak_ptr<model::Player>& getPlayer() const;
 
-		/**
-		 * get the wave
-		 * @return return wave
-		 */
-		const std::weak_ptr<model::Wave>& getWave() const;
+        /**
+         * get the wave
+         * @return return wave
+         */
+        const std::weak_ptr<model::Wave>& getWave() const;
 
-		/**
-		 * get the state
-		 * @return state
-		 */
-		State getState() const;
+        /**
+         * get the state
+         * @return state
+         */
+        State getState() const;
 
-		/**
-		 * set the state
-		 * @param newState new state
-		 */
-		void setState(State newState);
+        /**
+         * set the state
+         * @param newState new state
+         */
+        void setState(State newState);
 
-		~World() final = default;
+        ~World() final = default;
 
-	private:
-		std::unordered_set<std::shared_ptr<Entity>> entities;
-		std::unordered_set<std::shared_ptr<PhysicalEntity>> physicalEntities;
+private:
+        std::unordered_set<std::shared_ptr<Entity>> entities;
+        std::unordered_set<std::shared_ptr<PhysicalEntity>> physicalEntities;
 
-		std::weak_ptr<model::Player> player;
-		std::weak_ptr<model::Wave> wave;
+        std::weak_ptr<model::Player> player;
+        std::weak_ptr<model::Wave> wave;
 
-		State state;
-	};
+        State state;
+};
 
-}
+} // namespace SI::model
 
-#endif //SPACEINVADERS_WORLDMODEL_H
+#endif // SPACEINVADERS_WORLDMODEL_H

@@ -5,80 +5,80 @@
 #ifndef SPACEINVADERS_ENEMYMODEL_H
 #define SPACEINVADERS_ENEMYMODEL_H
 
-
 #include "spaceShip.h"
 
 namespace SI::model {
-	/**
-	 * model class for enemies
-	 */
-	class Enemy : public SpaceShip {
-	public:
-		/**
-		 * default constructor
-		 */
-		Enemy();
+/**
+ * model class for enemies
+ */
+class Enemy : public SpaceShip
+{
+public:
+        /**
+         * default constructor
+         */
+        Enemy();
 
-		/**
-		 * try to shoot a bullet
-		 * @return success
-		 */
-		bool shoot();
+        /**
+         * try to shoot a bullet
+         * @return success
+         */
+        bool shoot();
 
-		/**
-		 * get the chance (cooldown) to shoot
-		 * @return cooldown
-		 */
-		[[nodiscard]] unsigned int getCoolDown() const;
+        /**
+         * get the chance (cooldown) to shoot
+         * @return cooldown
+         */
+        [[nodiscard]] unsigned int getCoolDown() const;
 
-		/**
-		 * set the chance (cooldown) to shoot
-		 * @param coolDown int;
-		 */
-		void setCoolDown(int coolDown);
+        /**
+         * set the chance (cooldown) to shoot
+         * @param coolDown int;
+         */
+        void setCoolDown(int coolDown);
 
-		/**
-		 * get the value (points)
-		 * @return value
-		 */
-		[[nodiscard]] int getValue() const;
+        /**
+         * get the value (points)
+         * @return value
+         */
+        [[nodiscard]] int getValue() const;
 
-		/**
-		 * set the value (points)
-		 * @param v value
-		 */
-		void setValue(int v);
+        /**
+         * set the value (points)
+         * @param v value
+         */
+        void setValue(int v);
 
-		/**
-		 * indicate that this may be deleted
-		 */
-		void deleteThis() final;
+        /**
+         * indicate that this may be deleted
+         */
+        void deleteThis() final;
 
-		/**
-		 * returns whether an enemy has yet hit the ground
-		 * @return true if it has happened;
-		 */
-		static bool hasHitGround();
+        /**
+         * returns whether an enemy has yet hit the ground
+         * @return true if it has happened;
+         */
+        static bool hasHitGround();
 
-		/**
-		 * reset the hasHitGround() function
-		 */
-		static void reset();
+        /**
+         * reset the hasHitGround() function
+         */
+        static void reset();
 
-		~Enemy() final = default;
+        ~Enemy() final = default;
 
-	private:
-		std::uniform_int_distribution<int> distribution;
-		int value;
+private:
+        std::uniform_int_distribution<int> distribution;
+        int value;
 
-		static bool hitGround;
-		/**
-		 * handle wall collision
-		 * @param wall collision position
-		 */
-		void onWallCollision(utils::Vector wall) final;
-	};
+        static bool hitGround;
+        /**
+         * handle wall collision
+         * @param wall collision position
+         */
+        void onWallCollision(utils::Vector wall) final;
+};
 
-}
+} // namespace SI::model
 
-#endif //SPACEINVADERS_ENEMYMODEL_H
+#endif // SPACEINVADERS_ENEMYMODEL_H

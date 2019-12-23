@@ -5,29 +5,30 @@
 #ifndef SPACEINVADERS_PLAYERCONTROLLER_H
 #define SPACEINVADERS_PLAYERCONTROLLER_H
 
-#include "physicalEntity.h"
 #include "../views/player.h"
+#include "physicalEntity.h"
 
 namespace SI::controller {
-	/**
-	 * controller class for the player
-	 */
-	class Player : public PhysicalEntity {
-	public:
-		/**
-		 * construct with correct model and view
-		 * @param model pointer
-		 * @param view pointer
-		 */
-		Player(const std::weak_ptr<model::Player>& model, const std::weak_ptr<view::Player>& view);
-		/**
-		 * update the player with user input
-		 */
-		void update() final;
+/**
+ * controller class for the player
+ */
+class Player : public PhysicalEntity
+{
+public:
+        /**
+         * construct with correct model and view
+         * @param model pointer
+         * @param view pointer
+         */
+        Player(const std::weak_ptr<model::Player>& model, const std::weak_ptr<view::Player>& view);
+        /**
+         * update the player with user input
+         */
+        void update() final;
 
-		~Player() final = default;
-	};
+        ~Player() final = default;
+};
 
-}
+} // namespace SI::controller
 
-#endif //SPACEINVADERS_PLAYERCONTROLLER_H
+#endif // SPACEINVADERS_PLAYERCONTROLLER_H

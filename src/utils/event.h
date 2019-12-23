@@ -7,20 +7,22 @@
 
 namespace utils {
 
-	/**
-	 * custom event class to not be dependent on SFML events
-	 */
-	struct Event {
+/**
+ * custom event class to not be dependent on SFML events
+ */
+struct Event
+{
 
-		enum EventType {
-			closed,
-			keyPressed
-		};
+        enum EventType
+        {
+                closed,
+                keyPressed
+        };
 
-		EventType type;
-		Key key;
-	};
+        EventType type;
+        Key key;
+};
 
-}
+} // namespace utils
 
-#endif //SPACEINVADERS_EVENT_H
+#endif // SPACEINVADERS_EVENT_H
