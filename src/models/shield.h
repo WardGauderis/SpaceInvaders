@@ -46,7 +46,7 @@ namespace SI::model {
 
 		bool collidesWithSegment(int x0, int y0, const std::shared_ptr<PhysicalEntity>& entity);
 
-		void onCollision(int x0, int y0, int x1, int y1, const std::shared_ptr<PhysicalEntity>& entity);
+		void onCollisionExplosion(int x0, int y0, int x1, int y1, const std::shared_ptr<PhysicalEntity>& entity);
 
 		static bool correct(int& x0, int& y0, int& x1, int& y1);
 	};

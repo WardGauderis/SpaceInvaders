@@ -2,7 +2,6 @@
 // Created by ward on 12/8/19.
 //
 
-#include "physicalEntity.h"
 #include "explosion.h"
 
 SI::model::PhysicalEntity::PhysicalEntity(float drag, const utils::Vector& size, const utils::Vector& position,

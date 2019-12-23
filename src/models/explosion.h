@@ -5,10 +5,8 @@
 #ifndef SPACEINVADERS_EXPLOSIONMODEL_H
 #define SPACEINVADERS_EXPLOSIONMODEL_H
 
-#include <random>
 
 #include "physicalEntity.h"
-#include "../utils/vector.h"
 #include "../utils/stopWatch.h"
 
 namespace SI::model {

@@ -5,7 +5,6 @@
 
 #include "world.h"
 
-#include <utility>
 #include "../utils/transformation.h"
 #include "display.h"
 #include "../utils/assets.h"

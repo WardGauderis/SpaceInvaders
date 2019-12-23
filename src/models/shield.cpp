@@ -92,14 +92,14 @@ bool SI::model::Shield::collidesWithSegment(const int x0, const int y0,
 				continue;
 
 			collides = true;
-			onCollision(x0, y0, x1, y1, entity);
+			onCollisionExplosion(x0, y0, x1, y1, entity);
 		}
 	}
 	return collides;
 }
 
-void SI::model::Shield::onCollision(const int x0, const int y0, const int x1, const int y1,
-                                    const std::shared_ptr<PhysicalEntity>& entity) {
+void SI::model::Shield::onCollisionExplosion(int x0, int y0, int x1, int y1,
+                                             const std::shared_ptr<PhysicalEntity>& entity) {
 	int radius = 2;
 	if (auto enemy = std::dynamic_pointer_cast<Enemy>(entity))
 		radius += enemy->getValue();

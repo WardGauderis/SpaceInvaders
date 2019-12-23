@@ -7,7 +7,6 @@
 
 #include "enemy.h"
 #include "../models/wave.h"
-#include "../utils/stopWatch.h"
 
 namespace SI::view {
 

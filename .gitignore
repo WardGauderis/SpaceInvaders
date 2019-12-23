@@ -34,3 +34,4 @@
 # Extra
 .idea
 cmake-*
+CMake*
