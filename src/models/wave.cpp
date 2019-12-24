@@ -113,7 +113,7 @@ std::vector<std::shared_ptr<SI::model::Enemy>> SI::model::Wave::parseRow(const n
 
 std::shared_ptr<SI::model::Enemy> SI::model::Wave::parseEnemy(const nlohmann::json& enemy)
 {
-        auto type = enemy.value<std::string>("type", "spy");
+        auto type = enemy.value<std::string>("type", "default");
         auto coolDown = enemy.value<float>("cooldown", 1);
         auto speed = enemy.value<float>("speed", 1);
         auto size = enemy.value<std::array<float, 2>>("size", {1, 1});
