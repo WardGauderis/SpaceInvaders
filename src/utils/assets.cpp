@@ -20,8 +20,8 @@ utils::Assets::Assets()
                 throw std::runtime_error("tf2build.ttf must be present in data/fonts");
         if (!normal->loadFromFile("data/fonts/TF2secondary.ttf"))
                 throw std::runtime_error("TF2secondary.ttf must be present in data/fonts");
-        if (!spy->loadFromFile("data/textures/test.png"))
-                throw std::runtime_error("test.png must be present in data/textures");
+        if (!spy->loadFromFile("data/textures/spy.png"))
+                throw std::runtime_error("spy.png must be present in data/textures");
 }
 
 const std::shared_ptr<sf::Music>& utils::Assets::getMusic() const { return music; }

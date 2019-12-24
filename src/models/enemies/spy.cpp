@@ -8,6 +8,7 @@
 SI::model::Spy::Spy() : state(Visibility::invisible), timer(stable)
 {
         setValue(20);
+        setBulletSpeed(0.1f);
         setVelocity({0.02f, 0});
         timer.reset();
 }
