@@ -21,10 +21,7 @@ void SI::view::PhysicalEntity::notify()
         sprite.setPosition(utils::Transformation::get().convertPoint<float>(m->getPosition() - m->getSize() / 2.0f));
 }
 
-void SI::view::PhysicalEntity::update()
-{
-        window->draw(sprite);
-}
+void SI::view::PhysicalEntity::update() { window->draw(sprite); }
 
 std::shared_ptr<SI::model::PhysicalEntity> SI::view::PhysicalEntity::lock()
 {

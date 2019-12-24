@@ -5,25 +5,26 @@
 #ifndef SPACEINVADERS_SPYVIEW_H
 #define SPACEINVADERS_SPYVIEW_H
 
-#include "../enemy.h"
 #include "../../models/enemies/spy.h"
+#include "../enemy.h"
 
 namespace SI::view {
 
-	class Spy : public Enemy {
-	public:
-		/**
-		 * construct with correct model and window
-		 * @param model pointer
-		 * @param window SFML window
-		 */
-		Spy(const std::weak_ptr<model::Spy>& model, const std::shared_ptr<sf::RenderWindow>& window);
+class Spy : public Enemy
+{
+public:
+        /**
+         * construct with correct model and window
+         * @param model pointer
+         * @param window SFML window
+         */
+        Spy(const std::weak_ptr<model::Spy>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
-		void notify() final;
+        void notify() final;
 
-		~Spy() final = default;
-	};
+        ~Spy() final = default;
+};
 
-}
+} // namespace SI::view
 
-#endif //SPACEINVADERS_SPYVIEW_H
+#endif // SPACEINVADERS_SPYVIEW_H

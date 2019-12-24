@@ -14,54 +14,55 @@ namespace utils {
 /**
  * class that handles assets (singleton)
  */
-	class Assets {
-	public:
-		/**
-		 * Meyer's singleton pattern constructor
-		 * @return the singleton Assets
-		 */
-		static Assets& get();
+class Assets
+{
+public:
+        /**
+         * Meyer's singleton pattern constructor
+         * @return the singleton Assets
+         */
+        static Assets& get();
 
-		Assets(const Assets&) = delete;
+        Assets(const Assets&) = delete;
 
-		Assets& operator=(const Assets&) = delete;
+        Assets& operator=(const Assets&) = delete;
 
-		/**
-		 * access the game music
-		 * @return SFML music
-		 */
-		[[nodiscard]] const std::shared_ptr<sf::Music>& getMusic() const;
+        /**
+         * access the game music
+         * @return SFML music
+         */
+        [[nodiscard]] const std::shared_ptr<sf::Music>& getMusic() const;
 
-		/**
-		 * access the bold game font
-		 * @return SFML font
-		 */
-		[[nodiscard]] const std::shared_ptr<sf::Font>& getBold() const;
+        /**
+         * access the bold game font
+         * @return SFML font
+         */
+        [[nodiscard]] const std::shared_ptr<sf::Font>& getBold() const;
 
-		/**
-		 * access the normal game font
-		 * @return SFML font
-		 */
-		[[nodiscard]] const std::shared_ptr<sf::Font>& getNormal() const;
-		/**
-		 * access the spy texture
-		 * @return SFML texture
-		 */
-		[[nodiscard]] const std::shared_ptr<sf::Texture>& getSpy() const;
+        /**
+         * access the normal game font
+         * @return SFML font
+         */
+        [[nodiscard]] const std::shared_ptr<sf::Font>& getNormal() const;
+        /**
+         * access the spy texture
+         * @return SFML texture
+         */
+        [[nodiscard]] const std::shared_ptr<sf::Texture>& getSpy() const;
 
-	private:
-		const std::shared_ptr<sf::Music> music;
-		const std::shared_ptr<sf::Font> bold;
-		const std::shared_ptr<sf::Font> normal;
-		const std::shared_ptr<sf::Texture> spy;
+private:
+        const std::shared_ptr<sf::Music> music;
+        const std::shared_ptr<sf::Font> bold;
+        const std::shared_ptr<sf::Font> normal;
+        const std::shared_ptr<sf::Texture> spy;
 
-		/**
-		 * private constructor that opens the required files
-		 */
-		Assets();
+        /**
+         * private constructor that opens the required files
+         */
+        Assets();
 
-		~Assets() = default;
-	};
+        ~Assets() = default;
+};
 
 } // namespace utils
 
