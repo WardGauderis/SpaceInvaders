@@ -6,7 +6,7 @@
 #include "controllers/enemy.h"
 #include "controllers/player.h"
 #include "views/bullet.h"
-#include "views/enemies/spy.h"
+#include "views/enemies/ghost.h"
 #include "views/explosion.h"
 #include "views/shield.h"
 #include "views/wave.h"
@@ -62,10 +62,10 @@ std::weak_ptr<SI::model::Entity> SI::SpaceInvaders::addEntity(const std::shared_
                 entityView = std::make_shared<view::Bullet>(bullet, view->getWindow());
         } else if (auto explosion = std::dynamic_pointer_cast<model::Explosion>(entityModel)) {
                 entityView = std::make_shared<view::Explosion>(explosion, view->getWindow());
-        } else if (auto spy = std::dynamic_pointer_cast<model::Spy>(entityModel)) {
-                auto castedView = std::make_shared<view::Spy>(spy, view->getWindow());
+        } else if (auto ghost = std::dynamic_pointer_cast<model::Ghost>(entityModel)) {
+                auto castedView = std::make_shared<view::Ghost>(ghost, view->getWindow());
                 entityView = castedView;
-                entityController = std::make_shared<controller::Enemy>(spy, castedView);
+                entityController = std::make_shared<controller::Enemy>(ghost, castedView);
         } else if (auto enemy = std::dynamic_pointer_cast<model::Enemy>(entityModel)) {
                 auto castedView = std::make_shared<view::Enemy>(enemy, view->getWindow());
                 entityView = castedView;

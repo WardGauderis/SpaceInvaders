@@ -23,7 +23,7 @@ Customisation:
     - the amount of rows
     - the distance between rows
     - the amount of enemies in a row
-    - the type of an enemy (different types have different abilities and defaults) (currently existing types are 'default' and 'spy')
+    - the type of an enemy (different types have different abilities and defaults) (currently existing types are 'default' and 'ghost')
     - the shooting cooldown of an enemy
     - the speed of the enemy's bullet
     - the enemy's horizontal speed

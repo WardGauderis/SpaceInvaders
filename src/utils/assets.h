@@ -45,16 +45,16 @@ public:
          */
         [[nodiscard]] const std::shared_ptr<sf::Font>& getNormal() const;
         /**
-         * access the spy texture
+         * access the ghost texture
          * @return SFML texture
          */
-        [[nodiscard]] const std::shared_ptr<sf::Texture>& getSpy() const;
+        [[nodiscard]] const std::shared_ptr<sf::Texture>& getGhost() const;
 
 private:
         const std::shared_ptr<sf::Music> music;
         const std::shared_ptr<sf::Font> bold;
         const std::shared_ptr<sf::Font> normal;
-        const std::shared_ptr<sf::Texture> spy;
+        const std::shared_ptr<sf::Texture> ghost;
 
         /**
          * private constructor that opens the required files

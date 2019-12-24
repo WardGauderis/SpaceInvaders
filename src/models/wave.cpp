@@ -3,7 +3,7 @@
 //
 #include <fstream>
 
-#include "enemies/spy.h"
+#include "enemies/ghost.h"
 #include "wave.h"
 
 SI::model::Wave::Wave() : Wave(0) {}
@@ -124,8 +124,8 @@ std::shared_ptr<SI::model::Enemy> SI::model::Wave::parseEnemy(const nlohmann::js
         std::shared_ptr<Enemy> newEnemy;
         if (type == "default") {
                 newEnemy = std::make_shared<Enemy>();
-        } else if (type == "spy") {
-                newEnemy = std::make_shared<Spy>();
+        } else if (type == "ghost") {
+                newEnemy = std::make_shared<Ghost>();
         } else {
                 throw std::runtime_error("type '" + type + "' is not recognised");
         }

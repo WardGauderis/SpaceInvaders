@@ -2,23 +2,23 @@
 // Created by ward on 12/24/19.
 //
 
-#ifndef SPACEINVADERS_SPYMODEL_H
-#define SPACEINVADERS_SPYMODEL_H
+#ifndef SPACEINVADERS_GHOSTMODEL_H
+#define SPACEINVADERS_GHOSTMODEL_H
 
 #include "../../utils/stopWatch.h"
 #include "../enemy.h"
 
 namespace SI::model {
 /**
- * model class for the type of enemy spy
+ * model class for the type of enemy ghost
  */
-class Spy : public Enemy
+class Ghost : public Enemy
 {
 public:
         /**
          * default constructor
          */
-        Spy();
+        Ghost();
 
         /**
          * function that is called when the model is updated
@@ -42,16 +42,16 @@ public:
         bool shoot() final;
 
         /**
-         * get the opacity of the spy
+         * get the opacity of the ghost
          * @return uint8_t
          */
         [[nodiscard]] uint8_t getOpacity() const;
 
-        ~Spy() final = default;
+        ~Ghost() final = default;
 
 private:
         /**
-         * state of spy
+         * state of ghost
          */
         enum class Visibility
         {
@@ -69,4 +69,4 @@ private:
 
 } // namespace SI::model
 
-#endif // SPACEINVADERS_SPYMODEL_H
+#endif // SPACEINVADERS_GHOSTMODEL_H

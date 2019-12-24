@@ -2,10 +2,10 @@
 // Created by ward on 12/24/19.
 //
 
-#include "spy.h"
+#include "ghost.h"
 #include "../bullet.h"
 
-SI::model::Spy::Spy() : state(Visibility::invisible), timer(stable)
+SI::model::Ghost::Ghost() : state(Visibility::invisible), timer(stable)
 {
         setValue(20);
         setBulletSpeed(0.1f);
@@ -13,7 +13,7 @@ SI::model::Spy::Spy() : state(Visibility::invisible), timer(stable)
         timer.reset();
 }
 
-void SI::model::Spy::update()
+void SI::model::Ghost::update()
 {
         if (timer.ready()) {
                 switch (state) {
@@ -42,7 +42,7 @@ void SI::model::Spy::update()
         timer.update();
 }
 
-bool SI::model::Spy::collidesWith(const std::shared_ptr<PhysicalEntity>& entity)
+bool SI::model::Ghost::collidesWith(const std::shared_ptr<PhysicalEntity>& entity)
 {
         if (state != Visibility::visible && std::dynamic_pointer_cast<Bullet>(entity)) {
                 return false;
@@ -50,14 +50,14 @@ bool SI::model::Spy::collidesWith(const std::shared_ptr<PhysicalEntity>& entity)
         return PhysicalEntity::collidesWith(entity);
 }
 
-bool SI::model::Spy::shoot()
+bool SI::model::Ghost::shoot()
 {
         if (state != Visibility::visible)
                 return false;
         return Enemy::shoot();
 }
 
-uint8_t SI::model::Spy::getOpacity() const
+uint8_t SI::model::Ghost::getOpacity() const
 {
         uint8_t opacity = 0;
         switch (state) {
