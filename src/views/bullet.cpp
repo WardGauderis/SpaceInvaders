@@ -7,11 +7,17 @@
 SI::view::Bullet::Bullet(const std::weak_ptr<model::Bullet>& model, const std::shared_ptr<sf::RenderWindow>& window)
     : PhysicalEntity(model, window)
 {
-        auto m = lock();
-        if (m->getTeam()) {
-                sprite.setFillColor(sf::Color(54, 182, 250));
-        } else {
-                sprite.setFillColor(sf::Color(250, 54, 54));
-        }
-        notify();
+	notify();
+}
+
+void SI::view::Bullet::notify() {
+	auto m = lock();
+	if(mayDeleteThis()) return;
+
+	if (m->getTeam()) {
+		sprite.setFillColor(sf::Color(54, 182, 250));
+	} else {
+		sprite.setFillColor(sf::Color(250, 54, 54));
+	}
+	PhysicalEntity::notify();
 }

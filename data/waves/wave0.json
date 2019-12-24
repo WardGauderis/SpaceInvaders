@@ -3,8 +3,7 @@
   "rows": [
     {
       "enemies": [
-        {"type":  "ghost",
-         "lives":  10},
+        {},
         {},
         {},
         {},

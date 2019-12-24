@@ -48,7 +48,7 @@ float SI::model::SpaceShip::getBulletSpeed() const { return bulletSpeed; }
 
 void SI::model::SpaceShip::setBulletSpeed(float speed)
 {
-        if (speed < 0)
+        if (speed <= 0)
                 throw std::runtime_error("bullet speed must be greater than 0");
         SpaceShip::bulletSpeed = speed;
 }

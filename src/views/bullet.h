@@ -12,18 +12,22 @@ namespace SI::view {
 /**
  * view class for bullets
  */
-class Bullet : public PhysicalEntity
-{
-public:
-        /**
-         * construct with correct model and window
-         * @param model pointer
-         * @param window SFML window
-         */
-        Bullet(const std::weak_ptr<model::Bullet>& model, const std::shared_ptr<sf::RenderWindow>& window);
+	class Bullet : public PhysicalEntity {
+	public:
+		/**
+		 * construct with correct model and window
+		 * @param model pointer
+		 * @param window SFML window
+		 */
+		Bullet(const std::weak_ptr<model::Bullet>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
-        ~Bullet() final = default;
-};
+		/**
+		 * notify the view for updates in the model
+		 */
+		void notify() override;
+
+		~Bullet() final = default;
+	};
 
 } // namespace SI::view
 

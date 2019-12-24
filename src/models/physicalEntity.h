@@ -12,129 +12,134 @@ namespace SI::model {
 /**
  * model for physical entities
  */
-class PhysicalEntity : public Entity
-{
-public:
-        /**
-         * construct with attributes
-         * @param drag 'air' resistance
-         * @param size vector
-         * @param position vector
-         * @param velocity vector
-         * @param team true if friendly
-         */
-        PhysicalEntity(float drag, const utils::Vector& size, const utils::Vector& position,
-                       const utils::Vector& velocity, bool team);
+	class PhysicalEntity : public Entity {
+	public:
+		/**
+		 * construct with attributes
+		 * @param drag 'air' resistance
+		 * @param size vector
+		 * @param position vector
+		 * @param velocity vector
+		 * @param team true if friendly
+		 */
+		PhysicalEntity(float drag, const utils::Vector& size, const utils::Vector& position,
+		               const utils::Vector& velocity, bool team);
 
-        /**
-         * function that is called when the model is update
-         * move the physical object
-         */
-        void update() override;
+		/**
+		 * function that is called when the model is update
+		 * move the physical object
+		 */
+		void update() override;
 
-        /**
-         * adjust velocity
-         * @param vel adjust vector
-         */
-        void addVelocity(const utils::Vector& vel);
+		/**
+		 * adjust velocity
+		 * @param vel adjust vector
+		 */
+		void addVelocity(const utils::Vector& vel);
 
-        /**
-         * get the position
-         * @return position
-         */
-        [[nodiscard]] const utils::Vector& getPosition() const;
+		/**
+		 * get the position
+		 * @return position
+		 */
+		[[nodiscard]] const utils::Vector& getPosition() const;
 
-        /**
-         * set the position
-         * @param pos vector
-         */
-        void setPosition(const utils::Vector& pos);
+		/**
+		 * set the position
+		 * @param pos vector
+		 */
+		void setPosition(const utils::Vector& pos);
 
-        /**
-         * get the velocity
-         * @return velocity
-         */
-        [[nodiscard]] const utils::Vector& getVelocity() const;
+		/**
+		 * get the velocity
+		 * @return velocity
+		 */
+		[[nodiscard]] const utils::Vector& getVelocity() const;
 
-        /**
-         * set the velocity
-         * @param vel vector
-         */
-        void setVelocity(const utils::Vector& vel);
+		/**
+		 * set the velocity
+		 * @param vel vector
+		 */
+		void setVelocity(const utils::Vector& vel);
 
-        /**
-         * get the size
-         * @return size
-         */
-        [[nodiscard]] const utils::Vector& getSize() const;
+		/**
+		 * get the size
+		 * @return size
+		 */
+		[[nodiscard]] const utils::Vector& getSize() const;
 
-        /**
-         * set the size
-         * @param s vector
-         */
-        void setSize(const utils::Vector& s);
+		/**
+		 * set the size
+		 * @param s vector
+		 */
+		void setSize(const utils::Vector& s);
 
-        /**
-         * get the team
-         * @return true if friendly
-         */
-        [[nodiscard]] bool getTeam() const;
+		/**
+		 * get the team
+		 * @return true if friendly
+		 */
+		[[nodiscard]] bool getTeam() const;
 
-        /**
-         * check whether the entity collides with this, according to this
-         * @param entity other entity
-         * @return true if it collides
-         */
-        virtual bool collidesWith(const std::shared_ptr<PhysicalEntity>& entity);
+		/**
+		 * set the team
+		 * @param team true if friendly
+		 */
+		void setTeam(bool team);
 
-        /**
-         * axis aligned bounding boxes collision detection
-         * @param p0 postion a
-         * @param s0 size a
-         * @param p1 potition b
-         * @param s1 size b
-         * @return true if the boxes collide
-         */
-        static bool AABB(utils::Vector p0, utils::Vector s0, utils::Vector p1, utils::Vector s1);
+		/**
+		 * check whether the entity collides with this, according to this
+		 * @param entity other entity
+		 * @return true if it collides
+		 */
+		virtual bool collidesWith(const std::shared_ptr<PhysicalEntity>& entity);
 
-        /**
-         * function is executed if both entities collide
-         * @param entity other entity
-         */
-        virtual void onCollision(const std::shared_ptr<PhysicalEntity>& entity);
+		/**
+		 * axis aligned bounding boxes collision detection
+		 * @param p0 postion a
+		 * @param s0 size a
+		 * @param p1 potition b
+		 * @param s1 size b
+		 * @return true if the boxes collide
+		 */
+		static bool AABB(utils::Vector p0, utils::Vector s0, utils::Vector p1, utils::Vector s1);
 
-        /**
-         * indicate that this may be deleted
-         */
-        void deleteThis() override;
+		/**
+		 * function is executed if both entities collide
+		 * @param entity other entity
+		 */
+		virtual void onCollision(const std::shared_ptr<PhysicalEntity>& entity);
 
-        ~PhysicalEntity() override = default;
+		/**
+		 * indicate that this may be deleted
+		 */
+		void deleteThis() override;
 
-protected:
-        float drag;
-        utils::Vector size;
-        utils::Vector position;
-        utils::Vector velocity;
+		~PhysicalEntity() override = default;
 
-        bool team;
+	protected:
+		float drag;
+		utils::Vector size;
+		utils::Vector position;
+		utils::Vector velocity;
 
-        /**
-         * move this
-         */
-        virtual void move();
+		bool team;
 
-        /**
-         * check whether this collides with the walls of the window
-         * @return vector with the collision position
-         */
-        [[nodiscard]] utils::Vector detectWallCollision() const;
+		/**
+		 * move this
+		 */
+		virtual void move();
 
-        /**
-         * handle wall collision
-         * @param wall collision position
-         */
-        virtual void onWallCollision(utils::Vector wall);
-};
+		/**
+		 * check whether this collides with the walls of the window
+		 * @return vector with the collision position
+		 */
+		[[nodiscard]] utils::Vector detectWallCollision() const;
+
+		/**
+		 * handle wall collision
+		 * @param wall collision position
+		 */
+		virtual void onWallCollision(utils::Vector wall);
+	};
 
 } // namespace SI::model
 
