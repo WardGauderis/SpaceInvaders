@@ -22,6 +22,8 @@ public:
          */
         SpaceShip(const std::weak_ptr<model::SpaceShip>& model, const std::shared_ptr<sf::RenderWindow>& window);
 
+        void notify() override;
+
         /**
          * determine in what order the objects must be drawn
          * @return the higher the int, the later the object is updated on screen

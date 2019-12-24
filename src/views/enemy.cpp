@@ -24,13 +24,15 @@ SI::view::Enemy::Enemy(const std::weak_ptr<model::Enemy>& model, const std::shar
 
 void SI::view::Enemy::notify()
 {
-        SpaceShip::notify();
-        if (!textured)
-                return;
-
         auto m = lock();
         if (mayDeleteThis())
                 return;
+
+        SpaceShip::notify();
+
+        if (!textured)
+                return;
+
         auto min = std::min(m->getSize().x, m->getSize().y);
         sign.setPosition(
             utils::Transformation::get().convertPoint<float>(m->getPosition() - utils::Vector{min, min} / 2.0f));
