@@ -5,13 +5,13 @@
 #include "spaceInvaders.h"
 #include "controllers/enemy.h"
 #include "controllers/player.h"
+#include "models/enemies/witch.h"
+#include "utils/assets.h"
 #include "views/bullet.h"
 #include "views/enemies/ghost.h"
 #include "views/explosion.h"
 #include "views/shield.h"
 #include "views/wave.h"
-#include "models/enemies/witch.h"
-#include "utils/assets.h"
 
 SI::SpaceInvaders::SpaceInvaders()
     : model(std::make_shared<model::World>()), view(std::make_shared<view::World>(model)),
@@ -68,8 +68,9 @@ std::weak_ptr<SI::model::Entity> SI::SpaceInvaders::addEntity(const std::shared_
                 auto castedView = std::make_shared<view::Ghost>(ghost, view->getWindow());
                 entityView = castedView;
                 entityController = std::make_shared<controller::Enemy>(ghost, castedView);
-        }else if (auto witch = std::dynamic_pointer_cast<model::Witch>(entityModel)) {
-                auto castedView = std::make_shared<view::Enemy>(witch, view->getWindow(), utils::Assets::get().getWitch());
+        } else if (auto witch = std::dynamic_pointer_cast<model::Witch>(entityModel)) {
+                auto castedView =
+                    std::make_shared<view::Enemy>(witch, view->getWindow(), utils::Assets::get().getWitch());
                 entityView = castedView;
                 entityController = std::make_shared<controller::Enemy>(witch, castedView);
         } else if (auto enemy = std::dynamic_pointer_cast<model::Enemy>(entityModel)) {

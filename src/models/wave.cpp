@@ -4,8 +4,8 @@
 #include <fstream>
 
 #include "enemies/ghost.h"
-#include "wave.h"
 #include "enemies/witch.h"
+#include "wave.h"
 
 SI::model::Wave::Wave() : Wave(0) {}
 
@@ -127,7 +127,7 @@ std::shared_ptr<SI::model::Enemy> SI::model::Wave::parseEnemy(const nlohmann::js
                 newEnemy = std::make_shared<Enemy>();
         } else if (type == "ghost") {
                 newEnemy = std::make_shared<Ghost>();
-        }else if (type == "witch") {
+        } else if (type == "witch") {
                 newEnemy = std::make_shared<Witch>();
         } else {
                 throw std::runtime_error("type '" + type + "' is not recognised");

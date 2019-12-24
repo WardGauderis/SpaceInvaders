@@ -42,9 +42,7 @@ void SI::model::PhysicalEntity::setSize(const utils::Vector& s)
 
 bool SI::model::PhysicalEntity::getTeam() const { return team; }
 
-void SI::model::PhysicalEntity::setTeam(bool t) {
-	PhysicalEntity::team = t;
-}
+void SI::model::PhysicalEntity::setTeam(bool t) { PhysicalEntity::team = t; }
 
 bool SI::model::PhysicalEntity::collidesWith(const std::shared_ptr<PhysicalEntity>& entity)
 {

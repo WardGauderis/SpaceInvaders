@@ -34,6 +34,4 @@ const std::shared_ptr<sf::Font>& utils::Assets::getNormal() const { return norma
 
 const std::shared_ptr<sf::Texture>& utils::Assets::getGhost() const { return ghost; }
 
-const std::shared_ptr<sf::Texture>& utils::Assets::getWitch() const {
-	return witch;
-}
+const std::shared_ptr<sf::Texture>& utils::Assets::getWitch() const { return witch; }
