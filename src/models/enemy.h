@@ -23,7 +23,7 @@ public:
          * try to shoot a bullet
          * @return success
          */
-        bool shoot();
+        virtual bool shoot();
 
         /**
          * get the chance (cooldown) to shoot
@@ -65,7 +65,7 @@ public:
          */
         static void reset();
 
-        ~Enemy() final = default;
+        ~Enemy() override = default;
 
 private:
         std::uniform_int_distribution<int> distribution;

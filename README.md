@@ -1,11 +1,11 @@
 
-# Space Paraders
+# Space Qubes
 Project Gevorderd Programmeren 2019 - 2020
 
 [![Build Status](https://travis-ci.com/WardGauderis/SpaceInvaders.svg?token=xiF4cJD9dReqnxy3pcqr&branch=master)](https://travis-ci.com/WardGauderis/SpaceInvaders)
 
 Rules:
-- The player loses the game when he has no more lives left or when the paraders reach te bottom of the screen.
+- The player loses the game when he has no more lives left or when the Qubes reach te bottom of the screen.
 - The player wins when he survives all the waves provided in the 'data' folder.
 - Try to survive as long as possible!
 

@@ -9,7 +9,6 @@
 
 #include "../models/entity.h"
 #include "../utils/event.h"
-#include "../utils/key.h"
 #include "../utils/vector.h"
 
 namespace SI::view {

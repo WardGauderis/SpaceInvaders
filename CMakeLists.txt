@@ -9,4 +9,4 @@ file(GLOB_RECURSE SRCS ${spaceInvaders_SOURCE_DIR}/src/*.cpp)
 add_executable(SI ${HDRS} ${SRCS})
 target_link_libraries(SI "-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio")
 
-set(CMAKE_CXX_FLAGS "-march=native -Wnull-dereference -Wall -Wextra -Wnon-virtual-dtor -Wold-style-cast -Wunused -Woverloaded-virtual -Wpedantic  -Wdouble-promotion -Wformat=2")
+set(CMAKE_CXX_FLAGS "-O3 -march=native -Wnull-dereference -Wall -Wextra -Wnon-virtual-dtor -Wold-style-cast -Wunused -Woverloaded-virtual -Wpedantic  -Wdouble-promotion -Wformat=2")

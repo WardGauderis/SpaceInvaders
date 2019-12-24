@@ -19,9 +19,12 @@ SI::view::World::World(std::shared_ptr<model::World> model)
 {
         utils::Assets::get().getMusic()->setLoop(true);
 
+        sf::ContextSettings settings;
+        settings.antialiasingLevel = 8;
+
         window = std::make_shared<sf::RenderWindow>(
             sf::VideoMode(utils::Transformation::get().getWidth(), utils::Transformation::get().getHeight()),
-            "Space Invaders", sf::Style::Close);
+            "Space Invaders", sf::Style::Close, settings);
         window->setKeyRepeatEnabled(false);
 
         dim.setSize(utils::Transformation::get().convertDistance<float>({8, 6}));
@@ -79,7 +82,7 @@ void SI::view::World::notify()
                 utils::Assets::get().getMusic()->pause();
                 utils::Assets::get().getMusic()->play();
                 head.setOutlineColor(sf::Color(11, 69, 100));
-                centerText(head, "SPACE PARADERS", {0, 1.5f});
+                centerText(head, "SPACE QUBES", {0, 1.5f});
                 break;
         }
 }
