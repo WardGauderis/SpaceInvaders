@@ -33,25 +33,25 @@ public:
          * add an observer to the subject
          * @param observer new observer
          */
-        void addObserver(const std::shared_ptr<Observer>& observer);
+        void addObserver(const std::weak_ptr<Observer>& observer);
 
         /**
          * remove a certain observer from the subject;
          * @param observer observer to remove
          */
-        [[maybe_unused]] void removeObserver(const std::shared_ptr<Observer>& observer);
+        [[maybe_unused]] void removeObserver(const std::weak_ptr<Observer>& observer);
 
         /**
          * get a vector of all the observers of the subject
          * @return vector
          */
-        [[nodiscard]] const std::vector<std::shared_ptr<Observer>>& getObservers() const;
+        [[nodiscard]] const std::vector<std::weak_ptr<Observer>>& getObservers() const;
 
         /**
          * replace the current observers with new ones
          * @param newObservers vector of new observers
          */
-        void setObservers(const std::vector<std::shared_ptr<Observer>>& newObservers);
+        void setObservers(const std::vector<std::weak_ptr<Observer>>& newObservers);
 
 protected:
         /**
@@ -60,7 +60,7 @@ protected:
         void notifyObservers();
 
 private:
-        std::vector<std::shared_ptr<Observer>> observers;
+        std::vector<std::weak_ptr<Observer>> observers;
 };
 
 } // namespace utils
