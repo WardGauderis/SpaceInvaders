@@ -1,0 +1,38 @@
+{
+  "title": "Roses are red, violets are blue\n\nSomeone has yet to pass the next wave\n\nBut it won't be you...",
+  "rows": [
+    {
+      "enemies": [
+        {"type":  "ghost", "value":  2, "lives":  2},
+        {"type":  "witch", "value":  2, "lives":  2},
+        {"type":  "ghost", "value":  2, "lives":  2},
+        {"type":  "ghost", "value":  2, "lives":  2},
+        {"type":  "witch", "value":  2, "lives":  2},
+        {"type":  "ghost", "value":  2, "lives":  2},
+        {"type":  "witch", "value":  2, "lives":  2},
+        {"type":  "ghost", "value":  2, "lives":  2},
+        {"type":  "witch", "value":  2, "lives":  2}
+      ]
+    },
+    {
+      "enemies": [
+        {"cooldown":  0.2, "bulletspeed":  2},
+        {"cooldown":  0.2, "bulletspeed":  2},
+        {"cooldown":  0.2, "bulletspeed":  2},
+        {"cooldown":  0.2, "bulletspeed":  2},
+        {"cooldown":  0.2, "bulletspeed":  2},
+        {"cooldown":  0.2, "bulletspeed":  2},
+        {"cooldown":  0.2, "bulletspeed":  2},
+        {"cooldown":  0.2, "bulletspeed":  2},
+        {"cooldown":  0.2, "bulletspeed":  2},
+        {"cooldown":  0.2, "bulletspeed":  2}
+      ]
+    },
+    {
+      "distance": 10,
+      "enemies": [
+        {"type":  "witch", "size":  [8, 2], "lives":  6, "value":  3, "bulletspeed":  2, "cooldown":  0.1}
+      ]
+    }
+  ]
+}

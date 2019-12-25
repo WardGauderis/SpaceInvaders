@@ -37,7 +37,10 @@ void SI::model::SpaceShip::setLives(const unsigned int amount)
 
 unsigned int SI::model::SpaceShip::loseLive()
 {
+		auto backup = size;
+		size /= 2;
         addModel(std::make_shared<Explosion>(*this));
+        size = backup;
         if (--lives == 0)
                 deleteThis();
         notifyObservers();

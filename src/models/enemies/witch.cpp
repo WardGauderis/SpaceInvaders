@@ -9,7 +9,6 @@ SI::model::Witch::Witch()
 {
         setValue(25);
         setCoolDown(300);
-        setVelocity({0.01f, 0});
         setBulletSpeed(0.07f);
         setLives(3);
 }
@@ -31,6 +30,6 @@ bool SI::model::Witch::collidesWith(const std::shared_ptr<PhysicalEntity>& entit
 
 std::uniform_int_distribution<int> SI::model::Witch::distribution()
 {
-        static std::uniform_int_distribution<int> distribution(0, 3);
+        static std::uniform_int_distribution<int> distribution(0, 1);
         return distribution;
 }

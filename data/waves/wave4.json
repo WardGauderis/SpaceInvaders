@@ -1,0 +1,75 @@
+{
+  "title": "Spoooooooooooooooooky",
+  "rows": [
+    {
+      "distance": 0.1,
+      "enemies": [
+        {
+          "type": "ghost"
+        },
+        {},
+        {
+          "type": "ghost"
+        },
+        {},
+        {
+          "type": "ghost"
+        },
+        {},
+        {
+          "type": "ghost"
+        },
+        {},
+        {
+          "type": "ghost"
+        }
+      ]
+    },
+    {
+      "distance": 0.1,
+      "enemies": [
+        {},
+        {
+          "type": "ghost"
+        },
+        {},
+        {
+          "type": "ghost"
+        },
+        {},
+        {
+          "type": "ghost"
+        },
+        {},
+        {
+          "type": "ghost"
+        },
+        {}
+      ]
+    },
+    {
+      "distance": 0.1,
+      "enemies": [
+        {
+          "type": "ghost"
+        },
+        {},
+        {
+          "type": "ghost"
+        },
+        {},
+        {
+          "type": "ghost"
+        },
+        {},
+        {
+          "type": "ghost"
+        },
+        {},
+        {
+          "type": "ghost"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "title": "Meet the Witch",
+  "rows": [
+    {
+      "enemies": [
+        {},
+        {
+          "type": "witch",
+          "size": [
+            1.5,
+            1.5
+          ]
+        },
+        {},
+        {
+          "type": "witch",
+          "size": [
+            1.5,
+            1.5
+          ]
+        },
+        {},
+        {
+          "type": "witch",
+          "size": [
+            1.5,
+            1.5
+          ]
+        },
+        {},
+        {
+          "type": "witch",
+          "size": [
+            1.5,
+            1.5
+          ]
+        },
+        {}
+      ]
+    },
+    {
+      "distance": 3,
+      "enemies": [
+        {
+          "type": "witch",
+          "speed": 0.5
+        },
+        {
+          "type": "witch",
+          "speed": 0.5
+        },
+        {
+          "type": "witch",
+          "speed": 0.5
+        }
+      ]
+    }
+  ]
+}

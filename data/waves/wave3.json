@@ -1,0 +1,94 @@
+{
+  "title": "Now let's spice it up",
+  "speed": 1,
+  "rows": [
+    {
+      "enemies": [
+        {
+          "cooldown": 4,
+          "bulletspeed": 2,
+          "speed": 0,
+          "size": [
+            4,
+            1
+          ],
+          "lives": 20,
+          "score": 1.5
+        },
+        {
+          "cooldown": 4,
+          "bulletspeed": 2,
+          "speed": 0,
+          "size": [
+            4,
+            1
+          ],
+          "lives": 20,
+          "score": 1.5
+        },
+        {
+          "cooldown": 4,
+          "bulletspeed": 2,
+          "speed": 0,
+          "size": [
+            4,
+            1
+          ],
+          "lives": 20,
+          "score": 1.5
+        }
+      ]
+    },
+    {
+      "enemies": [
+        {
+          "cooldown": 0.1,
+          "bulletspeed": 0.6,
+          "speed": 4,
+          "size": [
+            0.2,
+            0.2
+          ],
+          "score": 10
+        }
+      ]
+    },
+    {
+      "enemies": [
+        {
+          "cooldown": 4,
+          "bulletspeed": 2,
+          "speed": 0,
+          "size": [
+            4,
+            1
+          ],
+          "lives": 20,
+          "score": 1.5
+        },
+        {
+          "cooldown": 4,
+          "bulletspeed": 2,
+          "speed": 0,
+          "size": [
+            4,
+            1
+          ],
+          "lives": 20,
+          "score": 1.5
+        },
+        {
+          "cooldown": 4,
+          "bulletspeed": 2,
+          "speed": 0,
+          "size": [
+            4,
+            1
+          ],
+          "lives": 20,
+          "score": 1.5
+        }
+      ]
+    }
+  ]
+}

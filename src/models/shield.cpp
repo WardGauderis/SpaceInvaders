@@ -38,7 +38,7 @@ SI::model::Shield::ShieldSegment::ShieldSegment(const Type type)
 
 const utils::Vector& SI::model::Shield::ShieldSegment::size()
 {
-        const static auto size = utils::Vector{0.25f, 0.25f};
+        const static auto size = utils::Vector{0.275f, 0.275f};
         return size;
 }
 
@@ -113,10 +113,10 @@ bool SI::model::Shield::collidesWithSegment(const int x0, const int y0, const st
 void SI::model::Shield::onCollisionExplosion(int x0, int y0, int x1, int y1,
                                              const std::shared_ptr<PhysicalEntity>& entity)
 {
-        int radius = 2;
+        int radius = 3;
         if (auto enemy = std::dynamic_pointer_cast<Enemy>(entity))
                 radius += std::min(enemy->getValue() / 2 + 5, 20);
-        std::uniform_int_distribution<int> chance(0, 2);
+        std::uniform_int_distribution<int> chance(0, 1);
 
         for (int x = -radius; x < radius; ++x) {
                 for (int y = -radius; y < radius; ++y) {

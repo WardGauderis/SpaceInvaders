@@ -5,7 +5,7 @@
 
 int main()
 {
-        utils::StopWatch::get().printFPS(true);
+        utils::StopWatch::get().printFPS(false);
         utils::Transformation::get().setDimensions(1200, 900);
 
         try {

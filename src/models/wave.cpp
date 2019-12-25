@@ -98,8 +98,8 @@ void SI::model::Wave::parseWave()
 std::vector<std::shared_ptr<SI::model::Enemy>> SI::model::Wave::parseRow(const nlohmann::json& row, float& y)
 {
         auto distance = row.value<float>("distance", 1);
-        if (distance < 0)
-                throw std::runtime_error("row distance must be positive");
+        if (distance <= 0)
+                throw std::runtime_error("row distance must be greater than 0");
 
         std::vector<std::shared_ptr<Enemy>> newEnemies;
         for (const auto& enemy : row.at("enemies")) {

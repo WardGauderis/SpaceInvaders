@@ -1,0 +1,20 @@
+{
+  "speed": 10,
+  "title": "Think quickly!!!\nOh too slow...",
+  "rows": [
+    {
+      "enemies": [
+        {
+          "value": 5
+        },
+        {
+          "type": "ghost",
+          "value": 5
+        },
+        {
+          "value": 5
+        }
+      ]
+    }
+  ]
+}

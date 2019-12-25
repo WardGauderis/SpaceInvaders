@@ -1,0 +1,94 @@
+{
+  "title": "Still hanging on?",
+  "rows": [
+    {
+      "enemies": [
+        {
+          "speed": 2,
+          "bulletspeed": 2,
+          "lives": 2
+        },
+        {
+          "speed": 2,
+          "bulletspeed": 2,
+          "lives": 2
+        },
+        {
+          "speed": 2,
+          "bulletspeed": 2,
+          "lives": 3
+        },
+        {
+          "speed": 2,
+          "bulletspeed": 2,
+          "lives": 3
+        },
+        {
+          "speed": 2,
+          "bulletspeed": 2,
+          "lives": 3
+        },
+        {
+          "speed": 2,
+          "bulletspeed": 2,
+          "lives": 3
+        },
+        {
+          "speed": 2,
+          "bulletspeed": 2,
+          "lives": 3
+        }
+      ]
+    },
+    {
+      "enemies": [
+        {
+          "type": "ghost"
+        },
+        {
+          "type": "ghost"
+        },
+        {
+          "type": "ghost"
+        },
+        {
+          "type": "ghost"
+        },
+        {
+          "type": "ghost"
+        },
+        {
+          "type": "ghost"
+        },
+        {
+          "type": "ghost"
+        }
+      ]
+    },
+    {
+      "enemies": [
+        {
+          "type": "witch"
+        },
+        {
+          "type": "witch"
+        },
+        {
+          "type": "witch"
+        },
+        {
+          "type": "witch"
+        },
+        {
+          "type": "witch"
+        },
+        {
+          "type": "witch"
+        },
+        {
+          "type": "witch"
+        }
+      ]
+    }
+  ]
+}

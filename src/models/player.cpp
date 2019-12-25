@@ -6,7 +6,7 @@
 
 int SI::model::Player::score = 0;
 
-SI::model::Player::Player() : SpaceShip(0.9f, {0.5f, 0.5f}, {0, -2.5f}, {0, 0}, 3, 0.05f, true), timer(20)
+SI::model::Player::Player() : SpaceShip(0.9f, {0.5f, 0.5f}, {0, -2.5f}, {0, 0}, 5, 0.05f, true), timer(20)
 {
         resetScore();
 }
