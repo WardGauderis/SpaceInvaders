@@ -11,74 +11,75 @@ namespace SI::model {
 /**
  * model class for enemies
  */
-	class Enemy : public SpaceShip {
-	public:
-		/**
-		 * default constructor
-		 */
-		Enemy();
+class Enemy : public SpaceShip
+{
+public:
+        /**
+         * default constructor
+         */
+        Enemy();
 
-		/**
-		 * try to shoot a bullet
-		 * @return success
-		 */
-		virtual bool shoot();
+        /**
+         * try to shoot a bullet
+         * @return success
+         */
+        virtual bool shoot();
 
-		/**
-		 * handle collision
-		 * @param entity collided entity
-		 */
-		void onCollision(const std::shared_ptr<PhysicalEntity>& entity) final;
+        /**
+         * handle collision
+         * @param entity collided entity
+         */
+        void onCollision(const std::shared_ptr<PhysicalEntity>& entity) final;
 
-		/**
-		 * get the chance (cooldown) to shoot
-		 * @return cooldown
-		 */
-		[[nodiscard]] unsigned int getCoolDown() const;
+        /**
+         * get the chance (cooldown) to shoot
+         * @return cooldown
+         */
+        [[nodiscard]] unsigned int getCoolDown() const;
 
-		/**
-		 * set the chance (cooldown) to shoot
-		 * @param coolDown int;
-		 */
-		void setCoolDown(int coolDown);
+        /**
+         * set the chance (cooldown) to shoot
+         * @param coolDown int;
+         */
+        void setCoolDown(int coolDown);
 
-		/**
-		 * get the value (points)
-		 * @return value
-		 */
-		[[nodiscard]] int getValue() const;
+        /**
+         * get the value (points)
+         * @return value
+         */
+        [[nodiscard]] int getValue() const;
 
-		/**
-		 * set the value (points)
-		 * @param v value
-		 */
-		void setValue(int v);
+        /**
+         * set the value (points)
+         * @param v value
+         */
+        void setValue(int v);
 
-		/**
-		 * returns whether an enemy has yet hit the ground
-		 * @return true if it has happened;
-		 */
-		static bool hasHitGround();
+        /**
+         * returns whether an enemy has yet hit the ground
+         * @return true if it has happened;
+         */
+        static bool hasHitGround();
 
-		/**
-		 * reset the hasHitGround() function
-		 */
-		static void reset();
+        /**
+         * reset the hasHitGround() function
+         */
+        static void reset();
 
-		~Enemy() override = default;
+        ~Enemy() override = default;
 
-	private:
-		std::uniform_int_distribution<int> distribution;
-		int value;
+private:
+        std::uniform_int_distribution<int> distribution;
+        int value;
 
-		static bool hitGround;
+        static bool hitGround;
 
-		/**
-		 * handle wall collision
-		 * @param wall collision position
-		 */
-		void onWallCollision(utils::Vector wall) final;
-	};
+        /**
+         * handle wall collision
+         * @param wall collision position
+         */
+        void onWallCollision(utils::Vector wall) final;
+};
 
 } // namespace SI::model
 
