@@ -78,7 +78,7 @@ bool SI::model::Shield::collidesWith(const std::shared_ptr<PhysicalEntity>& enti
         bool collides = false;
         for (size_t x = 0; x < segments.size(); ++x) {
                 for (size_t y = 0; y < segments[x].size(); ++y) {
-                        auto pos = convert(static_cast<int>(x), static_cast<int>(x), 0, 0);
+                        auto pos = convert(static_cast<int>(x), static_cast<int>(y), 0, 0);
                         if (!AABB(pos, ShieldSegment::size(), entity->getPosition() - entity->getSize() / 2,
                                   entity->getSize()))
                                 continue;
