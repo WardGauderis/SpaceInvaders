@@ -10,7 +10,7 @@ bool SI::model::Enemy::hitGround = false;
 
 SI::model::Enemy::Enemy() : SpaceShip(1, {0.5, 0.5}, {0, 0}, {0.015f, 0}, 1, 0.05f, false), value(10)
 {
-        setCoolDown(90);
+        setCoolDown(120);
 }
 
 bool SI::model::Enemy::shoot()

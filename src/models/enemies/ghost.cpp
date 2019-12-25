@@ -9,7 +9,7 @@ SI::model::Ghost::Ghost() : state(Visibility::invisible), timer(stable)
 {
         setValue(20);
         setBulletSpeed(0.04f);
-        setCoolDown(60);
+        setCoolDown(90);
         timer.reset();
 }
 
