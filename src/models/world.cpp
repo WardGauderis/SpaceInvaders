@@ -33,6 +33,8 @@ void SI::model::World::update()
                 for (const auto& entity : physicalEntities) {
                         entity->deleteThis();
                 }
+                if (auto w = wave.lock())
+                        w->deleteThis();
         } else {
                 if (!wave.lock())
                         setState(State::victory);
