@@ -4,6 +4,7 @@
 
 #include "enemy.h"
 #include "player.h"
+#include "bullet.h"
 
 bool SI::model::Enemy::hitGround = false;
 
@@ -21,6 +22,15 @@ bool SI::model::Enemy::shoot()
         return false;
 }
 
+
+void SI::model::Enemy::onCollision(const std::shared_ptr<PhysicalEntity>& entity) {
+	if(entity->getTeam() && std::dynamic_pointer_cast<Bullet>(entity) && loseLive() == 0) {
+		Player::addScore(value);
+		return;
+	}
+	SpaceShip::onCollision(entity);
+}
+
 unsigned int SI::model::Enemy::getCoolDown() const { return static_cast<unsigned int>(distribution.max()); }
 
 void SI::model::Enemy::setCoolDown(const int coolDown)
@@ -33,12 +43,6 @@ void SI::model::Enemy::setCoolDown(const int coolDown)
 int SI::model::Enemy::getValue() const { return value; }
 
 void SI::model::Enemy::setValue(int v) { Enemy::value = v; }
-
-void SI::model::Enemy::deleteThis()
-{
-        Player::addScore(value);
-        SI::model::SpaceShip::deleteThis();
-}
 
 void SI::model::Enemy::onWallCollision(utils::Vector wall)
 {
