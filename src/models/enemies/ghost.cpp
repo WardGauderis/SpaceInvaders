@@ -69,10 +69,10 @@ uint8_t SI::model::Ghost::getOpacity() const
                 opacity = 0;
                 break;
         case Visibility::appearing:
-                opacity = (1 - static_cast<float>(timer.getTime()) / transition) * 255;
+                opacity = static_cast<uint8_t>((1 - static_cast<float>(timer.getTime()) / transition) * 255);
                 break;
         case Visibility::disappearing:
-                opacity = (static_cast<float>(timer.getTime()) / transition) * 255;
+                opacity = static_cast<uint8_t>((static_cast<float>(timer.getTime()) / transition) * 255);
                 break;
         }
         return opacity;

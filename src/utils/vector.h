@@ -33,7 +33,7 @@ struct Vector
         explicit operator bool();
 
         /**
-         * get Euclidian length
+         * get Euclidean length
          */
         [[nodiscard]] float length() const;
 

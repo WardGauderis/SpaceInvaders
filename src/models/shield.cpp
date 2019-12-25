@@ -78,12 +78,12 @@ bool SI::model::Shield::collidesWith(const std::shared_ptr<PhysicalEntity>& enti
         bool collides = false;
         for (size_t x = 0; x < segments.size(); ++x) {
                 for (size_t y = 0; y < segments[x].size(); ++y) {
-                        auto pos = convert(x, y, 0, 0);
+                        auto pos = convert(static_cast<int>(x), static_cast<int>(x), 0, 0);
                         if (!AABB(pos, ShieldSegment::size(), entity->getPosition() - entity->getSize() / 2,
                                   entity->getSize()))
                                 continue;
 
-                        collides |= collidesWithSegment(x, y, entity);
+                        collides |= collidesWithSegment(static_cast<int>(x), static_cast<int>(y), entity);
                 }
         }
         return collides;
@@ -98,13 +98,13 @@ bool SI::model::Shield::collidesWithSegment(const int x0, const int y0, const st
                         if (!segment.points[x1][y1])
                                 continue;
 
-                        auto pos = convert(x0, y0, x1, y1);
+                        auto pos = convert(x0, y0, static_cast<int>(x1), static_cast<int>(y1));
                         if (!entity->AABB(pos, ShieldSegment::size() / ShieldSegment::amount,
                                           entity->getPosition() - entity->getSize() / 2, entity->getSize()))
                                 continue;
 
                         collides = true;
-                        onCollisionExplosion(x0, y0, x1, y1, entity);
+                        onCollisionExplosion(x0, y0, static_cast<int>(x1), static_cast<int>(y1), entity);
                 }
         }
         return collides;

@@ -23,7 +23,7 @@ void SI::view::Ghost::notify()
         color.a = opacity;
         sprite.setFillColor(color);
         color = sprite.getOutlineColor();
-        color.a = static_cast<float>(opacity) / 255.0f * 100.0f;
+        color.a = static_cast<uint8_t>(static_cast<float>(opacity) / 255.0f * 100.0f);
         sprite.setOutlineColor(color);
         Enemy::notify();
 }

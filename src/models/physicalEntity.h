@@ -95,9 +95,9 @@ public:
 
         /**
          * axis aligned bounding boxes collision detection
-         * @param p0 postion a
+         * @param p0 position a
          * @param s0 size a
-         * @param p1 potition b
+         * @param p1 position b
          * @param s1 size b
          * @return true if the boxes collide
          */

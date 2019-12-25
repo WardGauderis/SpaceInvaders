@@ -13,7 +13,7 @@ bool SI::view::Entity::mayDeleteThis() const { return mustDelete; }
 
 bool SI::view::Entity::isKeyPressed(utils::Key key)
 {
-        bool value = false;
+        bool value;
         switch (key) {
         case utils::Key::up:
                 value = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) ||
