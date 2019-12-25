@@ -115,7 +115,7 @@ void SI::model::Shield::onCollisionExplosion(int x0, int y0, int x1, int y1,
 {
         int radius = 4;
         if (auto enemy = std::dynamic_pointer_cast<Enemy>(entity))
-                radius += std::min(enemy->getValue() / 2 + 5, 20);
+                radius += std::min(enemy->getValue() / 2 + 5, 30);
         std::uniform_int_distribution<int> chance(0, 2);
 
         for (int x = -radius; x < radius; ++x) {
@@ -128,7 +128,7 @@ void SI::model::Shield::onCollisionExplosion(int x0, int y0, int x1, int y1,
                         if (utils::Vector(static_cast<float>(x), static_cast<float>(y)).length() >=
                             static_cast<float>(radius))
                                 continue;
-                        if (chance(generator()) != 0)
+                        if (chance(generator()) == 0)
                                 continue;
                         if (!correct(X0, Y0, X1, Y1))
                                 continue;
