@@ -65,7 +65,7 @@ void SI::view::Display::update()
         window->draw(score);
 }
 
-int SI::view::Display::drawOrder() { return 2; }
+int SI::view::Display::drawOrder() { return 3; }
 
 std::pair<std::shared_ptr<SI::model::Player>, std::shared_ptr<SI::model::Wave>> SI::view::Display::lock()
 {

@@ -28,7 +28,7 @@ public:
          * determine in what order the objects must be drawn
          * @return the higher the int, the later the object is updated on screen
          */
-        int drawOrder() override;
+        int drawOrder() final;
 
         ~SpaceShip() override = default;
 };
