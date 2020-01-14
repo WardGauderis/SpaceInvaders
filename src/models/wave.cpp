@@ -80,7 +80,7 @@ void SI::model::Wave::parseWave()
         if (speed < 0)
                 throw std::runtime_error("wave speed must be positive");
 
-        float y = 4;
+        float y = 3.25;
         std::vector<std::shared_ptr<Enemy>> newEnemies;
         for (const auto& row : wave.at("rows")) {
                 auto rowEnemies = parseRow(row, y);
