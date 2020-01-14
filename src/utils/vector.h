@@ -5,6 +5,9 @@
 #ifndef SPACEINVADERS_VECTOR_H
 #define SPACEINVADERS_VECTOR_H
 
+/**
+ * utility namespace
+ */
 namespace utils {
 /**
  * custom vector class to not be dependent on SFML vector classes

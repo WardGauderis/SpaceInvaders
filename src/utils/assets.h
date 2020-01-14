@@ -9,6 +9,9 @@
 #include <SFML/Graphics/Font.hpp>
 #include <memory>
 
+/**
+ * utility namespace
+ */
 namespace utils {
 
 /**

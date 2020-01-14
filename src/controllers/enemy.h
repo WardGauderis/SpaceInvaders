@@ -8,6 +8,9 @@
 #include "../views/enemy.h"
 #include "physicalEntity.h"
 
+/**
+ * Space Invaders namespace for controllers
+ */
 namespace SI::controller {
 /**
  * controller class for enemies

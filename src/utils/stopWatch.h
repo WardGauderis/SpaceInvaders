@@ -9,6 +9,9 @@
 
 using namespace std::chrono_literals;
 
+/**
+ * utility namespace
+ */
 namespace utils {
 /**
  * stopwatch class that determines when the model (and controller) or the view should update

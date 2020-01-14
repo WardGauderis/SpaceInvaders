@@ -9,6 +9,9 @@
 #include "../models/wave.h"
 #include "entity.h"
 
+/**
+ * Space Invaders namespace for views
+ */
 namespace SI::view {
 /**
  * view class that represents the bar with information at the bottom of the screen

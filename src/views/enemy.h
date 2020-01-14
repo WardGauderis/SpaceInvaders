@@ -8,6 +8,9 @@
 #include "../models/enemy.h"
 #include "spaceShip.h"
 
+/**
+ * Space Invaders namespace for views
+ */
 namespace SI::view {
 /**
  * view class for enemies

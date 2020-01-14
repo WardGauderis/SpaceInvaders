@@ -8,6 +8,9 @@
 #include <memory>
 #include <vector>
 
+/**
+ * utility namespace
+ */
 namespace utils {
 /**
  * abstract observer class from which observers must inherit

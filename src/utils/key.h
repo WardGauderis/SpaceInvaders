@@ -5,6 +5,9 @@
 #ifndef SPACEINVADERS_KEY_H
 #define SPACEINVADERS_KEY_H
 
+/**
+ * utility namespace
+ */
 namespace utils {
 
 /**

@@ -10,6 +10,9 @@
 #include "../models/world.h"
 #include "entity.h"
 
+/**
+ * Space Invaders namespace for views
+ */
 namespace SI::view {
 /**
  * view class for the world

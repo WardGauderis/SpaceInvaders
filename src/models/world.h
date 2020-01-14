@@ -10,6 +10,9 @@
 #include "player.h"
 #include "wave.h"
 
+/**
+ * Space Invaders namespace for models
+ */
 namespace SI::model {
 /**
  * model class for the world

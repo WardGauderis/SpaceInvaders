@@ -11,6 +11,9 @@
 #include "../utils/event.h"
 #include "../utils/vector.h"
 
+/**
+ * Space Invaders namespace for views
+ */
 namespace SI::view {
 /**
  * abstract entity view class

@@ -8,6 +8,9 @@
 #include "../views/world.h"
 #include "entity.h"
 
+/**
+ * Space Invaders namespace for controllers
+ */
 namespace SI::controller {
 /**
  * controller class for the world

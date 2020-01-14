@@ -8,6 +8,9 @@
 #include "../utils/stopWatch.h"
 #include "physicalEntity.h"
 
+/**
+ * Space Invaders namespace for models
+ */
 namespace SI::model {
 /**
  * model class for explosions

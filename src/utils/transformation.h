@@ -9,6 +9,9 @@
 
 #include "vector.h"
 
+/**
+ * utility namespace
+ */
 namespace utils {
 
 /**

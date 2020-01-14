@@ -8,6 +8,9 @@
 #include "../views/player.h"
 #include "physicalEntity.h"
 
+/**
+ * Space Invaders namespace for controllers
+ */
 namespace SI::controller {
 /**
  * controller class for the player

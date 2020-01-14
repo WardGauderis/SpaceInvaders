@@ -7,6 +7,9 @@
 
 #include "../views/entity.h"
 
+/**
+ * Space Invaders namespace for controllers
+ */
 namespace SI::controller {
 /**
  * abstract entity controller class

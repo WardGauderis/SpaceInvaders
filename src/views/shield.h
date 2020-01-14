@@ -8,6 +8,9 @@
 #include "../models/shield.h"
 #include "physicalEntity.h"
 
+/**
+ * Space Invaders namespace for views
+ */
 namespace SI::view {
 /**
  * view class for shields

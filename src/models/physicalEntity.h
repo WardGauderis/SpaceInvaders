@@ -8,6 +8,9 @@
 #include "../utils/vector.h"
 #include "entity.h"
 
+/**
+ * Space Invaders namespace for models
+ */
 namespace SI::model {
 /**
  * model for physical entities

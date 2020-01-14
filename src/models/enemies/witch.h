@@ -7,6 +7,9 @@
 
 #include "../enemy.h"
 
+/**
+ * Space Invaders namespace for models
+ */
 namespace SI::model {
 /**
  * model class for the enemy witch who can reflect bullets

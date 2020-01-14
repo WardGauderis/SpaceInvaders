@@ -7,6 +7,9 @@
 
 #include "controllers/world.h"
 
+/**
+ * Space Invaders namespace
+ */
 namespace SI {
 
 /**

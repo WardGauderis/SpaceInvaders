@@ -8,6 +8,9 @@
 #include "../models/wave.h"
 #include "enemy.h"
 
+/**
+ * Space Invaders namespace for views
+ */
 namespace SI::view {
 /**
  * view class for the wave model that draws the wave title

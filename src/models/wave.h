@@ -9,6 +9,9 @@
 #include "../utils/stopWatch.h"
 #include "enemy.h"
 
+/**
+ * Space Invaders namespace for models
+ */
 namespace SI::model {
 /**
  * model class that handles the waves

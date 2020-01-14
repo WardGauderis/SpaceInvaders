@@ -8,6 +8,9 @@
 #include "../../models/enemies/ghost.h"
 #include "../enemy.h"
 
+/**
+ * Space Invaders namespace for views
+ */
 namespace SI::view {
 
 class Ghost : public Enemy

@@ -7,6 +7,9 @@
 
 #include "key.h"
 
+/**
+ * utility namespace
+ */
 namespace utils {
 
 /**

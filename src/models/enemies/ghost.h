@@ -8,6 +8,9 @@
 #include "../../utils/stopWatch.h"
 #include "../enemy.h"
 
+/**
+ * Space Invaders namespace for models
+ */
 namespace SI::model {
 /**
  * model class for the type of enemy ghost

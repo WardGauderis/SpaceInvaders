@@ -9,6 +9,9 @@
 
 #include "../utils/observer.h"
 
+/**
+ * Space Invaders namespace for models
+ */
 namespace SI::model {
 /**
  * abstract class for models

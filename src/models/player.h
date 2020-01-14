@@ -8,6 +8,9 @@
 #include "../utils/stopWatch.h"
 #include "spaceShip.h"
 
+/**
+ * Space Invaders namespace for models
+ */
 namespace SI::model {
 /**
  * model for the player

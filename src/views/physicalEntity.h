@@ -8,6 +8,9 @@
 #include "../models/physicalEntity.h"
 #include "entity.h"
 
+/**
+ * Space Invaders namespace for views
+ */
 namespace SI::view {
 /**
  * view class for physical entities

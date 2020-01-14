@@ -8,6 +8,9 @@
 #include "../models/explosion.h"
 #include "entity.h"
 
+/**
+ * Space Invaders namespace for views
+ */
 namespace SI::view {
 /**
  * view class for the explosion model
